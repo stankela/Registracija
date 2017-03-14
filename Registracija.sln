@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registracija", "Registracija\Registracija.csproj", "{4716DBD1-FEE7-44F7-9351-CF01EAB2D193}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registracija.Util", "Registracija.Util\Registracija.Util.csproj", "{058FBBC9-AADE-4011-AE0A-60F4E6A9D685}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registracija.Domain", "Registracija.Domain\Registracija.Domain.csproj", "{1FD777FD-DD4D-4046-945C-8BAF83007DEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{4716DBD1-FEE7-44F7-9351-CF01EAB2D193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4716DBD1-FEE7-44F7-9351-CF01EAB2D193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4716DBD1-FEE7-44F7-9351-CF01EAB2D193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{058FBBC9-AADE-4011-AE0A-60F4E6A9D685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{058FBBC9-AADE-4011-AE0A-60F4E6A9D685}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{058FBBC9-AADE-4011-AE0A-60F4E6A9D685}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{058FBBC9-AADE-4011-AE0A-60F4E6A9D685}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FD777FD-DD4D-4046-945C-8BAF83007DEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FD777FD-DD4D-4046-945C-8BAF83007DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FD777FD-DD4D-4046-945C-8BAF83007DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FD777FD-DD4D-4046-945C-8BAF83007DEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

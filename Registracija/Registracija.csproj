@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\Libs\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\Libs\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,14 +50,84 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Dao\DAOFactory.cs" />
+    <Compile Include="Dao\DAOFactoryFactory.cs" />
+    <Compile Include="Dao\DrzavaDAO.cs" />
+    <Compile Include="Dao\GenericDAO.cs" />
+    <Compile Include="Dao\GimnasticarDAO.cs" />
+    <Compile Include="Dao\KategorijaGimnasticaraDAO.cs" />
+    <Compile Include="Dao\KlubDAO.cs" />
+    <Compile Include="Dao\MestoDAO.cs" />
+    <Compile Include="Dao\NHibernate\DrzavaDAOImpl.cs" />
+    <Compile Include="Dao\NHibernate\GenericNHibernateDAO.cs" />
+    <Compile Include="Dao\NHibernate\GimnasticarDAOImpl.cs" />
+    <Compile Include="Dao\NHibernate\KategorijaGimnasticaraDAOImpl.cs" />
+    <Compile Include="Dao\NHibernate\KlubDAOImpl.cs" />
+    <Compile Include="Dao\NHibernate\MestoDAOImpl.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateDAOFactory.cs" />
+    <Compile Include="Data\NHibernate\NHibernateHelper.cs" />
+    <Compile Include="Data\NHibernate\PersistentConfigurationBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strings.cs" />
+    <Compile Include="UI\BaseEntityListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BaseEntityListForm.Designer.cs" />
+    <Compile Include="UI\DataGridViewUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DataGridViewUserControl.Designer.cs" />
+    <Compile Include="UI\DrzavaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DrzavaForm.Designer.cs" />
+    <Compile Include="UI\EntityDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EntityDetailForm.Designer.cs" />
+    <Compile Include="UI\FilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FilterForm.Designer.cs" />
+    <Compile Include="UI\FilterGimnasticarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FilterGimnasticarForm.Designer.cs" />
+    <Compile Include="UI\FilterGimnasticarUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FilterGimnasticarUserControl.Designer.cs" />
+    <Compile Include="UI\GimnasticarFilter.cs" />
+    <Compile Include="UI\GimnasticarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GimnasticarForm.Designer.cs" />
+    <Compile Include="UI\GimnasticariForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GridColumnHeaderMouseClickEventArgs.cs" />
+    <Compile Include="UI\KategorijaGimnasticaraForm.cs" />
+    <Compile Include="UI\KategorijaGimnasticaraForm.Designer.cs" />
+    <Compile Include="UI\KlubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\KlubForm.Designer.cs" />
+    <Compile Include="UI\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MessageDialogs.cs" />
+    <Compile Include="UI\MestoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MestoForm.Designer.cs" />
+    <Compile Include="UI\SingleEntityListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SingleEntityListForm.Designer.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,6 +137,22 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\BaseEntityListForm.resx" />
+    <EmbeddedResource Include="UI\DataGridViewUserControl.resx" />
+    <EmbeddedResource Include="UI\DrzavaForm.resx" />
+    <EmbeddedResource Include="UI\EntityDetailForm.resx" />
+    <EmbeddedResource Include="UI\FilterForm.resx" />
+    <EmbeddedResource Include="UI\FilterGimnasticarForm.resx" />
+    <EmbeddedResource Include="UI\FilterGimnasticarUserControl.resx" />
+    <EmbeddedResource Include="UI\GimnasticarForm.resx" />
+    <EmbeddedResource Include="UI\KategorijaGimnasticaraForm.resx" />
+    <EmbeddedResource Include="UI\KlubForm.resx" />
+    <EmbeddedResource Include="UI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SingleEntityListForm.resx">
+      <DependentUpon>SingleEntityListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -73,6 +165,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Registracija.Domain\Registracija.Domain.csproj">
+      <Project>{1fd777fd-dd4d-4046-945c-8baf83007dec}</Project>
+      <Name>Registracija.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Registracija.Util\Registracija.Util.csproj">
+      <Project>{058fbbc9-aade-4011-ae0a-60f4e6a9d685}</Project>
+      <Name>Registracija.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
