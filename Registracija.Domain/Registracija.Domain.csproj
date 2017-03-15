@@ -41,7 +41,6 @@
   <ItemGroup>
     <Compile Include="Entities\Datum.cs" />
     <Compile Include="Entities\DomainObject.cs" />
-    <Compile Include="Entities\Drzava.cs" />
     <Compile Include="Entities\Gimnasticar.cs" />
     <Compile Include="Entities\Gimnastika.cs" />
     <Compile Include="Entities\KategorijaGimnasticara.cs" />
@@ -57,6 +56,18 @@
       <Project>{058fbbc9-aade-4011-ae0a-60f4e6a9d685}</Project>
       <Name>Registracija.Util</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NHibernate\Mappings\Gimnasticar.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NHibernate\Mappings\KategorijaGimnasticara.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NHibernate\Mappings\Klub.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NHibernate\Mappings\Mesto.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

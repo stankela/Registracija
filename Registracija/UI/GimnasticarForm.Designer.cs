@@ -44,9 +44,6 @@ namespace Registracija.UI
             this.cmbKategorija = new System.Windows.Forms.ComboBox();
             this.lblKlub = new System.Windows.Forms.Label();
             this.cmbKlub = new System.Windows.Forms.ComboBox();
-            this.lblDrzava = new System.Windows.Forms.Label();
-            this.cmbDrzava = new System.Windows.Forms.ComboBox();
-            this.btnAddDrzava = new System.Windows.Forms.Button();
             this.btnAddKlub = new System.Windows.Forms.Button();
             this.btnAddKategorija = new System.Windows.Forms.Button();
             this.lblSrednjeIme = new System.Windows.Forms.Label();
@@ -196,33 +193,6 @@ namespace Registracija.UI
             this.cmbKlub.Size = new System.Drawing.Size(207, 21);
             this.cmbKlub.TabIndex = 19;
             // 
-            // lblDrzava
-            // 
-            this.lblDrzava.AutoSize = true;
-            this.lblDrzava.Location = new System.Drawing.Point(21, 118);
-            this.lblDrzava.Name = "lblDrzava";
-            this.lblDrzava.Size = new System.Drawing.Size(51, 13);
-            this.lblDrzava.TabIndex = 10;
-            this.lblDrzava.Text = "Drzava  *";
-            // 
-            // cmbDrzava
-            // 
-            this.cmbDrzava.FormattingEnabled = true;
-            this.cmbDrzava.Location = new System.Drawing.Point(24, 134);
-            this.cmbDrzava.Name = "cmbDrzava";
-            this.cmbDrzava.Size = new System.Drawing.Size(121, 21);
-            this.cmbDrzava.TabIndex = 11;
-            // 
-            // btnAddDrzava
-            // 
-            this.btnAddDrzava.Location = new System.Drawing.Point(151, 133);
-            this.btnAddDrzava.Name = "btnAddDrzava";
-            this.btnAddDrzava.Size = new System.Drawing.Size(25, 23);
-            this.btnAddDrzava.TabIndex = 23;
-            this.btnAddDrzava.Text = "...";
-            this.btnAddDrzava.UseVisualStyleBackColor = true;
-            this.btnAddDrzava.Click += new System.EventHandler(this.btnAddDrzava_Click);
-            // 
             // btnAddKlub
             // 
             this.btnAddKlub.Location = new System.Drawing.Point(237, 241);
@@ -269,9 +239,6 @@ namespace Registracija.UI
             this.Controls.Add(this.btnAddKlub);
             this.Controls.Add(this.txtSrednjeIme);
             this.Controls.Add(this.lblSrednjeIme);
-            this.Controls.Add(this.btnAddDrzava);
-            this.Controls.Add(this.cmbDrzava);
-            this.Controls.Add(this.lblDrzava);
             this.Controls.Add(this.cmbKlub);
             this.Controls.Add(this.lblKlub);
             this.Controls.Add(this.cmbKategorija);
@@ -307,9 +274,6 @@ namespace Registracija.UI
             this.Controls.SetChildIndex(this.cmbKategorija, 0);
             this.Controls.SetChildIndex(this.lblKlub, 0);
             this.Controls.SetChildIndex(this.cmbKlub, 0);
-            this.Controls.SetChildIndex(this.lblDrzava, 0);
-            this.Controls.SetChildIndex(this.cmbDrzava, 0);
-            this.Controls.SetChildIndex(this.btnAddDrzava, 0);
             this.Controls.SetChildIndex(this.lblSrednjeIme, 0);
             this.Controls.SetChildIndex(this.txtSrednjeIme, 0);
             this.Controls.SetChildIndex(this.btnAddKlub, 0);
@@ -339,9 +303,6 @@ namespace Registracija.UI
         private System.Windows.Forms.ComboBox cmbKategorija;
         private System.Windows.Forms.Label lblKlub;
         private System.Windows.Forms.ComboBox cmbKlub;
-        private System.Windows.Forms.Label lblDrzava;
-        private System.Windows.Forms.ComboBox cmbDrzava;
-        private System.Windows.Forms.Button btnAddDrzava;
         private System.Windows.Forms.Button btnAddKlub;
         private System.Windows.Forms.Button btnAddKategorija;
         private System.Windows.Forms.Label lblSrednjeIme;

@@ -18,11 +18,6 @@ namespace Registracija.Dao.NHibernate
             return new KlubDAOImpl();
         }
 
-        public override DrzavaDAO GetDrzavaDAO()
-        {
-            return new DrzavaDAOImpl();
-        }
-
         public override KategorijaGimnasticaraDAO GetKategorijaGimnasticaraDAO()
         {
             return new KategorijaGimnasticaraDAOImpl();

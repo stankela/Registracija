@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+  <session-factory>
+    <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+    <property name="dialect">NHibernate.Dialect.MsSqlCeDialect</property>
+    <property name="connection.driver_class">NHibernate.Driver.SqlServerCeDriver</property>
+
+    
+    <!-- Promeni takodje i u ConfigurationParameters.ConnectionString -->
+    <property name="connection.connection_string">Data Source=RegistracijaPodaci.sdf</property>
+
+
+    <property name="proxyfactory.factory_class">
+      NHibernate.Bytecode.DefaultProxyFactoryFactory, NHibernate
+    </property>
+    <property name="current_session_context_class">thread_static</property>
+
+    <property name="show_sql">true</property>
+  </session-factory>
+</hibernate-configuration>

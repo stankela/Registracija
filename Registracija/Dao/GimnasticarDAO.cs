@@ -10,14 +10,12 @@ namespace Registracija.Dao
         IList<Gimnasticar> FindAll();
         IList<Gimnasticar> FindByGimnastika(Gimnastika gim);
         IList<Gimnasticar> FindGimnasticariByKlub(Klub klub);
-        IList<Gimnasticar> FindGimnasticariByDrzava(Drzava drzava);
         IList<Gimnasticar> FindGimnasticariByKategorija(KategorijaGimnasticara kategorija);
         IList<Gimnasticar> FindGimnasticariByRegBroj(RegistarskiBroj regBroj);
         IList<Gimnasticar> FindGimnasticari(string ime, string prezime,
-            Nullable<int> godRodj, Nullable<Gimnastika> gimnastika, Drzava drzava,
+            Nullable<int> godRodj, Nullable<Gimnastika> gimnastika,
             KategorijaGimnasticara kategorija, Klub klub);
         bool existsGimnasticar(Klub klub);
-        bool existsGimnasticar(Drzava drzava);
         bool existsGimnasticar(KategorijaGimnasticara kategorija);
         bool existsGimnasticarImePrezimeSrednjeImeDatumRodjenja(string ime, string prezime, string srednjeIme,
             Datum datumRodj);

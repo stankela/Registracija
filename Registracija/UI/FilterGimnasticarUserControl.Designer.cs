@@ -35,8 +35,6 @@ namespace Registracija.UI
             this.lblGodRodj = new System.Windows.Forms.Label();
             this.cmbGimnastika = new System.Windows.Forms.ComboBox();
             this.lblGimnastika = new System.Windows.Forms.Label();
-            this.cmbDrzava = new System.Windows.Forms.ComboBox();
-            this.lblDrzava = new System.Windows.Forms.Label();
             this.cmbKategorija = new System.Windows.Forms.ComboBox();
             this.lblKategorija = new System.Windows.Forms.Label();
             this.cmbKlub = new System.Windows.Forms.ComboBox();
@@ -107,23 +105,6 @@ namespace Registracija.UI
             this.lblGimnastika.TabIndex = 14;
             this.lblGimnastika.Text = "Gimnastika";
             // 
-            // cmbDrzava
-            // 
-            this.cmbDrzava.FormattingEnabled = true;
-            this.cmbDrzava.Location = new System.Drawing.Point(254, 103);
-            this.cmbDrzava.Name = "cmbDrzava";
-            this.cmbDrzava.Size = new System.Drawing.Size(100, 21);
-            this.cmbDrzava.TabIndex = 13;
-            // 
-            // lblDrzava
-            // 
-            this.lblDrzava.AutoSize = true;
-            this.lblDrzava.Location = new System.Drawing.Point(251, 87);
-            this.lblDrzava.Name = "lblDrzava";
-            this.lblDrzava.Size = new System.Drawing.Size(41, 13);
-            this.lblDrzava.TabIndex = 12;
-            this.lblDrzava.Text = "Drzava";
-            // 
             // cmbKategorija
             // 
             this.cmbKategorija.FormattingEnabled = true;
@@ -190,8 +171,6 @@ namespace Registracija.UI
             this.Controls.Add(this.cmbKlub);
             this.Controls.Add(this.lblKategorija);
             this.Controls.Add(this.cmbKategorija);
-            this.Controls.Add(this.lblDrzava);
-            this.Controls.Add(this.cmbDrzava);
             this.Controls.Add(this.lblGimnastika);
             this.Controls.Add(this.cmbGimnastika);
             this.Controls.Add(this.lblGodRodj);
@@ -215,8 +194,6 @@ namespace Registracija.UI
         private System.Windows.Forms.Label lblGodRodj;
         private System.Windows.Forms.ComboBox cmbGimnastika;
         private System.Windows.Forms.Label lblGimnastika;
-        private System.Windows.Forms.ComboBox cmbDrzava;
-        private System.Windows.Forms.Label lblDrzava;
         private System.Windows.Forms.ComboBox cmbKategorija;
         private System.Windows.Forms.Label lblKategorija;
         private System.Windows.Forms.ComboBox cmbKlub;

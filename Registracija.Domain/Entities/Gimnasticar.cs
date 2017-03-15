@@ -60,13 +60,6 @@ namespace Registracija.Domain
             set { klub = value; }
         }
 
-        private Drzava drzava;
-        public virtual Drzava Drzava
-        {
-            get { return drzava; }
-            set { drzava = value; }
-        }
-
         private RegistarskiBroj registarskiBroj;
         public virtual RegistarskiBroj RegistarskiBroj
         {
@@ -169,13 +162,6 @@ namespace Registracija.Domain
             {
                 notification.RegisterMessage(
                     "Gimnastika", "Gimnastika je obavezna.");
-            }
-
-            // validate Drzava
-            if (Drzava == null)
-            {
-                notification.RegisterMessage(
-                    "Drzava", "Drzava je obavezna.");
             }
         }
 

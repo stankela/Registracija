@@ -42,13 +42,6 @@ namespace Registracija.UI
             set { gimnastika = value; }
         }
 
-        private Drzava drzava;
-        public Drzava Drzava
-        {
-            get { return drzava; }
-            set { drzava = value; }
-        }
-
         private KategorijaGimnasticara kategorija;
         public KategorijaGimnasticara Kategorija
         {

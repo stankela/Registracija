@@ -17,7 +17,6 @@ namespace Registracija.Dao.NHibernate
                 IQuery q = Session.CreateQuery(@"from Gimnasticar g
                     left join fetch g.Kategorija
                     left join fetch g.Klub
-                    left join fetch g.Drzava
                     order by g.Prezime asc, g.Ime asc");
                 return q.List<Gimnasticar>();
             }
@@ -34,7 +33,6 @@ namespace Registracija.Dao.NHibernate
                 IQuery q = Session.CreateQuery(@"from Gimnasticar g
                     left join fetch g.Kategorija
                     left join fetch g.Klub
-                    left join fetch g.Drzava
                     where g.Gimnastika = :gim
                     order by g.Prezime asc, g.Ime asc");
                 q.SetByte("gim", (byte)gim);
@@ -52,20 +50,6 @@ namespace Registracija.Dao.NHibernate
             {
                 IQuery q = Session.CreateQuery(@"from Gimnasticar g where g.Klub = :klub");
                 q.SetEntity("klub", klub);
-                return q.List<Gimnasticar>();
-            }
-            catch (HibernateException ex)
-            {
-                throw new InfrastructureException(Strings.getFullDatabaseAccessExceptionMessage(ex), ex);
-            }
-        }
-
-        public IList<Gimnasticar> FindGimnasticariByDrzava(Drzava drzava)
-        {
-            try
-            {
-                IQuery q = Session.CreateQuery(@"from Gimnasticar g where g.Drzava = :drzava");
-                q.SetEntity("drzava", drzava);
                 return q.List<Gimnasticar>();
             }
             catch (HibernateException ex)
@@ -95,7 +79,6 @@ namespace Registracija.Dao.NHibernate
                 IQuery q = Session.CreateQuery(@"from Gimnasticar g
                     left join fetch g.Kategorija
                     left join fetch g.Klub
-                    left join fetch g.Drzava
                     where g.RegistarskiBroj.Broj = :broj
                     and g.RegistarskiBroj.GodinaRegistracije = :godina");
                 q.SetInt32("broj", regBroj.Broj);
@@ -109,13 +92,12 @@ namespace Registracija.Dao.NHibernate
         }
 
         public IList<Gimnasticar> FindGimnasticari(string ime, string prezime,
-            Nullable<int> godRodj, Nullable<Gimnastika> gimnastika, Drzava drzava,
+            Nullable<int> godRodj, Nullable<Gimnastika> gimnastika,
             KategorijaGimnasticara kategorija, Klub klub)
         {
             string query = @"from Gimnasticar g
                     left join fetch g.Kategorija
-                    left join fetch g.Klub
-                    left join fetch g.Drzava";
+                    left join fetch g.Klub";
             string WHERE = " where ";
             if (!String.IsNullOrEmpty(ime))
             {
@@ -135,11 +117,6 @@ namespace Registracija.Dao.NHibernate
             if (gimnastika != null)
             {
                 query += WHERE + "g.Gimnastika = :gimnastika";
-                WHERE = " and ";
-            }
-            if (drzava != null)
-            {
-                query += WHERE + "g.Drzava = :drzava";
                 WHERE = " and ";
             }
             if (kategorija != null)
@@ -163,8 +140,6 @@ namespace Registracija.Dao.NHibernate
                 q.SetInt16("godRodj", (short)godRodj.Value);
             if (gimnastika != null)
                 q.SetByte("gimnastika", (byte)gimnastika.Value);
-            if (drzava != null)
-                q.SetEntity("drzava", drzava);
             if (kategorija != null)
                 q.SetEntity("kategorija", kategorija);
             if (klub != null)
@@ -178,20 +153,6 @@ namespace Registracija.Dao.NHibernate
             {
                 IQuery q = Session.CreateQuery(@"select count(*) from Gimnasticar g where g.Klub = :klub");
                 q.SetEntity("klub", klub);
-                return (long)q.UniqueResult() > 0;
-            }
-            catch (HibernateException ex)
-            {
-                throw new InfrastructureException(Strings.getFullDatabaseAccessExceptionMessage(ex), ex);
-            }
-        }
-
-        public bool existsGimnasticar(Drzava drzava)
-        {
-            try
-            {
-                IQuery q = Session.CreateQuery(@"select count(*) from Gimnasticar g where g.Drzava = :drzava");
-                q.SetEntity("drzava", drzava);
                 return (long)q.UniqueResult() > 0;
             }
             catch (HibernateException ex)

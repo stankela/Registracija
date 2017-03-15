@@ -19,13 +19,11 @@ namespace Registracija.UI
     {
         private List<KategorijaGimnasticara> kategorije;
         private List<Klub> klubovi;
-        private List<Drzava> drzave;
         private Nullable<Gimnastika> gimnastika;
         private bool initializing;
 
         private readonly string SVE_KATEGORIJE = "Sve kategorije";
         private readonly string SVI_KLUBOVI = "Svi klubovi";
-        private readonly string SVE_DRZAVE = "Sve drzave";
         private readonly string SVI = "Svi";
         private readonly string MSG = "MSG";
         private readonly string ZSG = "ZSG";
@@ -68,7 +66,6 @@ namespace Registracija.UI
         {
             kategorije = new List<KategorijaGimnasticara>(loadKategorije(gimnastika));
             klubovi = new List<Klub>(DAOFactoryFactory.DAOFactory.GetKlubDAO().FindAll());
-            drzave = new List<Drzava>(DAOFactoryFactory.DAOFactory.GetDrzavaDAO().FindAll());
         }
 
         private IList<KategorijaGimnasticara> loadKategorije(Nullable<Gimnastika> gimnastika)
@@ -83,12 +80,6 @@ namespace Registracija.UI
         {
             cmbGimnastika.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGimnastika.Items.AddRange(new string[] { SVI, MSG, ZSG });
-
-            cmbDrzava.DropDownStyle = ComboBoxStyle.DropDown;
-            cmbDrzava.Items.Add(SVE_DRZAVE);
-            cmbDrzava.Items.AddRange(drzave.ToArray());
-            cmbDrzava.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cmbDrzava.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             cmbKategorija.DropDownStyle = ComboBoxStyle.DropDown;
             setKategorije();
@@ -132,7 +123,6 @@ namespace Registracija.UI
             }
             cmbKategorija.SelectedIndex = cmbKategorija.Items.IndexOf(SVE_KATEGORIJE);
             cmbKlub.SelectedIndex = cmbKlub.Items.IndexOf(SVI_KLUBOVI);
-            cmbDrzava.SelectedIndex = cmbDrzava.Items.IndexOf(SVE_DRZAVE);
         }
 
         private bool validateFilter()
@@ -200,10 +190,6 @@ namespace Registracija.UI
                     cmbKlub.Focus();
                     break;
 
-                case "Drzava":
-                    cmbDrzava.Focus();
-                    break;
-
                 default:
                     throw new ArgumentException();
             }
@@ -233,7 +219,6 @@ namespace Registracija.UI
 
             // NOTE: operator as vraca null ako sa leve strane nije objekt
             // odgovarajuceg tipa, ili je sa leve strane null
-            result.Drzava = cmbDrzava.SelectedItem as Drzava;
             result.Kategorija = cmbKategorija.SelectedItem as KategorijaGimnasticara;
             result.Klub = cmbKlub.SelectedItem as Klub;
 

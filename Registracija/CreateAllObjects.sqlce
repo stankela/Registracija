@@ -1,0 +1,41 @@
+create table verzija_baze (
+	verzija_id int primary key,
+	broj_verzije int
+);
+insert into verzija_baze (verzija_id, broj_verzije) values (1, 1);
+
+create table mesta (
+	mesto_id int identity(1,1) primary key,
+	naziv nvarchar(32)
+);
+
+create table klubovi (
+	klub_id int identity(1,1) primary key,
+	naziv nvarchar(128),
+	kod nvarchar(7),
+	mesto_id int references mesta(mesto_id)
+);
+
+create table kategorije_gimnasticara (
+	kategorija_id int identity(1,1) primary key,
+	naziv nvarchar(32),
+	gimnastika tinyint
+);
+
+create table gimnasticari (
+	gimnasticar_id int identity(1,1) primary key,
+	ime nvarchar(32),
+	srednje_ime nvarchar(32),
+	prezime nvarchar(32),
+	dan_rodj tinyint,
+	mesec_rodj tinyint,
+	god_rodj smallint,
+	gimnastika tinyint,
+	reg_broj int,
+	god_reg smallint,
+	dan_posl_reg tinyint,
+	mesec_posl_reg tinyint,
+	god_posl_reg smallint,
+	kat_id int references kategorije_gimnasticara(kategorija_id),
+	klub_id int references klubovi(klub_id)
+);

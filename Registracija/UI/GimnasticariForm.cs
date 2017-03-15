@@ -97,7 +97,6 @@ namespace Registracija.UI
             AddColumn("Gimnastika", "Gimnastika", 70);
             AddColumn("Klub", "Klub", 150);
             AddColumn("Kategorija", "Kategorija", 100);
-            AddColumn("Drzava", "Drzava", 100);
             AddColumn("Registarski broj", "RegistarskiBroj", 100);
             AddColumn("Poslednja registr.", "DatumPoslednjeRegistracije", 100, "{0:d}");
         }
@@ -184,7 +183,7 @@ namespace Registracija.UI
                     else
                     {
                         gimnasticari = DAOFactoryFactory.DAOFactory.GetGimnasticarDAO().FindGimnasticari(flt.Ime,
-                            flt.Prezime, flt.GodRodj, flt.Gimnastika, flt.Drzava, flt.Kategorija, flt.Klub);
+                            flt.Prezime, flt.GodRodj, flt.Gimnastika, flt.Kategorija, flt.Klub);
                         if (gimnasticari.Count == 0)
                             failureMsg = "Ne postoje gimnasticari koji zadovoljavaju date kriterijume.";
                     }

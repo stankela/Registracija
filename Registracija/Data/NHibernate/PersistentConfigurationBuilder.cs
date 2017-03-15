@@ -17,8 +17,8 @@ namespace Registracija
             //log.Debug("Building the Configuration");
 
             string fileName = "NHibernateConfig";
-            IList<string> dependencies = 
-                getMappingFiles(@"..\..\Data\NHibernate\Mappings");
+            string path = @"..\..\..\Registracija.Domain\NHibernate\Mappings";
+            IList<string> dependencies = getMappingFiles(path);
 
             Configuration configuration;
             if (IsNewConfigurationRequired(fileName, dependencies))

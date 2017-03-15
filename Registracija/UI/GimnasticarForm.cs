@@ -21,7 +21,6 @@ namespace Registracija.UI
     {
         private List<KategorijaGimnasticara> kategorije;
         private List<Klub> klubovi;
-        private List<Drzava> drzave;
         private string oldIme;
         private string oldPrezime;
         private string oldSrednjeIme;
@@ -52,7 +51,6 @@ namespace Registracija.UI
                 kategorije = new List<KategorijaGimnasticara>();
 
             klubovi = new List<Klub>(DAOFactoryFactory.DAOFactory.GetKlubDAO().FindAll());
-            drzave = new List<Drzava>(DAOFactoryFactory.DAOFactory.GetDrzavaDAO().FindAll());
             gimnasticari = new List<Gimnasticar>(DAOFactoryFactory.DAOFactory.GetGimnasticarDAO().FindAll());
         }
 
@@ -87,22 +85,6 @@ namespace Registracija.UI
             SelectedKlub = null;
             cmbKlub.AutoCompleteMode = AutoCompleteMode.Suggest;
             cmbKlub.AutoCompleteSource = AutoCompleteSource.ListItems;
-
-            cmbDrzava.DropDownStyle = ComboBoxStyle.DropDown;
-            setDrzave(drzave);
-            SelectedDrzava = getSrbija();
-            cmbDrzava.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cmbDrzava.AutoCompleteSource = AutoCompleteSource.ListItems;
-        }
-
-        private Drzava getSrbija()
-        {
-            foreach (Drzava d in drzave)
-            {
-                if (d.Naziv.ToUpper() == "SRBIJA")
-                    return d;
-            }
-            return null;
         }
 
         private void setGimnastike()
@@ -130,22 +112,6 @@ namespace Registracija.UI
                 else
                     cmbGimnastika.SelectedIndex = -1;
             }
-        }
-
-        private void setDrzave(List<Drzava> drzave)
-        {
-            cmbDrzava.DisplayMember = "Naziv";
-            cmbDrzava.DataSource = drzave;
-
-            CurrencyManager currencyManager =
-                (CurrencyManager)this.BindingContext[drzave];
-            currencyManager.Refresh();
-        }
-
-        private Drzava SelectedDrzava
-        {
-            get { return cmbDrzava.SelectedItem as Drzava; }
-            set { cmbDrzava.SelectedItem = value; }
         }
 
         private void setKategorije(List<KategorijaGimnasticara> kategorije)
@@ -224,7 +190,6 @@ namespace Registracija.UI
 
             SelectedKategorija = gimnasticar.Kategorija;
             SelectedKlub = gimnasticar.Klub;
-            SelectedDrzava = gimnasticar.Drzava;
         }
 
         protected override void requiredFieldsAndFormatValidation(Notification notification)
@@ -265,20 +230,6 @@ namespace Registracija.UI
             {
                 notification.RegisterMessage(
                     "DatumPoslednjeRegistracije", "Neispravan format za datum ili godinu poslednje registracije.");
-            }
-
-            if (SelectedDrzava == null)
-            {
-                if (cmbDrzava.Text.Trim() != String.Empty)
-                {
-                    notification.RegisterMessage(
-                        "Drzava", "Uneli ste nepostojecu drzavu.");
-                }
-                else
-                {
-                    notification.RegisterMessage(
-                        "Drzava", "Drzava je obavezna.");
-                }
             }
 
             if (cmbKlub.Text.Trim() != String.Empty && cmbKlub.Text.Trim() != PRAZNO_ITEM && SelectedKlub == null)
@@ -335,10 +286,6 @@ namespace Registracija.UI
                     cmbKlub.Focus();
                     break;
 
-                case "Drzava":
-                    cmbDrzava.Focus();
-                    break;
-
                 default:
                     throw new ArgumentException();
             }
@@ -379,7 +326,6 @@ namespace Registracija.UI
             else
                 gimnasticar.DatumPoslednjeRegistracije = Datum.Parse(txtDatumPoslReg.Text);
 
-            gimnasticar.Drzava = SelectedDrzava;
             gimnasticar.Klub = SelectedKlub;
             gimnasticar.Kategorija = SelectedKategorija;
         }
@@ -480,26 +426,6 @@ namespace Registracija.UI
                 equals = g.DatumRodjenja == oldDatumRodjenja;
             }
             return !equals;
-        }
-
-        private void btnAddDrzava_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DrzavaForm form = new DrzavaForm(null);
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    Drzava d = (Drzava)form.Entity;
-                    drzave.Add(d);
-                    drzave.Sort();
-                    setDrzave(drzave);
-                    SelectedDrzava = d;
-                }
-            }
-            catch (InfrastructureException ex)
-            {
-                MessageDialogs.showError(ex.Message, this.Text);
-            }
         }
 
         private void btnAddKlub_Click(object sender, EventArgs e)

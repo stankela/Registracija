@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Registracija.Domain"
+                   namespace="Registracija.Domain">
+
+  <class name="Klub" table="klubovi" lazy="true">
+    <id name="Id" column="klub_id" access="nosetter.camelcase">
+      <generator class="identity" />
+    </id>
+    <property name="Naziv" column="naziv" type="String" not-null="false" length="128"/>
+    <property name="Kod" />
+    <many-to-one name="Mesto" class="Mesto" column="mesto_id" />
+  </class>
+
+</hibernate-mapping>
