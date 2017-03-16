@@ -35,10 +35,12 @@
     <Reference Include="Iesi.Collections">
       <HintPath>..\Libs\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="NHibernate">
       <HintPath>..\Libs\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -55,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationParameters.cs" />
     <Compile Include="Dao\DAOFactory.cs" />
     <Compile Include="Dao\DAOFactoryFactory.cs" />
     <Compile Include="Dao\GenericDAO.cs" />
@@ -70,8 +73,10 @@
     <Compile Include="Dao\NHibernate\NHibernateDAOFactory.cs" />
     <Compile Include="Data\NHibernate\NHibernateHelper.cs" />
     <Compile Include="Data\NHibernate\PersistentConfigurationBuilder.cs" />
+    <Compile Include="Language.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleInstanceApplication.cs" />
     <Compile Include="Strings.cs" />
     <Compile Include="UI\BaseEntityListForm.cs">
       <SubType>Form</SubType>
@@ -129,6 +134,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\SingleEntityListForm.Designer.cs" />
+    <Compile Include="Util\ColumnAdder.cs" />
+    <Compile Include="Util\Database.cs" />
+    <Compile Include="Util\DatabaseUpdater.cs" />
+    <Compile Include="Util\SqlCeUtilities.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
