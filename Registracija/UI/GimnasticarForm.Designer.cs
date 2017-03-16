@@ -50,15 +50,23 @@ namespace Registracija.UI
             this.txtSrednjeIme = new System.Windows.Forms.TextBox();
             this.lblJMBG = new System.Windows.Forms.Label();
             this.txtJMBG = new System.Windows.Forms.TextBox();
+            this.lblMesto = new System.Windows.Forms.Label();
+            this.txtMesto = new System.Windows.Forms.TextBox();
+            this.lblAdresa = new System.Windows.Forms.Label();
+            this.txtAdresa = new System.Windows.Forms.TextBox();
+            this.lblTelefon1 = new System.Windows.Forms.Label();
+            this.txtTelefon1 = new System.Windows.Forms.TextBox();
+            this.lblTelefon2 = new System.Windows.Forms.Label();
+            this.txtTelefon2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(388, 323);
+            this.btnOk.Location = new System.Drawing.Point(398, 379);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(480, 323);
+            this.btnCancel.Location = new System.Drawing.Point(490, 379);
             // 
             // txtIme
             // 
@@ -247,12 +255,84 @@ namespace Registracija.UI
             this.txtJMBG.Size = new System.Drawing.Size(133, 20);
             this.txtJMBG.TabIndex = 29;
             // 
+            // lblMesto
+            // 
+            this.lblMesto.AutoSize = true;
+            this.lblMesto.Location = new System.Drawing.Point(21, 295);
+            this.lblMesto.Name = "lblMesto";
+            this.lblMesto.Size = new System.Drawing.Size(91, 13);
+            this.lblMesto.TabIndex = 30;
+            this.lblMesto.Text = "Mesto stanovanja";
+            // 
+            // txtMesto
+            // 
+            this.txtMesto.Location = new System.Drawing.Point(24, 311);
+            this.txtMesto.Name = "txtMesto";
+            this.txtMesto.Size = new System.Drawing.Size(88, 20);
+            this.txtMesto.TabIndex = 31;
+            // 
+            // lblAdresa
+            // 
+            this.lblAdresa.AutoSize = true;
+            this.lblAdresa.Location = new System.Drawing.Point(131, 295);
+            this.lblAdresa.Name = "lblAdresa";
+            this.lblAdresa.Size = new System.Drawing.Size(40, 13);
+            this.lblAdresa.TabIndex = 32;
+            this.lblAdresa.Text = "Adresa";
+            // 
+            // txtAdresa
+            // 
+            this.txtAdresa.Location = new System.Drawing.Point(131, 311);
+            this.txtAdresa.Name = "txtAdresa";
+            this.txtAdresa.Size = new System.Drawing.Size(204, 20);
+            this.txtAdresa.TabIndex = 33;
+            // 
+            // lblTelefon1
+            // 
+            this.lblTelefon1.AutoSize = true;
+            this.lblTelefon1.Location = new System.Drawing.Point(356, 295);
+            this.lblTelefon1.Name = "lblTelefon1";
+            this.lblTelefon1.Size = new System.Drawing.Size(52, 13);
+            this.lblTelefon1.TabIndex = 34;
+            this.lblTelefon1.Text = "Telefon 1";
+            // 
+            // txtTelefon1
+            // 
+            this.txtTelefon1.Location = new System.Drawing.Point(359, 311);
+            this.txtTelefon1.Name = "txtTelefon1";
+            this.txtTelefon1.Size = new System.Drawing.Size(91, 20);
+            this.txtTelefon1.TabIndex = 35;
+            // 
+            // lblTelefon2
+            // 
+            this.lblTelefon2.AutoSize = true;
+            this.lblTelefon2.Location = new System.Drawing.Point(466, 295);
+            this.lblTelefon2.Name = "lblTelefon2";
+            this.lblTelefon2.Size = new System.Drawing.Size(52, 13);
+            this.lblTelefon2.TabIndex = 36;
+            this.lblTelefon2.Text = "Telefon 2";
+            // 
+            // txtTelefon2
+            // 
+            this.txtTelefon2.Location = new System.Drawing.Point(469, 311);
+            this.txtTelefon2.Name = "txtTelefon2";
+            this.txtTelefon2.Size = new System.Drawing.Size(88, 20);
+            this.txtTelefon2.TabIndex = 37;
+            // 
             // GimnasticarForm
             // 
             this.AcceptButton = null;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 368);
+            this.ClientSize = new System.Drawing.Size(585, 423);
+            this.Controls.Add(this.txtTelefon2);
+            this.Controls.Add(this.lblTelefon2);
+            this.Controls.Add(this.txtTelefon1);
+            this.Controls.Add(this.lblTelefon1);
+            this.Controls.Add(this.txtAdresa);
+            this.Controls.Add(this.lblAdresa);
+            this.Controls.Add(this.txtMesto);
+            this.Controls.Add(this.lblMesto);
             this.Controls.Add(this.txtJMBG);
             this.Controls.Add(this.lblJMBG);
             this.Controls.Add(this.btnAddKategorija);
@@ -302,6 +382,14 @@ namespace Registracija.UI
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.lblJMBG, 0);
             this.Controls.SetChildIndex(this.txtJMBG, 0);
+            this.Controls.SetChildIndex(this.lblMesto, 0);
+            this.Controls.SetChildIndex(this.txtMesto, 0);
+            this.Controls.SetChildIndex(this.lblAdresa, 0);
+            this.Controls.SetChildIndex(this.txtAdresa, 0);
+            this.Controls.SetChildIndex(this.lblTelefon1, 0);
+            this.Controls.SetChildIndex(this.txtTelefon1, 0);
+            this.Controls.SetChildIndex(this.lblTelefon2, 0);
+            this.Controls.SetChildIndex(this.txtTelefon2, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,5 +419,13 @@ namespace Registracija.UI
         private System.Windows.Forms.TextBox txtSrednjeIme;
         private System.Windows.Forms.Label lblJMBG;
         private System.Windows.Forms.TextBox txtJMBG;
+        private System.Windows.Forms.Label lblMesto;
+        private System.Windows.Forms.TextBox txtMesto;
+        private System.Windows.Forms.Label lblAdresa;
+        private System.Windows.Forms.TextBox txtAdresa;
+        private System.Windows.Forms.Label lblTelefon1;
+        private System.Windows.Forms.TextBox txtTelefon1;
+        private System.Windows.Forms.Label lblTelefon2;
+        private System.Windows.Forms.TextBox txtTelefon2;
     }
 }

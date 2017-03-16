@@ -10,6 +10,9 @@ namespace Registracija.Domain
         private static readonly int IME_MAX_LENGTH = 32;
         private static readonly int SR_IME_MAX_LENGTH = 32;
         private static readonly int PREZIME_MAX_LENGTH = 32;
+        private static readonly int ADRESA_MAX_LENGTH = 64;
+        private static readonly int MESTO_MAX_LENGTH = 32;
+        private static readonly int TELEFON_MAX_LENGTH = 16;
         
         private string ime;
         public virtual string Ime
@@ -79,6 +82,34 @@ namespace Registracija.Domain
         {
             get { return datumPoslednjeRegistracije; }
             set { datumPoslednjeRegistracije = value; }
+        }
+
+        private string adresa;
+        public virtual string Adresa
+        {
+            get { return adresa; }
+            set { adresa = value; }
+        }
+
+        private string mesto;
+        public virtual string Mesto
+        {
+            get { return mesto; }
+            set { mesto = value; }
+        }
+
+        private string telefon1;
+        public virtual string Telefon1
+        {
+            get { return telefon1; }
+            set { telefon1 = value; }
+        }
+
+        private string telefon2;
+        public virtual string Telefon2
+        {
+            get { return telefon2; }
+            set { telefon2 = value; }
         }
 
         public Gimnasticar()
@@ -170,6 +201,42 @@ namespace Registracija.Domain
             {
                 notification.RegisterMessage(
                     "JMBG", "JMBG mora da sadrzi 13 brojeva.");
+            }
+
+            // validate Adresa
+            if (!string.IsNullOrEmpty(Adresa)
+            && Adresa.Length > ADRESA_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Adresa", "Adresa moze da sadrzi maksimalno "
+                    + ADRESA_MAX_LENGTH + " znakova.");
+            }
+
+            // validate Mesto
+            if (!string.IsNullOrEmpty(Mesto)
+            && Mesto.Length > MESTO_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Mesto", "Mesto moze da sadrzi maksimalno "
+                    + MESTO_MAX_LENGTH + " znakova.");
+            }
+
+            // validate Telefon1
+            if (!string.IsNullOrEmpty(Telefon1)
+            && Telefon1.Length > TELEFON_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Telefon1", "Telefon moze da sadrzi maksimalno "
+                    + TELEFON_MAX_LENGTH + " znakova.");
+            }
+
+            // validate Telefon2
+            if (!string.IsNullOrEmpty(Telefon2)
+            && Telefon2.Length > TELEFON_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Telefon2", "Telefon moze da sadrzi maksimalno "
+                    + TELEFON_MAX_LENGTH + " znakova.");
             }
 
             if (Gimnastika == Gimnastika.Undefined)

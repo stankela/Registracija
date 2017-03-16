@@ -40,6 +40,10 @@ create table gimnasticari (
 	dan_posl_reg tinyint,
 	mesec_posl_reg tinyint,
 	god_posl_reg smallint,
+	adresa nvarchar(64),
+	mesto nvarchar(32),
+	telefon1 nvarchar(16),
+	telefon2 nvarchar(16),
 	kat_id int references kategorije_gimnasticara(kategorija_id),
 	klub_id int references klubovi(klub_id)
 );

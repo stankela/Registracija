@@ -71,6 +71,11 @@ namespace Registracija.UI
             txtRegBroj.Text = String.Empty;
             txtDatumPoslReg.Text = String.Empty;
 
+            txtMesto.Text = String.Empty;
+            txtAdresa.Text = String.Empty;
+            txtTelefon1.Text = String.Empty;
+            txtTelefon2.Text = String.Empty;
+
             cmbGimnastika.DropDownStyle = ComboBoxStyle.DropDownList;
             setGimnastike();
             SelectedGimnastika = Gimnastika.Undefined;
@@ -189,6 +194,11 @@ namespace Registracija.UI
             if (gimnasticar.DatumPoslednjeRegistracije != null)
                 txtDatumPoslReg.Text = gimnasticar.DatumPoslednjeRegistracije.ToString("d");
 
+            txtMesto.Text = gimnasticar.Mesto;
+            txtAdresa.Text = gimnasticar.Adresa;
+            txtTelefon1.Text = gimnasticar.Telefon1;
+            txtTelefon2.Text = gimnasticar.Telefon2;
+
             SelectedGimnastika = gimnasticar.Gimnastika;
 
             SelectedKategorija = gimnasticar.Kategorija;
@@ -285,6 +295,22 @@ namespace Registracija.UI
                     txtDatumPoslReg.Focus();
                     break;
 
+                case "Mesto":
+                    txtMesto.Focus();
+                    break;
+
+                case "Adresa":
+                    txtAdresa.Focus();
+                    break;
+
+                case "Telefon1":
+                    txtTelefon1.Focus();
+                    break;
+
+                case "Telefon2":
+                    txtTelefon2.Focus();
+                    break;
+
                 case "Kategorija":
                     cmbKategorija.Focus();
                     break;
@@ -334,6 +360,11 @@ namespace Registracija.UI
                 gimnasticar.DatumPoslednjeRegistracije = null;
             else
                 gimnasticar.DatumPoslednjeRegistracije = Datum.Parse(txtDatumPoslReg.Text);
+
+            gimnasticar.Mesto = txtMesto.Text.Trim();
+            gimnasticar.Adresa = txtAdresa.Text.Trim();
+            gimnasticar.Telefon1 = txtTelefon1.Text.Trim();
+            gimnasticar.Telefon2 = txtTelefon2.Text.Trim();
 
             gimnasticar.Klub = SelectedKlub;
             gimnasticar.Kategorija = SelectedKategorija;
