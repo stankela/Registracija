@@ -15,6 +15,7 @@
       <property name="Mesec" column="mesec_rodj" type="Byte" />
       <property name="Godina" column="god_rodj" type="Int16" />
     </component>
+    <property name="JMBG" column="jmbg" type="String" length="13"/>
     <property name="Gimnastika" column="gimnastika" type="Byte" />
     <component name="RegistarskiBroj" class="RegistarskiBroj">
       <property name="Broj" column="reg_broj" type="Int32" />

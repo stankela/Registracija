@@ -33,6 +33,7 @@ create table gimnasticari (
 	dan_rodj tinyint,
 	mesec_rodj tinyint,
 	god_rodj smallint,
+	jmbg nvarchar(13),
 	gimnastika tinyint,
 	reg_broj int,
 	god_reg smallint,

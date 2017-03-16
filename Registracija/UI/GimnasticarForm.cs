@@ -67,6 +67,7 @@ namespace Registracija.UI
             txtPrezime.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
             txtDatRodj.Text = String.Empty;
+            txtJMBG.Text = String.Empty;
             txtRegBroj.Text = String.Empty;
             txtDatumPoslReg.Text = String.Empty;
 
@@ -178,6 +179,8 @@ namespace Registracija.UI
             if (gimnasticar.DatumRodjenja != null)
                 txtDatRodj.Text = gimnasticar.DatumRodjenja.ToString("d");
 
+            txtJMBG.Text = gimnasticar.JMBG;
+
             txtRegBroj.Text = String.Empty;
             if (gimnasticar.RegistarskiBroj != null)
                 txtRegBroj.Text = gimnasticar.RegistarskiBroj.ToString();
@@ -270,6 +273,10 @@ namespace Registracija.UI
                     txtDatRodj.Focus();
                     break;
 
+                case "JMBG":
+                    txtJMBG.Focus();
+                    break;
+
                 case "RegistarskiBroj":
                     txtRegBroj.Focus();
                     break;
@@ -313,6 +320,8 @@ namespace Registracija.UI
                 gimnasticar.DatumRodjenja = null;
             else
                 gimnasticar.DatumRodjenja = Datum.Parse(txtDatRodj.Text);
+
+            gimnasticar.JMBG = txtJMBG.Text.Trim();
 
             gimnasticar.Gimnastika = SelectedGimnastika;
             

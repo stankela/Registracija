@@ -48,6 +48,8 @@ namespace Registracija.UI
             this.btnAddKategorija = new System.Windows.Forms.Button();
             this.lblSrednjeIme = new System.Windows.Forms.Label();
             this.txtSrednjeIme = new System.Windows.Forms.TextBox();
+            this.lblJMBG = new System.Windows.Forms.Label();
+            this.txtJMBG = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOk
@@ -111,7 +113,7 @@ namespace Registracija.UI
             // lblRegBroj
             // 
             this.lblRegBroj.AutoSize = true;
-            this.lblRegBroj.Location = new System.Drawing.Point(21, 173);
+            this.lblRegBroj.Location = new System.Drawing.Point(21, 126);
             this.lblRegBroj.Name = "lblRegBroj";
             this.lblRegBroj.Size = new System.Drawing.Size(79, 13);
             this.lblRegBroj.TabIndex = 12;
@@ -119,7 +121,7 @@ namespace Registracija.UI
             // 
             // txtRegBroj
             // 
-            this.txtRegBroj.Location = new System.Drawing.Point(24, 189);
+            this.txtRegBroj.Location = new System.Drawing.Point(24, 142);
             this.txtRegBroj.Name = "txtRegBroj";
             this.txtRegBroj.Size = new System.Drawing.Size(85, 20);
             this.txtRegBroj.TabIndex = 13;
@@ -127,7 +129,7 @@ namespace Registracija.UI
             // lblDatumPoslReg
             // 
             this.lblDatumPoslReg.AutoSize = true;
-            this.lblDatumPoslReg.Location = new System.Drawing.Point(128, 173);
+            this.lblDatumPoslReg.Location = new System.Drawing.Point(128, 126);
             this.lblDatumPoslReg.Name = "lblDatumPoslReg";
             this.lblDatumPoslReg.Size = new System.Drawing.Size(183, 13);
             this.lblDatumPoslReg.TabIndex = 16;
@@ -135,7 +137,7 @@ namespace Registracija.UI
             // 
             // txtDatumPoslReg
             // 
-            this.txtDatumPoslReg.Location = new System.Drawing.Point(131, 189);
+            this.txtDatumPoslReg.Location = new System.Drawing.Point(131, 142);
             this.txtDatumPoslReg.Name = "txtDatumPoslReg";
             this.txtDatumPoslReg.Size = new System.Drawing.Size(100, 20);
             this.txtDatumPoslReg.TabIndex = 17;
@@ -161,7 +163,7 @@ namespace Registracija.UI
             // lblKategorija
             // 
             this.lblKategorija.AutoSize = true;
-            this.lblKategorija.Location = new System.Drawing.Point(21, 279);
+            this.lblKategorija.Location = new System.Drawing.Point(21, 232);
             this.lblKategorija.Name = "lblKategorija";
             this.lblKategorija.Size = new System.Drawing.Size(54, 13);
             this.lblKategorija.TabIndex = 20;
@@ -170,7 +172,7 @@ namespace Registracija.UI
             // cmbKategorija
             // 
             this.cmbKategorija.FormattingEnabled = true;
-            this.cmbKategorija.Location = new System.Drawing.Point(24, 295);
+            this.cmbKategorija.Location = new System.Drawing.Point(24, 248);
             this.cmbKategorija.Name = "cmbKategorija";
             this.cmbKategorija.Size = new System.Drawing.Size(207, 21);
             this.cmbKategorija.TabIndex = 21;
@@ -179,7 +181,7 @@ namespace Registracija.UI
             // lblKlub
             // 
             this.lblKlub.AutoSize = true;
-            this.lblKlub.Location = new System.Drawing.Point(21, 226);
+            this.lblKlub.Location = new System.Drawing.Point(21, 179);
             this.lblKlub.Name = "lblKlub";
             this.lblKlub.Size = new System.Drawing.Size(28, 13);
             this.lblKlub.TabIndex = 18;
@@ -188,14 +190,14 @@ namespace Registracija.UI
             // cmbKlub
             // 
             this.cmbKlub.FormattingEnabled = true;
-            this.cmbKlub.Location = new System.Drawing.Point(24, 242);
+            this.cmbKlub.Location = new System.Drawing.Point(24, 195);
             this.cmbKlub.Name = "cmbKlub";
             this.cmbKlub.Size = new System.Drawing.Size(207, 21);
             this.cmbKlub.TabIndex = 19;
             // 
             // btnAddKlub
             // 
-            this.btnAddKlub.Location = new System.Drawing.Point(237, 241);
+            this.btnAddKlub.Location = new System.Drawing.Point(237, 194);
             this.btnAddKlub.Name = "btnAddKlub";
             this.btnAddKlub.Size = new System.Drawing.Size(24, 23);
             this.btnAddKlub.TabIndex = 24;
@@ -205,7 +207,7 @@ namespace Registracija.UI
             // 
             // btnAddKategorija
             // 
-            this.btnAddKategorija.Location = new System.Drawing.Point(237, 294);
+            this.btnAddKategorija.Location = new System.Drawing.Point(237, 247);
             this.btnAddKategorija.Name = "btnAddKategorija";
             this.btnAddKategorija.Size = new System.Drawing.Size(25, 23);
             this.btnAddKategorija.TabIndex = 25;
@@ -229,12 +231,30 @@ namespace Registracija.UI
             this.txtSrednjeIme.Size = new System.Drawing.Size(59, 20);
             this.txtSrednjeIme.TabIndex = 27;
             // 
+            // lblJMBG
+            // 
+            this.lblJMBG.AutoSize = true;
+            this.lblJMBG.Location = new System.Drawing.Point(175, 69);
+            this.lblJMBG.Name = "lblJMBG";
+            this.lblJMBG.Size = new System.Drawing.Size(36, 13);
+            this.lblJMBG.TabIndex = 28;
+            this.lblJMBG.Text = "JMBG";
+            // 
+            // txtJMBG
+            // 
+            this.txtJMBG.Location = new System.Drawing.Point(178, 85);
+            this.txtJMBG.Name = "txtJMBG";
+            this.txtJMBG.Size = new System.Drawing.Size(133, 20);
+            this.txtJMBG.TabIndex = 29;
+            // 
             // GimnasticarForm
             // 
             this.AcceptButton = null;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 368);
+            this.Controls.Add(this.txtJMBG);
+            this.Controls.Add(this.lblJMBG);
             this.Controls.Add(this.btnAddKategorija);
             this.Controls.Add(this.btnAddKlub);
             this.Controls.Add(this.txtSrednjeIme);
@@ -280,6 +300,8 @@ namespace Registracija.UI
             this.Controls.SetChildIndex(this.btnAddKategorija, 0);
             this.Controls.SetChildIndex(this.btnOk, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
+            this.Controls.SetChildIndex(this.lblJMBG, 0);
+            this.Controls.SetChildIndex(this.txtJMBG, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,5 +329,7 @@ namespace Registracija.UI
         private System.Windows.Forms.Button btnAddKategorija;
         private System.Windows.Forms.Label lblSrednjeIme;
         private System.Windows.Forms.TextBox txtSrednjeIme;
+        private System.Windows.Forms.Label lblJMBG;
+        private System.Windows.Forms.TextBox txtJMBG;
     }
 }

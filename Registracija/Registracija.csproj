@@ -108,7 +108,9 @@
     <Compile Include="UI\GimnasticarForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\GimnasticarForm.Designer.cs" />
+    <Compile Include="UI\GimnasticarForm.Designer.cs">
+      <DependentUpon>GimnasticarForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\GimnasticariForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,7 +171,9 @@
     <EmbeddedResource Include="UI\FilterForm.resx" />
     <EmbeddedResource Include="UI\FilterGimnasticarForm.resx" />
     <EmbeddedResource Include="UI\FilterGimnasticarUserControl.resx" />
-    <EmbeddedResource Include="UI\GimnasticarForm.resx" />
+    <EmbeddedResource Include="UI\GimnasticarForm.resx">
+      <DependentUpon>GimnasticarForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\KategorijaGimnasticaraForm.resx" />
     <EmbeddedResource Include="UI\KlubForm.resx">
       <DependentUpon>KlubForm.cs</DependentUpon>

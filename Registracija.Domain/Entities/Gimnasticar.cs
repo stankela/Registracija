@@ -39,6 +39,13 @@ namespace Registracija.Domain
             set { datumRodjenja = value; }
         }
 
+        private string jmbg;
+        public virtual string JMBG
+        {
+            get { return jmbg; }
+            set { jmbg = value; }
+        }
+
         private Gimnastika gimnastika;
         public virtual Gimnastika Gimnastika
         {
@@ -156,6 +163,13 @@ namespace Registracija.Domain
                 notification.RegisterMessage(
                     "Prezime", "Prezime gimnasticara moze da sadrzi maksimalno "
                     + PREZIME_MAX_LENGTH + " znakova.");
+            }
+
+            // validate JMBG
+            if (!string.IsNullOrEmpty(JMBG) && JMBG.Length != 13)
+            {
+                notification.RegisterMessage(
+                    "JMBG", "JMBG mora da sadrzi 13 brojeva.");
             }
 
             if (Gimnastika == Gimnastika.Undefined)

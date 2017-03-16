@@ -94,6 +94,7 @@ namespace Registracija.UI
             AddColumn("Ime", "ImeSrednjeIme", 100);
             AddColumn("Prezime", "Prezime", 100);
             AddColumn("Datum rodjenja", "DatumRodjenja", 100, "{0:d}");
+            AddColumn("JMBG", "JMBG", 100);
             AddColumn("Gimnastika", "Gimnastika", 70);
             AddColumn("Klub", "Klub", 150);
             AddColumn("Kategorija", "Kategorija", 100);
