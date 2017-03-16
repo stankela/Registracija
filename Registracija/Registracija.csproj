@@ -89,7 +89,9 @@
     <Compile Include="UI\EntityDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\EntityDetailForm.Designer.cs" />
+    <Compile Include="UI\EntityDetailForm.Designer.cs">
+      <DependentUpon>EntityDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FilterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,7 +120,12 @@
     <Compile Include="UI\KlubForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\KlubForm.Designer.cs" />
+    <Compile Include="UI\KlubForm.Designer.cs">
+      <DependentUpon>KlubForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\KluboviForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,14 +133,21 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\MessageDialogs.cs" />
+    <Compile Include="UI\MestaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\MestoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\MestoForm.Designer.cs" />
+    <Compile Include="UI\MestoForm.Designer.cs">
+      <DependentUpon>MestoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SingleEntityListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\SingleEntityListForm.Designer.cs" />
+    <Compile Include="UI\SingleEntityListForm.Designer.cs">
+      <DependentUpon>SingleEntityListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util\ColumnAdder.cs" />
     <Compile Include="Util\Database.cs" />
     <Compile Include="Util\DatabaseUpdater.cs" />
@@ -149,15 +163,22 @@
     </Compile>
     <EmbeddedResource Include="UI\BaseEntityListForm.resx" />
     <EmbeddedResource Include="UI\DataGridViewUserControl.resx" />
-    <EmbeddedResource Include="UI\EntityDetailForm.resx" />
+    <EmbeddedResource Include="UI\EntityDetailForm.resx">
+      <DependentUpon>EntityDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FilterForm.resx" />
     <EmbeddedResource Include="UI\FilterGimnasticarForm.resx" />
     <EmbeddedResource Include="UI\FilterGimnasticarUserControl.resx" />
     <EmbeddedResource Include="UI\GimnasticarForm.resx" />
     <EmbeddedResource Include="UI\KategorijaGimnasticaraForm.resx" />
-    <EmbeddedResource Include="UI\KlubForm.resx" />
+    <EmbeddedResource Include="UI\KlubForm.resx">
+      <DependentUpon>KlubForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MestoForm.resx">
+      <DependentUpon>MestoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SingleEntityListForm.resx">
       <DependentUpon>SingleEntityListForm.cs</DependentUpon>

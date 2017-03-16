@@ -360,6 +360,5 @@ namespace Registracija.UI
                 discardChanges();
             }
         }
-
     }
 }

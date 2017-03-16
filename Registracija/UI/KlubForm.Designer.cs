@@ -35,7 +35,21 @@ namespace Registracija.UI
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.cmbMesto = new System.Windows.Forms.ComboBox();
             this.btnAddMesto = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtAdresa = new System.Windows.Forms.TextBox();
+            this.lblTelefon1 = new System.Windows.Forms.Label();
+            this.txtTelefon1 = new System.Windows.Forms.TextBox();
+            this.lblTelefon2 = new System.Windows.Forms.Label();
+            this.txtTelefon2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
+            // 
+            // btnOk
+            // 
+            this.btnOk.Location = new System.Drawing.Point(144, 378);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(236, 378);
             // 
             // lblNaziv
             // 
@@ -96,10 +110,64 @@ namespace Registracija.UI
             this.btnAddMesto.UseVisualStyleBackColor = true;
             this.btnAddMesto.Click += new System.EventHandler(this.btnAddMesto_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 194);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Adresa";
+            // 
+            // txtAdresa
+            // 
+            this.txtAdresa.Location = new System.Drawing.Point(28, 210);
+            this.txtAdresa.Name = "txtAdresa";
+            this.txtAdresa.Size = new System.Drawing.Size(273, 20);
+            this.txtAdresa.TabIndex = 10;
+            // 
+            // lblTelefon1
+            // 
+            this.lblTelefon1.AutoSize = true;
+            this.lblTelefon1.Location = new System.Drawing.Point(24, 255);
+            this.lblTelefon1.Name = "lblTelefon1";
+            this.lblTelefon1.Size = new System.Drawing.Size(52, 13);
+            this.lblTelefon1.TabIndex = 11;
+            this.lblTelefon1.Text = "Telefon 1";
+            // 
+            // txtTelefon1
+            // 
+            this.txtTelefon1.Location = new System.Drawing.Point(27, 271);
+            this.txtTelefon1.Name = "txtTelefon1";
+            this.txtTelefon1.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefon1.TabIndex = 12;
+            // 
+            // lblTelefon2
+            // 
+            this.lblTelefon2.AutoSize = true;
+            this.lblTelefon2.Location = new System.Drawing.Point(24, 309);
+            this.lblTelefon2.Name = "lblTelefon2";
+            this.lblTelefon2.Size = new System.Drawing.Size(52, 13);
+            this.lblTelefon2.TabIndex = 13;
+            this.lblTelefon2.Text = "Telefon 2";
+            // 
+            // txtTelefon2
+            // 
+            this.txtTelefon2.Location = new System.Drawing.Point(28, 325);
+            this.txtTelefon2.Name = "txtTelefon2";
+            this.txtTelefon2.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefon2.TabIndex = 14;
+            // 
             // KlubForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(396, 231);
+            this.ClientSize = new System.Drawing.Size(329, 416);
+            this.Controls.Add(this.txtTelefon2);
+            this.Controls.Add(this.lblTelefon2);
+            this.Controls.Add(this.txtTelefon1);
+            this.Controls.Add(this.lblTelefon1);
+            this.Controls.Add(this.txtAdresa);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAddMesto);
             this.Controls.Add(this.cmbMesto);
             this.Controls.Add(this.txtNaziv);
@@ -108,6 +176,7 @@ namespace Registracija.UI
             this.Controls.Add(this.lblKod);
             this.Controls.Add(this.lblNaziv);
             this.Name = "KlubForm";
+            this.Shown += new System.EventHandler(this.KlubForm_Shown);
             this.Controls.SetChildIndex(this.btnOk, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.lblNaziv, 0);
@@ -117,6 +186,12 @@ namespace Registracija.UI
             this.Controls.SetChildIndex(this.txtNaziv, 0);
             this.Controls.SetChildIndex(this.cmbMesto, 0);
             this.Controls.SetChildIndex(this.btnAddMesto, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.txtAdresa, 0);
+            this.Controls.SetChildIndex(this.lblTelefon1, 0);
+            this.Controls.SetChildIndex(this.txtTelefon1, 0);
+            this.Controls.SetChildIndex(this.lblTelefon2, 0);
+            this.Controls.SetChildIndex(this.txtTelefon2, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,6 +206,12 @@ namespace Registracija.UI
         protected System.Windows.Forms.TextBox txtNaziv;
         private System.Windows.Forms.ComboBox cmbMesto;
         private System.Windows.Forms.Button btnAddMesto;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtAdresa;
+        private System.Windows.Forms.Label lblTelefon1;
+        private System.Windows.Forms.TextBox txtTelefon1;
+        private System.Windows.Forms.Label lblTelefon2;
+        private System.Windows.Forms.TextBox txtTelefon2;
 
     }
 }

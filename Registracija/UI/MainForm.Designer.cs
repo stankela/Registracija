@@ -31,6 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnRegistar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnGimnasticari = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnKlubovi = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnMesta = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +49,9 @@
             // mnRegistar
             // 
             this.mnRegistar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnGimnasticari});
+            this.mnGimnasticari,
+            this.mnKlubovi,
+            this.mnMesta});
             this.mnRegistar.Name = "mnRegistar";
             this.mnRegistar.Size = new System.Drawing.Size(61, 20);
             this.mnRegistar.Text = "Registar";
@@ -58,6 +62,20 @@
             this.mnGimnasticari.Size = new System.Drawing.Size(152, 22);
             this.mnGimnasticari.Text = "Gimnasticari";
             this.mnGimnasticari.Click += new System.EventHandler(this.mnGimnasticari_Click);
+            // 
+            // mnKlubovi
+            // 
+            this.mnKlubovi.Name = "mnKlubovi";
+            this.mnKlubovi.Size = new System.Drawing.Size(152, 22);
+            this.mnKlubovi.Text = "Klubovi";
+            this.mnKlubovi.Click += new System.EventHandler(this.mnKlubovi_Click);
+            // 
+            // mnMesta
+            // 
+            this.mnMesta.Name = "mnMesta";
+            this.mnMesta.Size = new System.Drawing.Size(152, 22);
+            this.mnMesta.Text = "Mesta";
+            this.mnMesta.Click += new System.EventHandler(this.mnMesta_Click);
             // 
             // MainForm
             // 
@@ -80,6 +98,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mnRegistar;
         private System.Windows.Forms.ToolStripMenuItem mnGimnasticari;
+        private System.Windows.Forms.ToolStripMenuItem mnKlubovi;
+        private System.Windows.Forms.ToolStripMenuItem mnMesta;
     }
 }
 

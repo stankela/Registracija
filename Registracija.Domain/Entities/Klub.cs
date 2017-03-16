@@ -10,6 +10,8 @@ namespace Registracija.Domain
     {
         private static readonly int NAZIV_MAX_LENGTH = 128;
         private static readonly int KOD_MAX_LENGTH = 7;
+        private static readonly int ADRESA_MAX_LENGTH = 64;
+        private static readonly int TELEFON_MAX_LENGTH = 16;
     
         private string naziv;
         public virtual string Naziv
@@ -30,6 +32,27 @@ namespace Registracija.Domain
         {
             get { return mesto; }
             set { mesto = value; }
+        }
+
+        private string adresa;
+        public virtual string Adresa
+        {
+            get { return adresa; }
+            set { adresa = value; }
+        }
+
+        private string telefon1;
+        public virtual string Telefon1
+        {
+            get { return telefon1; }
+            set { telefon1 = value; }
+        }
+
+        private string telefon2;
+        public virtual string Telefon2
+        {
+            get { return telefon2; }
+            set { telefon2 = value; }
         }
 
         public Klub()
@@ -68,6 +91,30 @@ namespace Registracija.Domain
                 notification.RegisterMessage(
                     "Kod", "Kod kluba moze da sadrzi maksimalno "
                     + KOD_MAX_LENGTH + " znakova.");
+            }
+
+            // validate Adresa
+            if (Adresa.Length > ADRESA_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Adresa", "Adresa moze da sadrzi maksimalno "
+                    + ADRESA_MAX_LENGTH + " znakova.");
+            }
+
+            // validate Telefon1
+            if (Telefon1.Length > TELEFON_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Telefon1", "Telefon moze da sadrzi maksimalno "
+                    + TELEFON_MAX_LENGTH + " znakova.");
+            }
+
+            // validate Telefon2
+            if (Telefon2.Length > TELEFON_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Telefon2", "Telefon moze da sadrzi maksimalno "
+                    + TELEFON_MAX_LENGTH + " znakova.");
             }
 
             // validate Mesto

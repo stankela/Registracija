@@ -13,6 +13,9 @@ create table klubovi (
 	klub_id int identity(1,1) primary key,
 	naziv nvarchar(128),
 	kod nvarchar(7),
+	adresa nvarchar(64),
+	telefon1 nvarchar(16),
+	telefon2 nvarchar(16),
 	mesto_id int references mesta(mesto_id)
 );
 

@@ -25,12 +25,38 @@ namespace Registracija.UI
                 GimnasticariForm form = new GimnasticariForm();
                 form.ShowDialog();
             }
-            catch (InfrastructureException ex)
+            catch (Exception ex)
             {
                 // NOTE: Izuzetak moze da potice samo iz konstruktora. Kada se form
                 // uspesno kreira i prikaze pozivom ShowDialog (ili Show), tada se
                 // izuzetci unutar forma ne propagiraju do koda koji je pozvao
                 // ShowDialog.
+                MessageDialogs.showError(ex.Message, this.Text);
+            }
+        }
+
+        private void mnKlubovi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                KluboviForm form = new KluboviForm();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageDialogs.showError(ex.Message, this.Text);
+            }
+        }
+
+        private void mnMesta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MestaForm form = new MestaForm();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
                 MessageDialogs.showError(ex.Message, this.Text);
             }
         }

@@ -35,6 +35,9 @@ namespace Registracija.UI
             this.Text = "Klub";
             txtNaziv.Text = String.Empty;
             txtKod.Text = String.Empty;
+            txtAdresa.Text = String.Empty;
+            txtTelefon1.Text = String.Empty;
+            txtTelefon2.Text = String.Empty;
 
             cmbMesto.DropDownStyle = ComboBoxStyle.DropDownList;
             setMesta(mesta);
@@ -77,6 +80,9 @@ namespace Registracija.UI
             Klub klub = (Klub)entity;
             txtNaziv.Text = klub.Naziv;
             txtKod.Text = klub.Kod;
+            txtAdresa.Text = klub.Adresa;
+            txtTelefon1.Text = klub.Telefon1;
+            txtTelefon2.Text = klub.Telefon2;
 
             SelectedMesto = klub.Mesto;
         }
@@ -118,6 +124,18 @@ namespace Registracija.UI
                     cmbMesto.Focus();
                     break;
 
+                case "Adresa":
+                    txtAdresa.Focus();
+                    break;
+
+                case "Telefon1":
+                    txtTelefon1.Focus();
+                    break;
+
+                case "Telefon2":
+                    txtTelefon2.Focus();
+                    break;
+
                 default:
                     throw new ArgumentException();
             }
@@ -134,6 +152,9 @@ namespace Registracija.UI
             klub.Naziv = txtNaziv.Text.Trim();
             klub.Kod = txtKod.Text.Trim().ToUpper();
             klub.Mesto = SelectedMesto;
+            klub.Adresa = txtAdresa.Text.Trim();
+            klub.Telefon1 = txtTelefon1.Text.Trim();
+            klub.Telefon2 = txtTelefon2.Text.Trim();
         }
 
         protected override void updateEntity(DomainObject entity)
@@ -211,6 +232,12 @@ namespace Registracija.UI
             {
                 MessageDialogs.showError(ex.Message, this.Text);
             }
+        }
+
+        private void KlubForm_Shown(object sender, EventArgs e)
+        {
+            if (!editMode)
+                txtNaziv.Focus();
         }
     }
 }
