@@ -58,15 +58,17 @@ namespace Registracija.UI
             this.txtTelefon1 = new System.Windows.Forms.TextBox();
             this.lblTelefon2 = new System.Windows.Forms.Label();
             this.txtTelefon2 = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(398, 379);
+            this.btnOk.Location = new System.Drawing.Point(406, 495);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(490, 379);
+            this.btnCancel.Location = new System.Drawing.Point(498, 495);
             // 
             // txtIme
             // 
@@ -319,12 +321,30 @@ namespace Registracija.UI
             this.txtTelefon2.Size = new System.Drawing.Size(88, 20);
             this.txtTelefon2.TabIndex = 37;
             // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(21, 348);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(34, 13);
+            this.lblEmail.TabIndex = 38;
+            this.lblEmail.Text = "e-mail";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(24, 364);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtEmail.TabIndex = 39;
+            // 
             // GimnasticarForm
             // 
             this.AcceptButton = null;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 423);
+            this.ClientSize = new System.Drawing.Size(585, 530);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtTelefon2);
             this.Controls.Add(this.lblTelefon2);
             this.Controls.Add(this.txtTelefon1);
@@ -390,6 +410,8 @@ namespace Registracija.UI
             this.Controls.SetChildIndex(this.txtTelefon1, 0);
             this.Controls.SetChildIndex(this.lblTelefon2, 0);
             this.Controls.SetChildIndex(this.txtTelefon2, 0);
+            this.Controls.SetChildIndex(this.lblEmail, 0);
+            this.Controls.SetChildIndex(this.txtEmail, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,5 +449,7 @@ namespace Registracija.UI
         private System.Windows.Forms.TextBox txtTelefon1;
         private System.Windows.Forms.Label lblTelefon2;
         private System.Windows.Forms.TextBox txtTelefon2;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.TextBox txtEmail;
     }
 }

@@ -94,16 +94,17 @@ namespace Registracija.UI
             AddColumn("Ime", "ImeSrednjeIme", 100);
             AddColumn("Prezime", "Prezime", 100);
             AddColumn("Datum rodjenja", "DatumRodjenja", 100, "{0:d}");
-            AddColumn("JMBG", "JMBG", 100);
             AddColumn("Gimnastika", "Gimnastika", 70);
             AddColumn("Klub", "Klub", 150);
             AddColumn("Kategorija", "Kategorija", 100);
             AddColumn("Registarski broj", "RegistarskiBroj", 100);
             AddColumn("Poslednja registr.", "DatumPoslednjeRegistracije", 100, "{0:d}");
+            AddColumn("JMBG", "JMBG", 100);
             AddColumn("Mesto", "Mesto", 80);
             AddColumn("Adresa", "Adresa", 140);
             AddColumn("Telefon 1", "Telefon1", 80);
             AddColumn("Telefon 2", "Telefon2", 80);
+            AddColumn("E-mail", "Email", 100);
         }
 
         protected override EntityDetailForm createEntityDetailForm(Nullable<int> entityId)

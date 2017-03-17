@@ -13,6 +13,7 @@ namespace Registracija.Domain
         private static readonly int ADRESA_MAX_LENGTH = 64;
         private static readonly int MESTO_MAX_LENGTH = 32;
         private static readonly int TELEFON_MAX_LENGTH = 16;
+        private static readonly int EMAIL_MAX_LENGTH = 64;
         
         private string ime;
         public virtual string Ime
@@ -110,6 +111,13 @@ namespace Registracija.Domain
         {
             get { return telefon2; }
             set { telefon2 = value; }
+        }
+
+        private string email;
+        public virtual string Email
+        {
+            get { return email; }
+            set { email = value; }
         }
 
         public Gimnasticar()
@@ -237,6 +245,15 @@ namespace Registracija.Domain
                 notification.RegisterMessage(
                     "Telefon2", "Telefon moze da sadrzi maksimalno "
                     + TELEFON_MAX_LENGTH + " znakova.");
+            }
+
+            // validate Email
+            if (!string.IsNullOrEmpty(Email)
+            && Email.Length > EMAIL_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Email", "E-mail moze da sadrzi maksimalno "
+                    + EMAIL_MAX_LENGTH + " znakova.");
             }
 
             if (Gimnastika == Gimnastika.Undefined)

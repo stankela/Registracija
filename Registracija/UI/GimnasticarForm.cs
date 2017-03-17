@@ -75,6 +75,7 @@ namespace Registracija.UI
             txtAdresa.Text = String.Empty;
             txtTelefon1.Text = String.Empty;
             txtTelefon2.Text = String.Empty;
+            txtEmail.Text = String.Empty;
 
             cmbGimnastika.DropDownStyle = ComboBoxStyle.DropDownList;
             setGimnastike();
@@ -198,6 +199,7 @@ namespace Registracija.UI
             txtAdresa.Text = gimnasticar.Adresa;
             txtTelefon1.Text = gimnasticar.Telefon1;
             txtTelefon2.Text = gimnasticar.Telefon2;
+            txtEmail.Text = gimnasticar.Email;
 
             SelectedGimnastika = gimnasticar.Gimnastika;
 
@@ -311,6 +313,10 @@ namespace Registracija.UI
                     txtTelefon2.Focus();
                     break;
 
+                case "Email":
+                    txtEmail.Focus();
+                    break;
+
                 case "Kategorija":
                     cmbKategorija.Focus();
                     break;
@@ -365,6 +371,7 @@ namespace Registracija.UI
             gimnasticar.Adresa = txtAdresa.Text.Trim();
             gimnasticar.Telefon1 = txtTelefon1.Text.Trim();
             gimnasticar.Telefon2 = txtTelefon2.Text.Trim();
+            gimnasticar.Email = txtEmail.Text.Trim();
 
             gimnasticar.Klub = SelectedKlub;
             gimnasticar.Kategorija = SelectedKategorija;
