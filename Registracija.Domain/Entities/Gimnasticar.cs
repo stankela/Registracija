@@ -10,11 +10,12 @@ namespace Registracija.Domain
         private static readonly int IME_MAX_LENGTH = 32;
         private static readonly int SR_IME_MAX_LENGTH = 32;
         private static readonly int PREZIME_MAX_LENGTH = 32;
+        private static readonly int REG_BROJ_MAX_LENGTH = 16;
         private static readonly int ADRESA_MAX_LENGTH = 64;
         private static readonly int MESTO_MAX_LENGTH = 32;
         private static readonly int TELEFON_MAX_LENGTH = 16;
         private static readonly int EMAIL_MAX_LENGTH = 64;
-        private static readonly int REG_BROJ_MAX_LENGTH = 16;
+        private static readonly int FOTO_FILE_MAX_LENGTH = 64;
         
         private string ime;
         public virtual string Ime
@@ -119,6 +120,19 @@ namespace Registracija.Domain
         {
             get { return email; }
             set { email = value; }
+        }
+
+        private string fotoFile;
+        public virtual string FotoFile
+        {
+            get { return fotoFile; }
+            set { fotoFile = value; }
+        }
+
+        private bool imaFoto;
+        public virtual bool ImaFoto
+        {
+            get { return !String.IsNullOrEmpty(fotoFile); }
         }
 
         public Gimnasticar()
@@ -263,6 +277,15 @@ namespace Registracija.Domain
                 notification.RegisterMessage(
                     "Email", "E-mail moze da sadrzi maksimalno "
                     + EMAIL_MAX_LENGTH + " znakova.");
+            }
+
+            // validate FotoFile
+            if (!string.IsNullOrEmpty(FotoFile)
+            && FotoFile.Length > FOTO_FILE_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "FotoFile", "Ime fajla sa fotografijom moze da sadrzi maksimalno "
+                    + FOTO_FILE_MAX_LENGTH + " znakova.");
             }
 
             if (Gimnastika == Gimnastika.Undefined)

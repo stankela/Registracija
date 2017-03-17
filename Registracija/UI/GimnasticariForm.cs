@@ -23,6 +23,7 @@ namespace Registracija.UI
     
             dataGridViewUserControl1.GridColumnHeaderMouseClick +=
                 new EventHandler<GridColumnHeaderMouseClickEventArgs>(DataGridViewUserControl_GridColumnHeaderMouseClick);
+            dataGridViewUserControl1.ShowBooleanFalse = false;
             InitializeGridColumns();
 
             ISession session = null;
@@ -105,6 +106,7 @@ namespace Registracija.UI
             AddColumn("Telefon 1", "Telefon1", 80);
             AddColumn("Telefon 2", "Telefon2", 80);
             AddColumn("E-mail", "Email", 100);
+            AddColumn("Foto", "ImaFoto", 40);
         }
 
         protected override EntityDetailForm createEntityDetailForm(Nullable<int> entityId)

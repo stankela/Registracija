@@ -60,6 +60,10 @@ namespace Registracija.UI
             this.txtTelefon2 = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblFoto = new System.Windows.Forms.Label();
+            this.txtFoto = new System.Windows.Forms.TextBox();
+            this.btnDodajFoto = new System.Windows.Forms.Button();
+            this.btnPrikaziFoto = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnOk
@@ -334,8 +338,44 @@ namespace Registracija.UI
             // 
             this.txtEmail.Location = new System.Drawing.Point(24, 364);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtEmail.Size = new System.Drawing.Size(165, 20);
             this.txtEmail.TabIndex = 39;
+            // 
+            // lblFoto
+            // 
+            this.lblFoto.AutoSize = true;
+            this.lblFoto.Location = new System.Drawing.Point(21, 403);
+            this.lblFoto.Name = "lblFoto";
+            this.lblFoto.Size = new System.Drawing.Size(56, 13);
+            this.lblFoto.TabIndex = 40;
+            this.lblFoto.Text = "Fotografija";
+            // 
+            // txtFoto
+            // 
+            this.txtFoto.Location = new System.Drawing.Point(24, 419);
+            this.txtFoto.Name = "txtFoto";
+            this.txtFoto.Size = new System.Drawing.Size(165, 20);
+            this.txtFoto.TabIndex = 41;
+            // 
+            // btnDodajFoto
+            // 
+            this.btnDodajFoto.Location = new System.Drawing.Point(195, 416);
+            this.btnDodajFoto.Name = "btnDodajFoto";
+            this.btnDodajFoto.Size = new System.Drawing.Size(57, 23);
+            this.btnDodajFoto.TabIndex = 42;
+            this.btnDodajFoto.Text = "Dodaj";
+            this.btnDodajFoto.UseVisualStyleBackColor = true;
+            this.btnDodajFoto.Click += new System.EventHandler(this.btnDodajFoto_Click);
+            // 
+            // btnPrikaziFoto
+            // 
+            this.btnPrikaziFoto.Location = new System.Drawing.Point(258, 416);
+            this.btnPrikaziFoto.Name = "btnPrikaziFoto";
+            this.btnPrikaziFoto.Size = new System.Drawing.Size(57, 23);
+            this.btnPrikaziFoto.TabIndex = 43;
+            this.btnPrikaziFoto.Text = "Prikazi";
+            this.btnPrikaziFoto.UseVisualStyleBackColor = true;
+            this.btnPrikaziFoto.Click += new System.EventHandler(this.btnPrikaziFoto_Click);
             // 
             // GimnasticarForm
             // 
@@ -343,6 +383,10 @@ namespace Registracija.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 530);
+            this.Controls.Add(this.btnPrikaziFoto);
+            this.Controls.Add(this.btnDodajFoto);
+            this.Controls.Add(this.txtFoto);
+            this.Controls.Add(this.lblFoto);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtTelefon2);
@@ -412,6 +456,10 @@ namespace Registracija.UI
             this.Controls.SetChildIndex(this.txtTelefon2, 0);
             this.Controls.SetChildIndex(this.lblEmail, 0);
             this.Controls.SetChildIndex(this.txtEmail, 0);
+            this.Controls.SetChildIndex(this.lblFoto, 0);
+            this.Controls.SetChildIndex(this.txtFoto, 0);
+            this.Controls.SetChildIndex(this.btnDodajFoto, 0);
+            this.Controls.SetChildIndex(this.btnPrikaziFoto, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,5 +499,9 @@ namespace Registracija.UI
         private System.Windows.Forms.TextBox txtTelefon2;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblFoto;
+        private System.Windows.Forms.TextBox txtFoto;
+        private System.Windows.Forms.Button btnDodajFoto;
+        private System.Windows.Forms.Button btnPrikaziFoto;
     }
 }

@@ -26,5 +26,15 @@ namespace Registracija
         {
             get { return @"Data Source=RegistracijaPodaci.sdf"; }
         }
+
+        public static string FotografijeFolder
+        {
+            get { return @"Dokumenti\Fotografije"; }
+        }
+
+        public static string IzvodiMKRFolder
+        {
+            get { return @"Dokumenti\IzvodiMKR"; }
+        }
     }
 }

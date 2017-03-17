@@ -16,7 +16,7 @@ namespace Registracija.UI
         private ListSortDirection[] sortDirections;
         public event EventHandler<GridColumnHeaderMouseClickEventArgs> 
             GridColumnHeaderMouseClick;
-   
+
         public DataGridViewUserControl()
         {
             InitializeComponent();
@@ -33,6 +33,13 @@ namespace Registracija.UI
         {
             get { return columnHeaderSorting; }
             set { columnHeaderSorting = value; }
+        }
+
+        private bool showBooleanFalse = true;
+        public bool ShowBooleanFalse
+        {
+            get { return showBooleanFalse; }
+            set { showBooleanFalse = value; }
         }
 
         private void initializeGrid()
@@ -90,7 +97,12 @@ namespace Registracija.UI
                 if ((bool)e.Value == true)
                     e.Value = "Da";
                 else
-                    e.Value = "Ne";
+                {
+                    if (ShowBooleanFalse)
+                        e.Value = "Ne";
+                    else
+                        e.Value = "";
+                }
                 e.FormattingApplied = true;
             }
             else if (e.Value.GetType() == typeof(SudijskaUloga))

@@ -7,6 +7,7 @@ using NHibernate;
 using NHibernate.Context;
 using Registracija.Data;
 using Registracija.UI;
+using System.IO;
 
 namespace Registracija
 {
@@ -44,6 +45,11 @@ namespace Registracija
 
             // This creates singleton instance of NHibernateHelper and builds session factory
             NHibernateHelper nh = NHibernateHelper.Instance;
+
+            if (!Directory.Exists(ConfigurationParameters.FotografijeFolder))
+                Directory.CreateDirectory(ConfigurationParameters.FotografijeFolder);
+            if (!Directory.Exists(ConfigurationParameters.IzvodiMKRFolder))
+                Directory.CreateDirectory(ConfigurationParameters.IzvodiMKRFolder);
 
             // Then create the main form, the splash screen will automatically close
             this.MainForm = new MainForm();

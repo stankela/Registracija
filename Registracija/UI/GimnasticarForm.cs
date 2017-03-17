@@ -14,6 +14,7 @@ using Registracija.Dao;
 using NHibernate;
 using NHibernate.Context;
 using Registracija.Dao.NHibernate;
+using System.IO;
 
 namespace Registracija.UI
 {
@@ -76,6 +77,9 @@ namespace Registracija.UI
             txtTelefon1.Text = String.Empty;
             txtTelefon2.Text = String.Empty;
             txtEmail.Text = String.Empty;
+
+            txtFoto.ReadOnly = true;
+            txtFoto.BackColor = SystemColors.Window;
 
             cmbGimnastika.DropDownStyle = ComboBoxStyle.DropDownList;
             setGimnastike();
@@ -199,6 +203,10 @@ namespace Registracija.UI
             txtTelefon2.Text = gimnasticar.Telefon2;
             txtEmail.Text = gimnasticar.Email;
 
+            txtFoto.Text = gimnasticar.FotoFile;
+            if (txtFoto.Text != String.Empty)
+                btnDodajFoto.Text = "Promeni";
+
             SelectedGimnastika = gimnasticar.Gimnastika;
 
             SelectedKategorija = gimnasticar.Kategorija;
@@ -307,6 +315,10 @@ namespace Registracija.UI
                     txtEmail.Focus();
                     break;
 
+                case "FotoFile":
+                    txtFoto.Focus();
+                    break;
+
                 case "Kategorija":
                     cmbKategorija.Focus();
                     break;
@@ -359,6 +371,8 @@ namespace Registracija.UI
             gimnasticar.Telefon1 = txtTelefon1.Text.Trim();
             gimnasticar.Telefon2 = txtTelefon2.Text.Trim();
             gimnasticar.Email = txtEmail.Text.Trim();
+
+            gimnasticar.FotoFile = txtFoto.Text.Trim();
 
             gimnasticar.Klub = SelectedKlub;
             gimnasticar.Kategorija = SelectedKategorija;
@@ -669,6 +683,55 @@ namespace Registracija.UI
                     return g;
             }
             return null;
+        }
+
+        private void btnPrikaziFoto_Click(object sender, EventArgs e)
+        {
+            string fileName = txtFoto.Text.Trim();
+            if (!String.IsNullOrEmpty(fileName))
+            {
+                string path = Path.Combine(ConfigurationParameters.FotografijeFolder, fileName);
+                if (!File.Exists(path))
+                {
+                    MessageDialogs.showMessage(String.Format("Fajl {0} ne postoji u folderu {1}.", Path.GetFileName(fileName),
+                        ConfigurationParameters.FotografijeFolder), this.Text);
+                }
+                else
+                {
+                    System.Diagnostics.Process.Start(path);
+                }
+            }
+        }
+
+        private void btnDodajFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() != DialogResult.OK)
+                return;
+
+            string fileName = Path.GetFileName(ofd.FileName);
+            string fileDirectory = Path.GetDirectoryName(ofd.FileName);
+            string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string destDirectory = Path.Combine(appDirectory, ConfigurationParameters.FotografijeFolder);
+
+            bool fileIsInDestDirectory = fileDirectory.ToUpper() == destDirectory.ToUpper();
+            string newPath = Path.Combine(appDirectory, ConfigurationParameters.FotografijeFolder, fileName);
+
+            if (!fileIsInDestDirectory && File.Exists(newPath))
+            {
+                // Izabran je fajl van odredisnog foldera, a u odredisnom folderu vec postoji fajl sa istim imenom.
+                // Nemoj da kopiras da ne bi prebrisao stari fajl.
+                MessageDialogs.showError(String.Format("Fajl sa identicnim imenom ('{0}') vec postoji u folderu {1}.", fileName,
+                    ConfigurationParameters.FotografijeFolder), this.Text);
+            }
+            else
+            {
+                // Kopiraj samo ako je izabran fajl van odredisnog direktorijuma
+                if (!fileIsInDestDirectory)
+                    File.Copy(ofd.FileName, newPath);
+                Gimnasticar g = entity as Gimnasticar;
+                txtFoto.Text = fileName;
+            }
         }
     }
 }
