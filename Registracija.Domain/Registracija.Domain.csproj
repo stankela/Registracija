@@ -47,7 +47,6 @@
     <Compile Include="Entities\Klub.cs" />
     <Compile Include="Entities\KvalifikacioniStatus.cs" />
     <Compile Include="Entities\Mesto.cs" />
-    <Compile Include="Entities\RegistarskiBroj.cs" />
     <Compile Include="Entities\SudijskaUloga.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

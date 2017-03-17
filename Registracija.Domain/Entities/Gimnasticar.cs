@@ -14,6 +14,7 @@ namespace Registracija.Domain
         private static readonly int MESTO_MAX_LENGTH = 32;
         private static readonly int TELEFON_MAX_LENGTH = 16;
         private static readonly int EMAIL_MAX_LENGTH = 64;
+        private static readonly int REG_BROJ_MAX_LENGTH = 16;
         
         private string ime;
         public virtual string Ime
@@ -71,8 +72,8 @@ namespace Registracija.Domain
             set { klub = value; }
         }
 
-        private RegistarskiBroj registarskiBroj;
-        public virtual RegistarskiBroj RegistarskiBroj
+        private string registarskiBroj;
+        public virtual string RegistarskiBroj
         {
             get { return registarskiBroj; }
             set { registarskiBroj = value; }
@@ -209,6 +210,14 @@ namespace Registracija.Domain
             {
                 notification.RegisterMessage(
                     "JMBG", "JMBG mora da sadrzi 13 brojeva.");
+            }
+
+            // validate RegBroj
+            if (!string.IsNullOrEmpty(RegistarskiBroj) && RegistarskiBroj.Length > REG_BROJ_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "RegistarskiBroj", "Registarski broj moze da sadrzi maksimalno "
+                    + REG_BROJ_MAX_LENGTH + " znakova.");
             }
 
             // validate Adresa

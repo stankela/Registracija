@@ -17,10 +17,7 @@
     </component>
     <property name="JMBG" column="jmbg" type="String" length="13"/>
     <property name="Gimnastika" column="gimnastika" type="Byte" />
-    <component name="RegistarskiBroj" class="RegistarskiBroj">
-      <property name="Broj" column="reg_broj" type="Int32" />
-      <property name="GodinaRegistracije" column="god_reg" type="Int16" />
-    </component>
+    <property name="RegistarskiBroj" column="reg_broj" type="String" length="16"/>
     <component name="DatumPoslednjeRegistracije" class="Datum">
       <property name="Dan" column="dan_posl_reg" type="Byte" />
       <property name="Mesec" column="mesec_posl_reg" type="Byte" />

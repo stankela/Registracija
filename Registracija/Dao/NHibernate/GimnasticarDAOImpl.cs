@@ -72,17 +72,15 @@ namespace Registracija.Dao.NHibernate
             }
         }
 
-        public IList<Gimnasticar> FindGimnasticariByRegBroj(RegistarskiBroj regBroj)
+        public IList<Gimnasticar> FindGimnasticariByRegBroj(string regBroj)
         {
             try
             {
                 IQuery q = Session.CreateQuery(@"from Gimnasticar g
                     left join fetch g.Kategorija
                     left join fetch g.Klub
-                    where g.RegistarskiBroj.Broj = :broj
-                    and g.RegistarskiBroj.GodinaRegistracije = :godina");
-                q.SetInt32("broj", regBroj.Broj);
-                q.SetInt16("godina", regBroj.GodinaRegistracije);
+                    where g.RegistarskiBroj like :regBroj");
+                q.SetString("regBroj", regBroj);
                 return q.List<Gimnasticar>();
             }
             catch (HibernateException ex)
@@ -219,15 +217,13 @@ namespace Registracija.Dao.NHibernate
             }
         }
 
-        public bool existsGimnasticarRegBroj(RegistarskiBroj regBroj)
+        public bool existsGimnasticarRegBroj(string regBroj)
         {
             try
             {
                 IQuery q = Session.CreateQuery(@"select count(*) from Gimnasticar g
-                    where g.RegistarskiBroj.Broj = :broj
-                    and g.RegistarskiBroj.GodinaRegistracije = :godina");
-                q.SetInt32("broj", regBroj.Broj);
-                q.SetInt16("godina", regBroj.GodinaRegistracije);
+                    where g.RegistarskiBroj like :regBroj");
+                q.SetString("regBroj", regBroj);
                 return (long)q.UniqueResult() > 0;
             }
             catch (HibernateException ex)

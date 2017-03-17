@@ -25,7 +25,7 @@ namespace Registracija.UI
         private string oldPrezime;
         private string oldSrednjeIme;
         private Datum oldDatumRodjenja;
-        private RegistarskiBroj oldRegBroj;
+        private string oldRegBroj;
         private readonly string PRAZNO_ITEM = "<<Prazno>>";
         private List<Gimnasticar> gimnasticari;
 
@@ -187,9 +187,7 @@ namespace Registracija.UI
 
             txtJMBG.Text = gimnasticar.JMBG;
 
-            txtRegBroj.Text = String.Empty;
-            if (gimnasticar.RegistarskiBroj != null)
-                txtRegBroj.Text = gimnasticar.RegistarskiBroj.ToString();
+            txtRegBroj.Text = gimnasticar.RegistarskiBroj;
 
             txtDatumPoslReg.Text = String.Empty;
             if (gimnasticar.DatumPoslednjeRegistracije != null)
@@ -210,7 +208,6 @@ namespace Registracija.UI
         protected override void requiredFieldsAndFormatValidation(Notification notification)
         {
             Datum dummyDatum;
-            RegistarskiBroj dummyRegBroj;
             if (txtIme.Text.Trim() == String.Empty)
             {
                 notification.RegisterMessage(
@@ -231,13 +228,6 @@ namespace Registracija.UI
             {
                 notification.RegisterMessage(
                     "DatumRodjenja", "Neispravan format za datum ili godinu rodjenja.");
-            }
-
-            if (txtRegBroj.Text.Trim() != String.Empty
-            && !RegistarskiBroj.TryParse(txtRegBroj.Text, out dummyRegBroj))
-            {
-                notification.RegisterMessage(
-                    "RegistarskiBroj", "Neispravan format za registarski broj.");
             }
 
             if (txtDatumPoslReg.Text.Trim() != String.Empty
@@ -356,11 +346,8 @@ namespace Registracija.UI
             gimnasticar.JMBG = txtJMBG.Text.Trim();
 
             gimnasticar.Gimnastika = SelectedGimnastika;
-            
-            if (txtRegBroj.Text.Trim() == String.Empty)
-                gimnasticar.RegistarskiBroj = null;
-            else
-                gimnasticar.RegistarskiBroj = RegistarskiBroj.Parse(txtRegBroj.Text);
+
+            gimnasticar.RegistarskiBroj = txtRegBroj.Text.Trim();
 
             if (txtDatumPoslReg.Text.Trim() == String.Empty)
                 gimnasticar.DatumPoslednjeRegistracije = null;
@@ -424,7 +411,7 @@ namespace Registracija.UI
                 throw new BusinessException(notification);
             }
 
-            if (g.RegistarskiBroj != null && gimnasticarDAO.existsGimnasticarRegBroj(g.RegistarskiBroj))
+            if (!String.IsNullOrEmpty(g.RegistarskiBroj) && gimnasticarDAO.existsGimnasticarRegBroj(g.RegistarskiBroj))
             {
                 notification.RegisterMessage("RegistarskiBroj", 
                     "Gimnasticar sa datim registarskim brojem vec postoji.");
@@ -448,7 +435,7 @@ namespace Registracija.UI
             }
 
             bool regBrojChanged = (g.RegistarskiBroj != oldRegBroj) ? true : false;            
-            if (regBrojChanged && g.RegistarskiBroj != null && gimnasticarDAO.existsGimnasticarRegBroj(g.RegistarskiBroj))
+            if (regBrojChanged && !String.IsNullOrEmpty(g.RegistarskiBroj) && gimnasticarDAO.existsGimnasticarRegBroj(g.RegistarskiBroj))
             {
                 notification.RegisterMessage("RegistarskiBroj",
                     "Gimnasticar sa datim registarskim brojem vec postoji.");

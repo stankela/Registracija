@@ -11,7 +11,7 @@ namespace Registracija.Dao
         IList<Gimnasticar> FindByGimnastika(Gimnastika gim);
         IList<Gimnasticar> FindGimnasticariByKlub(Klub klub);
         IList<Gimnasticar> FindGimnasticariByKategorija(KategorijaGimnasticara kategorija);
-        IList<Gimnasticar> FindGimnasticariByRegBroj(RegistarskiBroj regBroj);
+        IList<Gimnasticar> FindGimnasticariByRegBroj(string regBroj);
         IList<Gimnasticar> FindGimnasticari(string ime, string prezime,
             Nullable<int> godRodj, Nullable<Gimnastika> gimnastika,
             KategorijaGimnasticara kategorija, Klub klub);
@@ -19,6 +19,6 @@ namespace Registracija.Dao
         bool existsGimnasticar(KategorijaGimnasticara kategorija);
         bool existsGimnasticarImePrezimeSrednjeImeDatumRodjenja(string ime, string prezime, string srednjeIme,
             Datum datumRodj);
-        bool existsGimnasticarRegBroj(RegistarskiBroj regBroj);
+        bool existsGimnasticarRegBroj(string regBroj);
     }
 }

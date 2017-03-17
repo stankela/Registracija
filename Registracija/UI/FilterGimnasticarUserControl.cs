@@ -129,14 +129,6 @@ namespace Registracija.UI
         {
             Notification notification = new Notification();
             int dummyInt;
-            RegistarskiBroj dummyRegBroj;
-
-            if (txtRegBroj.Text.Trim() != String.Empty
-            && !RegistarskiBroj.TryParse(txtRegBroj.Text, out dummyRegBroj))
-            {
-                notification.RegisterMessage(
-                    "RegistarskiBroj", "Neispravan format za registarski broj.");
-            }
 
             if (txtGodRodj.Text.Trim() != String.Empty &&
             !int.TryParse(txtGodRodj.Text, out dummyInt))
@@ -201,8 +193,7 @@ namespace Registracija.UI
                 return null;
 
             GimnasticarFilter result = new GimnasticarFilter();
-            if (txtRegBroj.Text.Trim() != String.Empty)
-                result.RegBroj = RegistarskiBroj.Parse(txtRegBroj.Text);
+            result.RegBroj = txtRegBroj.Text.Trim();
             result.Ime = txtIme.Text.Trim();
             result.Prezime = txtPrezime.Text.Trim();
             if (txtGodRodj.Text.Trim() != String.Empty)
