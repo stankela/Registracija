@@ -15,7 +15,7 @@ namespace Registracija.Domain
         private static readonly int MESTO_MAX_LENGTH = 32;
         private static readonly int TELEFON_MAX_LENGTH = 16;
         private static readonly int EMAIL_MAX_LENGTH = 64;
-        private static readonly int FOTO_FILE_MAX_LENGTH = 64;
+        private static readonly int FILE_NAME_MAX_LENGTH = 64;
         
         private string ime;
         public virtual string Ime
@@ -129,10 +129,21 @@ namespace Registracija.Domain
             set { fotoFile = value; }
         }
 
-        private bool imaFoto;
         public virtual bool ImaFoto
         {
-            get { return !String.IsNullOrEmpty(fotoFile); }
+            get { return !String.IsNullOrEmpty(FotoFile); }
+        }
+
+        private string izvorMKRFile;
+        public virtual string IzvodMKRFile
+        {
+            get { return izvorMKRFile; }
+            set { izvorMKRFile = value; }
+        }
+
+        public virtual bool ImaIzvodMKR
+        {
+            get { return !String.IsNullOrEmpty(IzvodMKRFile); }
         }
 
         public Gimnasticar()
@@ -281,11 +292,20 @@ namespace Registracija.Domain
 
             // validate FotoFile
             if (!string.IsNullOrEmpty(FotoFile)
-            && FotoFile.Length > FOTO_FILE_MAX_LENGTH)
+            && FotoFile.Length > FILE_NAME_MAX_LENGTH)
             {
                 notification.RegisterMessage(
                     "FotoFile", "Ime fajla sa fotografijom moze da sadrzi maksimalno "
-                    + FOTO_FILE_MAX_LENGTH + " znakova.");
+                    + FILE_NAME_MAX_LENGTH + " znakova.");
+            }
+
+            // validate IzvodMKRFile
+            if (!string.IsNullOrEmpty(IzvodMKRFile)
+            && IzvodMKRFile.Length > FILE_NAME_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "IzvodMKRFile", "Ime fajla sa izvodom iz MKR moze da sadrzi maksimalno "
+                    + FILE_NAME_MAX_LENGTH + " znakova.");
             }
 
             if (Gimnastika == Gimnastika.Undefined)

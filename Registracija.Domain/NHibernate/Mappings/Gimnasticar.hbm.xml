@@ -29,6 +29,7 @@
     <property name="Telefon2" column="telefon2" type="String" length="16"/>
     <property name="Email" column="email" type="String" length="64"/>
     <property name="FotoFile" column="foto_file" type="String" length="64"/>
+    <property name="IzvodMKRFile" column="izvod_mkr_file" type="String" length="64"/>
     <many-to-one name="Kategorija" class="KategorijaGimnasticara" column="kat_id" />
     <many-to-one name="Klub" class="Klub" column="klub_id" />
   </class>

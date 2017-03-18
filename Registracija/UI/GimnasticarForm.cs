@@ -81,6 +81,9 @@ namespace Registracija.UI
             txtFoto.ReadOnly = true;
             txtFoto.BackColor = SystemColors.Window;
 
+            txtIzvodMKR.ReadOnly = true;
+            txtIzvodMKR.BackColor = SystemColors.Window;
+
             cmbGimnastika.DropDownStyle = ComboBoxStyle.DropDownList;
             setGimnastike();
             SelectedGimnastika = Gimnastika.Undefined;
@@ -207,6 +210,10 @@ namespace Registracija.UI
             if (txtFoto.Text != String.Empty)
                 btnDodajFoto.Text = "Promeni";
 
+            txtIzvodMKR.Text = gimnasticar.IzvodMKRFile;
+            if (txtIzvodMKR.Text != String.Empty)
+                btnDodajIzvodMKR.Text = "Promeni";
+
             SelectedGimnastika = gimnasticar.Gimnastika;
 
             SelectedKategorija = gimnasticar.Kategorija;
@@ -319,6 +326,10 @@ namespace Registracija.UI
                     txtFoto.Focus();
                     break;
 
+                case "IzvodMKRFile":
+                    txtIzvodMKR.Focus();
+                    break;
+
                 case "Kategorija":
                     cmbKategorija.Focus();
                     break;
@@ -373,6 +384,7 @@ namespace Registracija.UI
             gimnasticar.Email = txtEmail.Text.Trim();
 
             gimnasticar.FotoFile = txtFoto.Text.Trim();
+            gimnasticar.IzvodMKRFile = txtIzvodMKR.Text.Trim();
 
             gimnasticar.Klub = SelectedKlub;
             gimnasticar.Kategorija = SelectedKategorija;
@@ -731,6 +743,55 @@ namespace Registracija.UI
                     File.Copy(ofd.FileName, newPath);
                 Gimnasticar g = entity as Gimnasticar;
                 txtFoto.Text = fileName;
+            }
+        }
+
+        private void btnDodajIzvodMKR_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() != DialogResult.OK)
+                return;
+
+            string fileName = Path.GetFileName(ofd.FileName);
+            string fileDirectory = Path.GetDirectoryName(ofd.FileName);
+            string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string destDirectory = Path.Combine(appDirectory, ConfigurationParameters.IzvodiMKRFolder);
+
+            bool fileIsInDestDirectory = fileDirectory.ToUpper() == destDirectory.ToUpper();
+            string newPath = Path.Combine(appDirectory, ConfigurationParameters.IzvodiMKRFolder, fileName);
+
+            if (!fileIsInDestDirectory && File.Exists(newPath))
+            {
+                // Izabran je fajl van odredisnog foldera, a u odredisnom folderu vec postoji fajl sa istim imenom.
+                // Nemoj da kopiras da ne bi prebrisao stari fajl.
+                MessageDialogs.showError(String.Format("Fajl sa identicnim imenom ('{0}') vec postoji u folderu {1}.", fileName,
+                    ConfigurationParameters.IzvodiMKRFolder), this.Text);
+            }
+            else
+            {
+                // Kopiraj samo ako je izabran fajl van odredisnog direktorijuma
+                if (!fileIsInDestDirectory)
+                    File.Copy(ofd.FileName, newPath);
+                Gimnasticar g = entity as Gimnasticar;
+                txtIzvodMKR.Text = fileName;
+            }
+        }
+
+        private void btnPrikaziIzvodMKR_Click(object sender, EventArgs e)
+        {
+            string fileName = txtIzvodMKR.Text.Trim();
+            if (!String.IsNullOrEmpty(fileName))
+            {
+                string path = Path.Combine(ConfigurationParameters.IzvodiMKRFolder, fileName);
+                if (!File.Exists(path))
+                {
+                    MessageDialogs.showMessage(String.Format("Fajl {0} ne postoji u folderu {1}.", Path.GetFileName(fileName),
+                        ConfigurationParameters.IzvodiMKRFolder), this.Text);
+                }
+                else
+                {
+                    System.Diagnostics.Process.Start(path);
+                }
             }
         }
     }

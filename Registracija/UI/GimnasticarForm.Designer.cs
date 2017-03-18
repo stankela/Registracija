@@ -64,15 +64,19 @@ namespace Registracija.UI
             this.txtFoto = new System.Windows.Forms.TextBox();
             this.btnDodajFoto = new System.Windows.Forms.Button();
             this.btnPrikaziFoto = new System.Windows.Forms.Button();
+            this.lblIzvodMKR = new System.Windows.Forms.Label();
+            this.txtIzvodMKR = new System.Windows.Forms.TextBox();
+            this.btnDodajIzvodMKR = new System.Windows.Forms.Button();
+            this.btnPrikaziIzvodMKR = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(406, 495);
+            this.btnOk.Location = new System.Drawing.Point(406, 504);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(498, 495);
+            this.btnCancel.Location = new System.Drawing.Point(498, 504);
             // 
             // txtIme
             // 
@@ -377,12 +381,52 @@ namespace Registracija.UI
             this.btnPrikaziFoto.UseVisualStyleBackColor = true;
             this.btnPrikaziFoto.Click += new System.EventHandler(this.btnPrikaziFoto_Click);
             // 
+            // lblIzvodMKR
+            // 
+            this.lblIzvodMKR.AutoSize = true;
+            this.lblIzvodMKR.Location = new System.Drawing.Point(21, 458);
+            this.lblIzvodMKR.Name = "lblIzvodMKR";
+            this.lblIzvodMKR.Size = new System.Drawing.Size(154, 13);
+            this.lblIzvodMKR.TabIndex = 44;
+            this.lblIzvodMKR.Text = "Izvod iz maticne knjige rodjenih";
+            // 
+            // txtIzvodMKR
+            // 
+            this.txtIzvodMKR.Location = new System.Drawing.Point(24, 474);
+            this.txtIzvodMKR.Name = "txtIzvodMKR";
+            this.txtIzvodMKR.Size = new System.Drawing.Size(165, 20);
+            this.txtIzvodMKR.TabIndex = 45;
+            // 
+            // btnDodajIzvodMKR
+            // 
+            this.btnDodajIzvodMKR.Location = new System.Drawing.Point(195, 471);
+            this.btnDodajIzvodMKR.Name = "btnDodajIzvodMKR";
+            this.btnDodajIzvodMKR.Size = new System.Drawing.Size(57, 23);
+            this.btnDodajIzvodMKR.TabIndex = 46;
+            this.btnDodajIzvodMKR.Text = "Dodaj";
+            this.btnDodajIzvodMKR.UseVisualStyleBackColor = true;
+            this.btnDodajIzvodMKR.Click += new System.EventHandler(this.btnDodajIzvodMKR_Click);
+            // 
+            // btnPrikaziIzvodMKR
+            // 
+            this.btnPrikaziIzvodMKR.Location = new System.Drawing.Point(260, 471);
+            this.btnPrikaziIzvodMKR.Name = "btnPrikaziIzvodMKR";
+            this.btnPrikaziIzvodMKR.Size = new System.Drawing.Size(55, 23);
+            this.btnPrikaziIzvodMKR.TabIndex = 47;
+            this.btnPrikaziIzvodMKR.Text = "Prikazi";
+            this.btnPrikaziIzvodMKR.UseVisualStyleBackColor = true;
+            this.btnPrikaziIzvodMKR.Click += new System.EventHandler(this.btnPrikaziIzvodMKR_Click);
+            // 
             // GimnasticarForm
             // 
             this.AcceptButton = null;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 530);
+            this.ClientSize = new System.Drawing.Size(585, 539);
+            this.Controls.Add(this.btnPrikaziIzvodMKR);
+            this.Controls.Add(this.btnDodajIzvodMKR);
+            this.Controls.Add(this.txtIzvodMKR);
+            this.Controls.Add(this.lblIzvodMKR);
             this.Controls.Add(this.btnPrikaziFoto);
             this.Controls.Add(this.btnDodajFoto);
             this.Controls.Add(this.txtFoto);
@@ -460,6 +504,10 @@ namespace Registracija.UI
             this.Controls.SetChildIndex(this.txtFoto, 0);
             this.Controls.SetChildIndex(this.btnDodajFoto, 0);
             this.Controls.SetChildIndex(this.btnPrikaziFoto, 0);
+            this.Controls.SetChildIndex(this.lblIzvodMKR, 0);
+            this.Controls.SetChildIndex(this.txtIzvodMKR, 0);
+            this.Controls.SetChildIndex(this.btnDodajIzvodMKR, 0);
+            this.Controls.SetChildIndex(this.btnPrikaziIzvodMKR, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -503,5 +551,9 @@ namespace Registracija.UI
         private System.Windows.Forms.TextBox txtFoto;
         private System.Windows.Forms.Button btnDodajFoto;
         private System.Windows.Forms.Button btnPrikaziFoto;
+        private System.Windows.Forms.Label lblIzvodMKR;
+        private System.Windows.Forms.TextBox txtIzvodMKR;
+        private System.Windows.Forms.Button btnDodajIzvodMKR;
+        private System.Windows.Forms.Button btnPrikaziIzvodMKR;
     }
 }
