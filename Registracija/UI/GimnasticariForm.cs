@@ -359,10 +359,11 @@ namespace Registracija.UI
 
                 Opcije.Instance.BiltenConnectionString = String.Format(@"Data Source={0}", ofd.FileName);
             }
-            GimnasticarBiltenDAO dao = new GimnasticarBiltenDAO();
-            dao.ConnectionString = Opcije.Instance.BiltenConnectionString;
+
+            SelectGimnasticarBiltenForm form = new SelectGimnasticarBiltenForm();
+            if (form.ShowDialog() != DialogResult.OK)
+                return;
             
-            List<GimnasticarBilten> gimnasticariBilten = dao.findGimnasticariBilten();
             IList<Gimnasticar> noviGimnasticari = new List<Gimnasticar>();
 
             Cursor.Current = Cursors.WaitCursor;
@@ -376,12 +377,24 @@ namespace Registracija.UI
                 {
                     CurrentSessionContext.Bind(session);
                     GimnasticarDAO gimDAO = DAOFactoryFactory.DAOFactory.GetGimnasticarDAO();
-                    foreach (GimnasticarBilten g in gimnasticariBilten)
+
+                    KlubDAO klubDAO = DAOFactoryFactory.DAOFactory.GetKlubDAO();
+                    KategorijaGimnasticaraDAO katDAO = DAOFactoryFactory.DAOFactory.GetKategorijaGimnasticaraDAO();
+
+                    IDictionary<Klub, Klub> klubovi = new Dictionary<Klub, Klub>();
+                    foreach (Klub k in klubDAO.FindAll())
+                        klubovi.Add(k, k);
+                    IDictionary<KategorijaGimnasticara, KategorijaGimnasticara> kategorije
+                        = new Dictionary<KategorijaGimnasticara, KategorijaGimnasticara>();
+                    foreach (KategorijaGimnasticara kat in katDAO.FindAll())
+                        kategorije.Add(kat, kat);
+
+                    foreach (GimnasticarBilten g in form.SelektovaniGimnasticari)
                     {
                         if (!gimDAO.existsGimnasticarImePrezimeSrednjeImeDatumRodjenja(g.Ime, g.Prezime, g.SrednjeIme,
                             g.DatumRodjenja))
                         {
-                            Gimnasticar gim = createGimnasticar(g);
+                            Gimnasticar gim = createGimnasticar(g, klubDAO, katDAO, klubovi, kategorije);
                             noviGimnasticari.Add(gim);
                             gimDAO.Add(gim);
                         }
@@ -412,11 +425,13 @@ namespace Registracija.UI
                     items.Add(g);
                 }
                 dataGridViewUserControl1.setItems<Gimnasticar>(items);
+                dataGridViewUserControl1.clearSelection();
                 updateEntityCount();
             }
         }
 
-        private Gimnasticar createGimnasticar(GimnasticarBilten g)
+        private Gimnasticar createGimnasticar(GimnasticarBilten g, KlubDAO klubDAO, KategorijaGimnasticaraDAO katDAO,
+            IDictionary<Klub, Klub> klubovi, IDictionary<KategorijaGimnasticara, KategorijaGimnasticara> kategorije)
         {
             Gimnasticar result = new Gimnasticar();
             result.Ime = g.Ime;
@@ -428,32 +443,34 @@ namespace Registracija.UI
                 result.Klub = null;
             else
             {
-                KlubDAO klubUcesnikDAO = DAOFactoryFactory.DAOFactory.GetKlubDAO();
-                Klub klub = klubUcesnikDAO.FindByNaziv(g.NazivKluba);
-                if (klub == null)
+                Klub klub = new Klub();
+                klub.Naziv = g.NazivKluba;
+                klub.Kod = g.KodKluba;
+                klub.Mesto = g.MestoKluba;
+                if (!klubovi.ContainsKey(klub))
                 {
-                    klub = new Klub();
-                    klub.Naziv = g.NazivKluba;
-                    klub.Kod = g.KodKluba;
-                    klub.Mesto = g.MestoKluba;
-                    klubUcesnikDAO.Add(klub);
+                    klubovi.Add(klub, klub);
+                    klubDAO.Add(klub);
                 }
+                else
+                    klub = klubovi[klub];
                 result.Klub = klub;
             }
             if (String.IsNullOrEmpty(g.NazivKategorije))
                 result.Kategorija = null;
             else
             {
-                KategorijaGimnasticaraDAO katDAO = DAOFactoryFactory.DAOFactory.GetKategorijaGimnasticaraDAO();
-                KategorijaGimnasticara kategorija = katDAO.FindByNaziv(g.NazivKategorije);
-                if (kategorija == null)
+                KategorijaGimnasticara kat = new KategorijaGimnasticara();
+                kat.Naziv = g.NazivKategorije;
+                kat.Gimnastika = g.Gimnastika;
+                if (!kategorije.ContainsKey(kat))
                 {
-                    kategorija = new KategorijaGimnasticara();
-                    kategorija.Naziv = g.NazivKategorije;
-                    kategorija.Gimnastika = g.Gimnastika;
-                    katDAO.Add(kategorija);
+                    kategorije.Add(kat, kat);
+                    katDAO.Add(kat);
                 }
-                result.Kategorija = kategorija;
+                else
+                    kat = kategorije[kat];
+                result.Kategorija = kat;
             }
             return result;
         }

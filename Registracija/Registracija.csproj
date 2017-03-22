@@ -152,6 +152,12 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\MessageDialogs.cs" />
+    <Compile Include="UI\SelectGimnasticarBiltenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SelectGimnasticarBiltenForm.Designer.cs">
+      <DependentUpon>SelectGimnasticarBiltenForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SingleEntityListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SelectGimnasticarBiltenForm.resx">
+      <DependentUpon>SelectGimnasticarBiltenForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SingleEntityListForm.resx">
       <DependentUpon>SingleEntityListForm.cs</DependentUpon>

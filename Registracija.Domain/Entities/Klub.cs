@@ -132,6 +132,24 @@ namespace Registracija.Domain
             }
         }
 
+        public override bool Equals(object other)
+        {
+            if (object.ReferenceEquals(this, other)) return true;
+            if (!(other is Klub)) return false;
+            Klub that = (Klub)other;
+            return this.Naziv.ToUpper() == that.Naziv.ToUpper();
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 14;
+                result = 29 * result + Naziv.GetHashCode();
+                return result;
+            }
+        }
+        
         #region IComparable<Klub> Members
 
         public virtual int CompareTo(Klub other)

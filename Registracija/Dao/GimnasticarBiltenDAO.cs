@@ -9,17 +9,17 @@ namespace Registracija.Dao
 {
     public class GimnasticarBilten
     {
-        public string Ime;
-        public string Prezime;
-        public string SrednjeIme;
-        public Nullable<byte> DanRodj;
-        public Nullable<byte> MesecRodj;
-        public Nullable<short> GodRodj;
-        public Gimnastika Gimnastika;
-        public string NazivKluba;
-        public string KodKluba;
-        public string MestoKluba;
-        public string NazivKategorije;
+        public string Ime { get; set; }
+        public string Prezime { get; set; }
+        public string SrednjeIme { get; set; }
+        public Nullable<byte> DanRodj { get; set; }
+        public Nullable<byte> MesecRodj { get; set; }
+        public Nullable<short> GodRodj { get; set; }
+        public Gimnastika Gimnastika { get; set; }
+        public string NazivKluba { get; set; }
+        public string KodKluba { get; set; }
+        public string MestoKluba { get; set; }
+        public string NazivKategorije { get; set; }
 
         public Datum DatumRodjenja
         {
@@ -52,11 +52,42 @@ namespace Registracija.Dao
                 on k.mesto_id = m.mesto_id";
 
         // can throw InfrastructureException
-        public List<GimnasticarBilten> findGimnasticariBilten()
+        public List<GimnasticarBilten> findGimnasticariBilten(string ime, string prezime, Nullable<Gimnastika> gimnastika,
+            string nazivKluba)
         {
+            string WHERE = " where ";
+            if (!String.IsNullOrEmpty(ime))
+            {
+                findGimnasticariBiltenSQL += WHERE + "lower(g.ime) like @ime";
+                WHERE = " and ";
+            }
+            if (!String.IsNullOrEmpty(prezime))
+            {
+                findGimnasticariBiltenSQL += WHERE + "lower(g.prezime) like @prezime";
+                WHERE = " and ";
+            }
+            if (gimnastika != null)
+            {
+                findGimnasticariBiltenSQL += WHERE + "g.gimnastika = @gimnastika";
+                WHERE = " and ";
+            }
+            if (!String.IsNullOrEmpty(nazivKluba))
+            {
+                findGimnasticariBiltenSQL += WHERE + "lower(k.naziv) like @klub";
+                WHERE = " and ";
+            }
+            findGimnasticariBiltenSQL += " order by g.prezime asc, g.ime asc";
+
             SqlCeCommand cmd = new SqlCeCommand(findGimnasticariBiltenSQL);
-            //cmd.Parameters.Add("@ime", SqlDbType.NVarChar).Value = ime;
-            //cmd.Parameters.Add("@prezime", SqlDbType.NVarChar).Value = prezime;
+            if (!String.IsNullOrEmpty(ime))
+                cmd.Parameters.Add("@ime", SqlDbType.NVarChar).Value = ime.ToLower() + '%';
+            if (!String.IsNullOrEmpty(prezime))
+                cmd.Parameters.Add("@prezime", SqlDbType.NVarChar).Value = prezime.ToLower() + '%';
+            if (gimnastika != null)
+                cmd.Parameters.Add("@gimnastika", SqlDbType.TinyInt).Value = (byte)gimnastika.Value;
+            if (!String.IsNullOrEmpty(nazivKluba))
+                cmd.Parameters.Add("@klub", SqlDbType.NVarChar).Value = nazivKluba.ToLower() + '%';
+
             SqlCeDataReader rdr = Database.executeReader(cmd, Strings.DatabaseAccessExceptionMessage, ConnectionString);
 
             List<GimnasticarBilten> result = new List<GimnasticarBilten>();
