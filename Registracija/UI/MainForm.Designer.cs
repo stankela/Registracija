@@ -33,6 +33,7 @@
             this.mnGimnasticari = new System.Windows.Forms.ToolStripMenuItem();
             this.mnKlubovi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnKategorijeGimnasticara = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnSudije = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +51,7 @@
             // 
             this.mnRegistar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnGimnasticari,
+            this.mnSudije,
             this.mnKlubovi,
             this.mnKategorijeGimnasticara});
             this.mnRegistar.Name = "mnRegistar";
@@ -77,6 +79,13 @@
             this.mnKategorijeGimnasticara.Text = "Kategorije gimnasticara";
             this.mnKategorijeGimnasticara.Click += new System.EventHandler(this.mnKategorijeGimnasticara_Click);
             // 
+            // mnSudije
+            // 
+            this.mnSudije.Name = "mnSudije";
+            this.mnSudije.Size = new System.Drawing.Size(198, 22);
+            this.mnSudije.Text = "Sudije";
+            this.mnSudije.Click += new System.EventHandler(this.mnSudije_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +109,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnGimnasticari;
         private System.Windows.Forms.ToolStripMenuItem mnKlubovi;
         private System.Windows.Forms.ToolStripMenuItem mnKategorijeGimnasticara;
+        private System.Windows.Forms.ToolStripMenuItem mnSudije;
     }
 }
 

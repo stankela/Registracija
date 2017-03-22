@@ -44,3 +44,12 @@ create table gimnasticari (
 	kat_id int references kategorije_gimnasticara(kategorija_id),
 	klub_id int references klubovi(klub_id)
 );
+
+create table sudije (
+	sudija_id int identity(1,1) primary key,
+	ime nvarchar(32),
+	prezime nvarchar(32),
+	pol tinyint,
+	klub_id int references klubovi(klub_id)
+);
+

@@ -47,6 +47,8 @@
     <Compile Include="Entities\Klub.cs" />
     <Compile Include="Entities\KvalifikacioniStatus.cs" />
     <Compile Include="Entities\Opcije.cs" />
+    <Compile Include="Entities\Pol.cs" />
+    <Compile Include="Entities\Sudija.cs" />
     <Compile Include="Entities\SudijskaUloga.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,6 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="NHibernate\Mappings\Klub.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NHibernate\Mappings\Sudija.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

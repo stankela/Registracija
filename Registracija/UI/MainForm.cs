@@ -60,5 +60,18 @@ namespace Registracija.UI
                 MessageDialogs.showError(ex.Message, this.Text);
             }
         }
+
+        private void mnSudije_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SudijeForm form = new SudijeForm();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageDialogs.showError(ex.Message, this.Text);
+            }
+        }
     }
 }

@@ -22,5 +22,10 @@ namespace Registracija.Dao.NHibernate
         {
             return new KategorijaGimnasticaraDAOImpl();
         }
+
+        public override SudijaDAO GetSudijaDAO()
+        {
+            return new SudijaDAOImpl();
+        }
     }
 }
