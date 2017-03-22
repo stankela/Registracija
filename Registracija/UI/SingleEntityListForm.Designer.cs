@@ -59,7 +59,7 @@ namespace Registracija.UI
             // SingleEntityListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(539, 371);
+            this.ClientSize = new System.Drawing.Size(539, 455);
             this.Name = "SingleEntityListForm";
             this.ResumeLayout(false);
 

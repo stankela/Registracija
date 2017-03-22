@@ -39,6 +39,7 @@ namespace Registracija.UI
             btnDuplicate.Visible = false;
             btnShowHelp.Visible = false;
             btnApplySort.Visible = false;
+            btnUveziIzBiltena.Visible = false;
             panel2.Height = 0;
             pnlPager.Height = 0; // nema efekta
 

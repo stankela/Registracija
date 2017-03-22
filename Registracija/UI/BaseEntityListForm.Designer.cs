@@ -43,6 +43,8 @@ namespace Registracija.UI
             this.btnApplySort = new System.Windows.Forms.Button();
             this.btnPrintItem = new System.Windows.Forms.Button();
             this.btnShowHelp = new System.Windows.Forms.Button();
+            this.btnDuplicate = new System.Windows.Forms.Button();
+            this.dataGridViewUserControl1 = new Registracija.UI.DataGridViewUserControl();
             this.pnlListPlaceholder = new System.Windows.Forms.Panel();
             this.pnlPager = new System.Windows.Forms.Panel();
             this.lblPageCounter = new System.Windows.Forms.Label();
@@ -50,12 +52,10 @@ namespace Registracija.UI
             this.btnShowNextPage = new System.Windows.Forms.Button();
             this.btnShowPreviousPage = new System.Windows.Forms.Button();
             this.btnShowFirstPage = new System.Windows.Forms.Button();
-            this.btnDuplicate = new System.Windows.Forms.Button();
-            this.dataGridViewUserControl1 = new Registracija.UI.DataGridViewUserControl();
+            this.btnUveziIzBiltena = new System.Windows.Forms.Button();
             this.layoutPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.pnlListPlaceholder.SuspendLayout();
             this.pnlPager.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,6 +80,7 @@ namespace Registracija.UI
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnUveziIzBiltena);
             this.panel1.Controls.Add(this.btnNewItem);
             this.panel1.Controls.Add(this.btnPrintPreview);
             this.panel1.Controls.Add(this.btnEditItem);
@@ -205,6 +206,25 @@ namespace Registracija.UI
             this.btnShowHelp.Text = "Help";
             this.btnShowHelp.UseVisualStyleBackColor = true;
             // 
+            // btnDuplicate
+            // 
+            this.btnDuplicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDuplicate.Location = new System.Drawing.Point(8, 8);
+            this.btnDuplicate.Name = "btnDuplicate";
+            this.btnDuplicate.Size = new System.Drawing.Size(82, 28);
+            this.btnDuplicate.TabIndex = 0;
+            this.btnDuplicate.Text = "Duplicate";
+            this.btnDuplicate.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewUserControl1
+            // 
+            this.dataGridViewUserControl1.ColumnHeaderSorting = true;
+            this.dataGridViewUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewUserControl1.Name = "dataGridViewUserControl1";
+            this.dataGridViewUserControl1.Size = new System.Drawing.Size(433, 341);
+            this.dataGridViewUserControl1.TabIndex = 0;
+            // 
             // pnlListPlaceholder
             // 
             this.pnlListPlaceholder.Controls.Add(this.dataGridViewUserControl1);
@@ -274,24 +294,14 @@ namespace Registracija.UI
             this.btnShowFirstPage.Text = "|<";
             this.btnShowFirstPage.UseVisualStyleBackColor = true;
             // 
-            // btnDuplicate
+            // btnUveziIzBiltena
             // 
-            this.btnDuplicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDuplicate.Location = new System.Drawing.Point(8, 8);
-            this.btnDuplicate.Name = "btnDuplicate";
-            this.btnDuplicate.Size = new System.Drawing.Size(82, 28);
-            this.btnDuplicate.TabIndex = 0;
-            this.btnDuplicate.Text = "Duplicate";
-            this.btnDuplicate.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewUserControl1
-            // 
-            this.dataGridViewUserControl1.ColumnHeaderSorting = true;
-            this.dataGridViewUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewUserControl1.Name = "dataGridViewUserControl1";
-            this.dataGridViewUserControl1.Size = new System.Drawing.Size(433, 341);
-            this.dataGridViewUserControl1.TabIndex = 0;
+            this.btnUveziIzBiltena.Location = new System.Drawing.Point(6, 331);
+            this.btnUveziIzBiltena.Name = "btnUveziIzBiltena";
+            this.btnUveziIzBiltena.Size = new System.Drawing.Size(82, 41);
+            this.btnUveziIzBiltena.TabIndex = 7;
+            this.btnUveziIzBiltena.Text = "Uvezi iz Biltena";
+            this.btnUveziIzBiltena.UseVisualStyleBackColor = true;
             // 
             // BaseEntityListForm
             // 
@@ -306,7 +316,6 @@ namespace Registracija.UI
             this.layoutPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.pnlListPlaceholder.ResumeLayout(false);
             this.pnlPager.ResumeLayout(false);
             this.pnlPager.PerformLayout();
             this.ResumeLayout(false);
@@ -337,5 +346,6 @@ namespace Registracija.UI
         protected Button btnShowHelp;
         protected DataGridViewUserControl dataGridViewUserControl1;
         protected Button btnDuplicate;
+        protected Button btnUveziIzBiltena;
     }
 }

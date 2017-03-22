@@ -64,6 +64,7 @@
     <Compile Include="Dao\DAOFactory.cs" />
     <Compile Include="Dao\DAOFactoryFactory.cs" />
     <Compile Include="Dao\GenericDAO.cs" />
+    <Compile Include="Dao\GimnasticarBiltenDAO.cs" />
     <Compile Include="Dao\GimnasticarDAO.cs" />
     <Compile Include="Dao\KategorijaGimnasticaraDAO.cs" />
     <Compile Include="Dao\KlubDAO.cs" />
@@ -82,11 +83,15 @@
     <Compile Include="UI\BaseEntityListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\BaseEntityListForm.Designer.cs" />
+    <Compile Include="UI\BaseEntityListForm.Designer.cs">
+      <DependentUpon>BaseEntityListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\DataGridViewUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\DataGridViewUserControl.Designer.cs" />
+    <Compile Include="UI\DataGridViewUserControl.Designer.cs">
+      <DependentUpon>DataGridViewUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\EntityDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,15 +101,21 @@
     <Compile Include="UI\FilterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FilterForm.Designer.cs" />
+    <Compile Include="UI\FilterForm.Designer.cs">
+      <DependentUpon>FilterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FilterGimnasticarForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FilterGimnasticarForm.Designer.cs" />
+    <Compile Include="UI\FilterGimnasticarForm.Designer.cs">
+      <DependentUpon>FilterGimnasticarForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FilterGimnasticarUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\FilterGimnasticarUserControl.Designer.cs" />
+    <Compile Include="UI\FilterGimnasticarUserControl.Designer.cs">
+      <DependentUpon>FilterGimnasticarUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\GimnasticarFilter.cs" />
     <Compile Include="UI\GimnasticarForm.cs">
       <SubType>Form</SubType>
@@ -160,14 +171,24 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\BaseEntityListForm.resx" />
-    <EmbeddedResource Include="UI\DataGridViewUserControl.resx" />
+    <EmbeddedResource Include="UI\BaseEntityListForm.resx">
+      <DependentUpon>BaseEntityListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DataGridViewUserControl.resx">
+      <DependentUpon>DataGridViewUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\EntityDetailForm.resx">
       <DependentUpon>EntityDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FilterForm.resx" />
-    <EmbeddedResource Include="UI\FilterGimnasticarForm.resx" />
-    <EmbeddedResource Include="UI\FilterGimnasticarUserControl.resx" />
+    <EmbeddedResource Include="UI\FilterForm.resx">
+      <DependentUpon>FilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FilterGimnasticarForm.resx">
+      <DependentUpon>FilterGimnasticarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FilterGimnasticarUserControl.resx">
+      <DependentUpon>FilterGimnasticarUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\GimnasticarForm.resx">
       <DependentUpon>GimnasticarForm.cs</DependentUpon>
     </EmbeddedResource>

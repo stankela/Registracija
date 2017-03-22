@@ -23,6 +23,24 @@ namespace Registracija.Dao.NHibernate
             }
         }
 
+        public Klub FindByNaziv(string naziv)
+        {
+            try
+            {
+                IQuery q = Session.CreateQuery(@"from Klub k
+                    where k.Naziv like :naziv");
+                q.SetString("naziv", naziv);
+                IList<Klub> result = q.List<Klub>();
+                if (result.Count > 0)
+                    return result[0];
+                return null;
+            }
+            catch (HibernateException ex)
+            {
+                throw new InfrastructureException(Strings.getFullDatabaseAccessExceptionMessage(ex), ex);
+            }
+        }
+
         public bool existsKlubNaziv(string naziv)
         {
             try
