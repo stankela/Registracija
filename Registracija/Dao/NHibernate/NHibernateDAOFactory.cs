@@ -22,10 +22,5 @@ namespace Registracija.Dao.NHibernate
         {
             return new KategorijaGimnasticaraDAOImpl();
         }
-
-        public override MestoDAO GetMestoDAO()
-        {
-            return new MestoDAOImpl();
-        }
     }
 }

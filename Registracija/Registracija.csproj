@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4716DBD1-FEE7-44F7-9351-CF01EAB2D193}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Registracija</RootNamespace>
     <AssemblyName>Registracija</AssemblyName>
@@ -30,6 +30,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Iesi.Collections">
@@ -64,12 +67,10 @@
     <Compile Include="Dao\GimnasticarDAO.cs" />
     <Compile Include="Dao\KategorijaGimnasticaraDAO.cs" />
     <Compile Include="Dao\KlubDAO.cs" />
-    <Compile Include="Dao\MestoDAO.cs" />
     <Compile Include="Dao\NHibernate\GenericNHibernateDAO.cs" />
     <Compile Include="Dao\NHibernate\GimnasticarDAOImpl.cs" />
     <Compile Include="Dao\NHibernate\KategorijaGimnasticaraDAOImpl.cs" />
     <Compile Include="Dao\NHibernate\KlubDAOImpl.cs" />
-    <Compile Include="Dao\NHibernate\MestoDAOImpl.cs" />
     <Compile Include="Dao\NHibernate\NHibernateDAOFactory.cs" />
     <Compile Include="Data\NHibernate\NHibernateHelper.cs" />
     <Compile Include="Data\NHibernate\PersistentConfigurationBuilder.cs" />
@@ -135,15 +136,6 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\MessageDialogs.cs" />
-    <Compile Include="UI\MestaForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\MestoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\MestoForm.Designer.cs">
-      <DependentUpon>MestoForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\SingleEntityListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,9 +172,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\MestoForm.resx">
-      <DependentUpon>MestoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SingleEntityListForm.resx">
       <DependentUpon>SingleEntityListForm.cs</DependentUpon>

@@ -14,7 +14,6 @@ namespace Registracija.UI
 {
     public partial class KlubForm : EntityDetailForm
     {
-        private List<Mesto> mesta;
         private string oldNaziv;
         private string oldKod;
         
@@ -24,43 +23,16 @@ namespace Registracija.UI
             initialize(klubId, true);
         }
 
-        protected override void loadData()
-        {
-            mesta = new List<Mesto>(DAOFactoryFactory.DAOFactory.GetMestoDAO().FindAll(true));
-        }
-
         protected override void initUI()
         {
             base.initUI();
             this.Text = "Klub";
             txtNaziv.Text = String.Empty;
             txtKod.Text = String.Empty;
+            txtMesto.Text = String.Empty;
             txtAdresa.Text = String.Empty;
             txtTelefon1.Text = String.Empty;
             txtTelefon2.Text = String.Empty;
-
-            cmbMesto.DropDownStyle = ComboBoxStyle.DropDownList;
-            setMesta(mesta);
-            SelectedMesto = null;
-        }
-
-        private void setMesta(List<Mesto> mesta)
-        {
-            cmbMesto.DisplayMember = "Naziv";
-            cmbMesto.DataSource = mesta;
-            
-            // NOTE: Ako se referenca na listu 'mesta' vec nalazi u DataSource
-            // svojstvu (tj. ako DataSource svojstvo ostaje nepromenjeno) combo
-            // nece biti osvezen. Zato je potrebno osveziti ga rucno.
-            CurrencyManager currencyManager =
-                (CurrencyManager)this.BindingContext[mesta];
-            currencyManager.Refresh();
-        }
-
-        private Mesto SelectedMesto
-        {
-            get { return cmbMesto.SelectedItem as Mesto; }
-            set { cmbMesto.SelectedItem = value; }
         }
 
         protected override DomainObject getEntityById(int id)
@@ -80,11 +52,10 @@ namespace Registracija.UI
             Klub klub = (Klub)entity;
             txtNaziv.Text = klub.Naziv;
             txtKod.Text = klub.Kod;
+            txtMesto.Text = klub.Mesto;
             txtAdresa.Text = klub.Adresa;
             txtTelefon1.Text = klub.Telefon1;
             txtTelefon2.Text = klub.Telefon2;
-
-            SelectedMesto = klub.Mesto;
         }
 
         protected override void requiredFieldsAndFormatValidation(Notification notification)
@@ -101,10 +72,10 @@ namespace Registracija.UI
                     "Kod", "Kod kluba je obavezan.");
             }
 
-            if (cmbMesto.SelectedIndex == -1)
+            if (txtMesto.Text.Trim() == String.Empty)
             {
                 notification.RegisterMessage(
-                    "Mesto", "Mesto kluba je obavezno.");
+                    "Mesto", "Mesto je obavezno.");
             }
         }
 
@@ -120,10 +91,6 @@ namespace Registracija.UI
                     txtKod.Focus();
                     break;
 
-                case "Mesto":
-                    cmbMesto.Focus();
-                    break;
-
                 case "Adresa":
                     txtAdresa.Focus();
                     break;
@@ -134,6 +101,10 @@ namespace Registracija.UI
 
                 case "Telefon2":
                     txtTelefon2.Focus();
+                    break;
+
+                case "Mesto":
+                    txtMesto.Focus();
                     break;
 
                 default:
@@ -151,7 +122,7 @@ namespace Registracija.UI
             Klub klub = (Klub)entity;
             klub.Naziv = txtNaziv.Text.Trim();
             klub.Kod = txtKod.Text.Trim().ToUpper();
-            klub.Mesto = SelectedMesto;
+            klub.Mesto = txtMesto.Text.Trim();
             klub.Adresa = txtAdresa.Text.Trim();
             klub.Telefon1 = txtTelefon1.Text.Trim();
             klub.Telefon2 = txtTelefon2.Text.Trim();
@@ -204,33 +175,6 @@ namespace Registracija.UI
             {
                 notification.RegisterMessage("Kod", "Klub sa datim kodom vec postoji.");
                 throw new BusinessException(notification);
-            }
-        }
-
-        private void btnAddMesto_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                MestoForm form = new MestoForm(null);
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    Mesto m = (Mesto)form.Entity;
-                    mesta.Add(m);
-
-                    // NOTE: Nije potrebno zamrzavati combo (pomocu
-                    // currencyManager.SuspendBinding) za vreme sortiranja, zato sto 
-                    // se kao binding kolekcija koristi List (a ona ne reflektuje
-                    // automatski promene na UI kontrolu)              
-                    mesta.Sort();
-
-                    setMesta(mesta);
-                    SelectedMesto = m;
-
-                }
-            }
-            catch (InfrastructureException ex)
-            {
-                MessageDialogs.showError(ex.Message, this.Text);
             }
         }
 

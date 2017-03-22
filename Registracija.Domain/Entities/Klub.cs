@@ -12,6 +12,7 @@ namespace Registracija.Domain
         private static readonly int KOD_MAX_LENGTH = 7;
         private static readonly int ADRESA_MAX_LENGTH = 64;
         private static readonly int TELEFON_MAX_LENGTH = 16;
+        private static readonly int MESTO_MAX_LENGTH = 32;
     
         private string naziv;
         public virtual string Naziv
@@ -27,8 +28,8 @@ namespace Registracija.Domain
             set { kod = value; }
         }
 
-        private Mesto mesto;
-        public virtual Mesto Mesto
+        private string mesto;
+        public virtual string Mesto
         {
             get { return mesto; }
             set { mesto = value; }
@@ -118,10 +119,16 @@ namespace Registracija.Domain
             }
 
             // validate Mesto
-            if (Mesto == null)
+            if (String.IsNullOrEmpty(Mesto))
             {
                 notification.RegisterMessage(
                     "Mesto", "Mesto kluba je obavezno.");
+            }
+            else if (Mesto.Length > MESTO_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Mesto", "Mesto moze da sadrzi maksimalno "
+                    + MESTO_MAX_LENGTH + " znakova.");
             }
         }
 

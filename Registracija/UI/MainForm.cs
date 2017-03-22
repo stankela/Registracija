@@ -47,18 +47,5 @@ namespace Registracija.UI
                 MessageDialogs.showError(ex.Message, this.Text);
             }
         }
-
-        private void mnMesta_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                MestaForm form = new MestaForm();
-                form.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageDialogs.showError(ex.Message, this.Text);
-            }
-        }
     }
 }

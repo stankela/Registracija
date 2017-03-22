@@ -12,7 +12,7 @@
     <property name="Adresa" column="adresa" type="String" length="64"/>
     <property name="Telefon1" column="telefon1" type="String" length="16"/>
     <property name="Telefon2" column="telefon2" type="String" length="16"/>
-    <many-to-one name="Mesto" class="Mesto" column="mesto_id" />
+    <property name="Mesto" column="mesto" type="String" length="32" />
   </class>
 
 </hibernate-mapping>

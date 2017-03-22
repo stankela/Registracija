@@ -32,7 +32,7 @@ namespace Registracija.UI
                 using (session.BeginTransaction())
                 {
                     CurrentSessionContext.Bind(session);
-                    IList<Klub> klubovi = DAOFactoryFactory.DAOFactory.GetKlubDAO().FindAllFetchMesto();
+                    IList<Klub> klubovi = DAOFactoryFactory.DAOFactory.GetKlubDAO().FindAll();
                     SetItems(klubovi);
                     dataGridViewUserControl1.sort<Klub>(
                         new string[] { "Naziv" },

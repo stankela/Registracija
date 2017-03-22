@@ -33,14 +33,13 @@ namespace Registracija.UI
             this.lblMesto = new System.Windows.Forms.Label();
             this.txtKod = new System.Windows.Forms.TextBox();
             this.txtNaziv = new System.Windows.Forms.TextBox();
-            this.cmbMesto = new System.Windows.Forms.ComboBox();
-            this.btnAddMesto = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAdresa = new System.Windows.Forms.TextBox();
             this.lblTelefon1 = new System.Windows.Forms.Label();
             this.txtTelefon1 = new System.Windows.Forms.TextBox();
             this.lblTelefon2 = new System.Windows.Forms.Label();
             this.txtTelefon2 = new System.Windows.Forms.TextBox();
+            this.txtMesto = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOk
@@ -92,24 +91,6 @@ namespace Registracija.UI
             this.txtNaziv.Size = new System.Drawing.Size(274, 20);
             this.txtNaziv.TabIndex = 3;
             // 
-            // cmbMesto
-            // 
-            this.cmbMesto.FormattingEnabled = true;
-            this.cmbMesto.Location = new System.Drawing.Point(28, 146);
-            this.cmbMesto.Name = "cmbMesto";
-            this.cmbMesto.Size = new System.Drawing.Size(121, 21);
-            this.cmbMesto.TabIndex = 7;
-            // 
-            // btnAddMesto
-            // 
-            this.btnAddMesto.Location = new System.Drawing.Point(155, 145);
-            this.btnAddMesto.Name = "btnAddMesto";
-            this.btnAddMesto.Size = new System.Drawing.Size(25, 23);
-            this.btnAddMesto.TabIndex = 8;
-            this.btnAddMesto.Text = "...";
-            this.btnAddMesto.UseVisualStyleBackColor = true;
-            this.btnAddMesto.Click += new System.EventHandler(this.btnAddMesto_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -158,18 +139,24 @@ namespace Registracija.UI
             this.txtTelefon2.Size = new System.Drawing.Size(100, 20);
             this.txtTelefon2.TabIndex = 14;
             // 
+            // txtMesto
+            // 
+            this.txtMesto.Location = new System.Drawing.Point(27, 146);
+            this.txtMesto.Name = "txtMesto";
+            this.txtMesto.Size = new System.Drawing.Size(126, 20);
+            this.txtMesto.TabIndex = 15;
+            // 
             // KlubForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(329, 416);
+            this.Controls.Add(this.txtMesto);
             this.Controls.Add(this.txtTelefon2);
             this.Controls.Add(this.lblTelefon2);
             this.Controls.Add(this.txtTelefon1);
             this.Controls.Add(this.lblTelefon1);
             this.Controls.Add(this.txtAdresa);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnAddMesto);
-            this.Controls.Add(this.cmbMesto);
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.txtKod);
             this.Controls.Add(this.lblMesto);
@@ -184,14 +171,13 @@ namespace Registracija.UI
             this.Controls.SetChildIndex(this.lblMesto, 0);
             this.Controls.SetChildIndex(this.txtKod, 0);
             this.Controls.SetChildIndex(this.txtNaziv, 0);
-            this.Controls.SetChildIndex(this.cmbMesto, 0);
-            this.Controls.SetChildIndex(this.btnAddMesto, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtAdresa, 0);
             this.Controls.SetChildIndex(this.lblTelefon1, 0);
             this.Controls.SetChildIndex(this.txtTelefon1, 0);
             this.Controls.SetChildIndex(this.lblTelefon2, 0);
             this.Controls.SetChildIndex(this.txtTelefon2, 0);
+            this.Controls.SetChildIndex(this.txtMesto, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,14 +190,13 @@ namespace Registracija.UI
         private System.Windows.Forms.Label lblMesto;
         protected System.Windows.Forms.TextBox txtKod;
         protected System.Windows.Forms.TextBox txtNaziv;
-        private System.Windows.Forms.ComboBox cmbMesto;
-        private System.Windows.Forms.Button btnAddMesto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAdresa;
         private System.Windows.Forms.Label lblTelefon1;
         private System.Windows.Forms.TextBox txtTelefon1;
         private System.Windows.Forms.Label lblTelefon2;
         private System.Windows.Forms.TextBox txtTelefon2;
+        private System.Windows.Forms.TextBox txtMesto;
 
     }
 }
