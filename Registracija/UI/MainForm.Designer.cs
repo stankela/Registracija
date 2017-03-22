@@ -32,6 +32,7 @@
             this.mnRegistar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnGimnasticari = new System.Windows.Forms.ToolStripMenuItem();
             this.mnKlubovi = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnKategorijeGimnasticara = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +50,8 @@
             // 
             this.mnRegistar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnGimnasticari,
-            this.mnKlubovi});
+            this.mnKlubovi,
+            this.mnKategorijeGimnasticara});
             this.mnRegistar.Name = "mnRegistar";
             this.mnRegistar.Size = new System.Drawing.Size(61, 20);
             this.mnRegistar.Text = "Registar";
@@ -57,16 +59,23 @@
             // mnGimnasticari
             // 
             this.mnGimnasticari.Name = "mnGimnasticari";
-            this.mnGimnasticari.Size = new System.Drawing.Size(152, 22);
+            this.mnGimnasticari.Size = new System.Drawing.Size(198, 22);
             this.mnGimnasticari.Text = "Gimnasticari";
             this.mnGimnasticari.Click += new System.EventHandler(this.mnGimnasticari_Click);
             // 
             // mnKlubovi
             // 
             this.mnKlubovi.Name = "mnKlubovi";
-            this.mnKlubovi.Size = new System.Drawing.Size(152, 22);
+            this.mnKlubovi.Size = new System.Drawing.Size(198, 22);
             this.mnKlubovi.Text = "Klubovi";
             this.mnKlubovi.Click += new System.EventHandler(this.mnKlubovi_Click);
+            // 
+            // mnKategorijeGimnasticara
+            // 
+            this.mnKategorijeGimnasticara.Name = "mnKategorijeGimnasticara";
+            this.mnKategorijeGimnasticara.Size = new System.Drawing.Size(198, 22);
+            this.mnKategorijeGimnasticara.Text = "Kategorije gimnasticara";
+            this.mnKategorijeGimnasticara.Click += new System.EventHandler(this.mnKategorijeGimnasticara_Click);
             // 
             // MainForm
             // 
@@ -90,6 +99,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnRegistar;
         private System.Windows.Forms.ToolStripMenuItem mnGimnasticari;
         private System.Windows.Forms.ToolStripMenuItem mnKlubovi;
+        private System.Windows.Forms.ToolStripMenuItem mnKategorijeGimnasticara;
     }
 }
 

@@ -47,5 +47,18 @@ namespace Registracija.UI
                 MessageDialogs.showError(ex.Message, this.Text);
             }
         }
+
+        private void mnKategorijeGimnasticara_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                KategorijeGimnasticaraForm form = new KategorijeGimnasticaraForm();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageDialogs.showError(ex.Message, this.Text);
+            }
+        }
     }
 }
