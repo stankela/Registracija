@@ -120,9 +120,9 @@ namespace Registracija.UI
             this.lblDatRodj.AutoSize = true;
             this.lblDatRodj.Location = new System.Drawing.Point(21, 69);
             this.lblDatRodj.Name = "lblDatRodj";
-            this.lblDatRodj.Size = new System.Drawing.Size(122, 13);
+            this.lblDatRodj.Size = new System.Drawing.Size(78, 13);
             this.lblDatRodj.TabIndex = 8;
-            this.lblDatRodj.Text = "Datum ili godina rodjenja";
+            this.lblDatRodj.Text = "Datum rodjenja";
             // 
             // txtDatRodj
             // 
@@ -136,9 +136,9 @@ namespace Registracija.UI
             this.lblRegBroj.AutoSize = true;
             this.lblRegBroj.Location = new System.Drawing.Point(21, 126);
             this.lblRegBroj.Name = "lblRegBroj";
-            this.lblRegBroj.Size = new System.Drawing.Size(79, 13);
+            this.lblRegBroj.Size = new System.Drawing.Size(88, 13);
             this.lblRegBroj.TabIndex = 12;
-            this.lblRegBroj.Text = "Registarski broj";
+            this.lblRegBroj.Text = "Registracioni broj";
             // 
             // txtRegBroj
             // 

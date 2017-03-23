@@ -9,6 +9,12 @@ namespace Registracija.Domain
     {
         private static readonly int IME_MAX_LENGTH = 32;
         private static readonly int PREZIME_MAX_LENGTH = 32;
+        private static readonly int REG_BROJ_MAX_LENGTH = 16;
+        private static readonly int ADRESA_MAX_LENGTH = 64;
+        private static readonly int MESTO_MAX_LENGTH = 32;
+        private static readonly int TELEFON_MAX_LENGTH = 16;
+        private static readonly int EMAIL_MAX_LENGTH = 64;
+        private static readonly int FILE_NAME_MAX_LENGTH = 64;
 
         private string ime;
         public virtual string Ime
@@ -36,6 +42,86 @@ namespace Registracija.Domain
         {
             get { return klub; }
             set { klub = value; }
+        }
+
+        private Nullable<DateTime> datumRodjenja;
+        public virtual Nullable<DateTime> DatumRodjenja
+        {
+            get { return datumRodjenja; }
+            set { datumRodjenja = value; }
+        }
+
+        private string jmbg;
+        public virtual string JMBG
+        {
+            get { return jmbg; }
+            set { jmbg = value; }
+        }
+
+        private string registarskiBroj;
+        public virtual string RegistarskiBroj
+        {
+            get { return registarskiBroj; }
+            set { registarskiBroj = value; }
+        }
+
+        private string adresa;
+        public virtual string Adresa
+        {
+            get { return adresa; }
+            set { adresa = value; }
+        }
+
+        private string mesto;
+        public virtual string Mesto
+        {
+            get { return mesto; }
+            set { mesto = value; }
+        }
+
+        private string telefon1;
+        public virtual string Telefon1
+        {
+            get { return telefon1; }
+            set { telefon1 = value; }
+        }
+
+        private string telefon2;
+        public virtual string Telefon2
+        {
+            get { return telefon2; }
+            set { telefon2 = value; }
+        }
+
+        private string email;
+        public virtual string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
+        private string fotoFile;
+        public virtual string FotoFile
+        {
+            get { return fotoFile; }
+            set { fotoFile = value; }
+        }
+
+        public virtual bool ImaFoto
+        {
+            get { return !String.IsNullOrEmpty(FotoFile); }
+        }
+
+        private string izvorMKRFile;
+        public virtual string IzvodMKRFile
+        {
+            get { return izvorMKRFile; }
+            set { izvorMKRFile = value; }
+        }
+
+        public virtual bool ImaIzvodMKR
+        {
+            get { return !String.IsNullOrEmpty(IzvodMKRFile); }
         }
 
         public Trener()
@@ -89,6 +175,84 @@ namespace Registracija.Domain
             {
                 notification.RegisterMessage(
                     "Pol", "Neispravna vrednost za pol.");
+            }
+
+            // validate JMBG
+            if (!string.IsNullOrEmpty(JMBG) && JMBG.Length != 13)
+            {
+                notification.RegisterMessage(
+                    "JMBG", "JMBG mora da sadrzi 13 brojeva.");
+            }
+
+            // validate RegBroj
+            if (!string.IsNullOrEmpty(RegistarskiBroj) && RegistarskiBroj.Length > REG_BROJ_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "RegistarskiBroj", "Registarski broj moze da sadrzi maksimalno "
+                    + REG_BROJ_MAX_LENGTH + " znakova.");
+            }
+
+            // validate Adresa
+            if (!string.IsNullOrEmpty(Adresa)
+            && Adresa.Length > ADRESA_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Adresa", "Adresa moze da sadrzi maksimalno "
+                    + ADRESA_MAX_LENGTH + " znakova.");
+            }
+
+            // validate Mesto
+            if (!string.IsNullOrEmpty(Mesto)
+            && Mesto.Length > MESTO_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Mesto", "Mesto moze da sadrzi maksimalno "
+                    + MESTO_MAX_LENGTH + " znakova.");
+            }
+
+            // validate Telefon1
+            if (!string.IsNullOrEmpty(Telefon1)
+            && Telefon1.Length > TELEFON_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Telefon1", "Telefon moze da sadrzi maksimalno "
+                    + TELEFON_MAX_LENGTH + " znakova.");
+            }
+
+            // validate Telefon2
+            if (!string.IsNullOrEmpty(Telefon2)
+            && Telefon2.Length > TELEFON_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Telefon2", "Telefon moze da sadrzi maksimalno "
+                    + TELEFON_MAX_LENGTH + " znakova.");
+            }
+
+            // validate Email
+            if (!string.IsNullOrEmpty(Email)
+            && Email.Length > EMAIL_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Email", "E-mail moze da sadrzi maksimalno "
+                    + EMAIL_MAX_LENGTH + " znakova.");
+            }
+
+            // validate FotoFile
+            if (!string.IsNullOrEmpty(FotoFile)
+            && FotoFile.Length > FILE_NAME_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "FotoFile", "Ime fajla sa fotografijom moze da sadrzi maksimalno "
+                    + FILE_NAME_MAX_LENGTH + " znakova.");
+            }
+
+            // validate IzvodMKRFile
+            if (!string.IsNullOrEmpty(IzvodMKRFile)
+            && IzvodMKRFile.Length > FILE_NAME_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "IzvodMKRFile", "Ime fajla sa izvodom iz MKR moze da sadrzi maksimalno "
+                    + FILE_NAME_MAX_LENGTH + " znakova.");
             }
         }
 

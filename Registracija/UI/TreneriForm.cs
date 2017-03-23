@@ -19,9 +19,11 @@ namespace Registracija.UI
         public TreneriForm()
         {
             this.Text = "Treneri";
-            this.ClientSize = new System.Drawing.Size(800, 540);
+            this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.WorkingArea.Width - 20, 540);
+            
             dataGridViewUserControl1.GridColumnHeaderMouseClick +=
                 new EventHandler<GridColumnHeaderMouseClickEventArgs>(DataGridViewUserControl_GridColumnHeaderMouseClick);
+            dataGridViewUserControl1.ShowBooleanFalse = false;
             InitializeGridColumns();
 
             ISession session = null;
@@ -65,6 +67,16 @@ namespace Registracija.UI
             AddColumn("Prezime", "Prezime", 100);
             AddColumn("Pol", "Pol", 100);
             AddColumn("Klub", "Klub", 150);
+            AddColumn("Datum rodjenja", "DatumRodjenja", 100, "{0:d}");
+            AddColumn("Registracioni broj", "RegistarskiBroj", 100);
+            AddColumn("JMBG", "JMBG", 100);
+            AddColumn("Mesto", "Mesto", 80);
+            AddColumn("Adresa", "Adresa", 140);
+            AddColumn("Telefon 1", "Telefon1", 80);
+            AddColumn("Telefon 2", "Telefon2", 80);
+            AddColumn("E-mail", "Email", 100);
+            AddColumn("Foto", "ImaFoto", 40);
+            AddColumn("Izvod iz MKR", "ImaIzvodMKR", 47);
         }
 
         protected override EntityDetailForm createEntityDetailForm(Nullable<int> entityId)

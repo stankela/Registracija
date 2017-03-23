@@ -101,7 +101,7 @@ namespace Registracija.UI
             AddColumn("Klub", "Klub", 150);
             AddColumn("Kategorija", "Kategorija", 100);
             AddColumn("Trener", "Trener", 150);
-            AddColumn("Registarski broj", "RegistarskiBroj", 100);
+            AddColumn("Registracioni broj", "RegistarskiBroj", 100);
             AddColumn("Poslednja registr.", "DatumPoslednjeRegistracije", 100, "{0:d}");
             AddColumn("JMBG", "JMBG", 100);
             AddColumn("Mesto", "Mesto", 80);

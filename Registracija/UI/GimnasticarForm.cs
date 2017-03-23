@@ -169,6 +169,7 @@ namespace Registracija.UI
             List<object> items = new List<object>();
             items.Add(PRAZNO_ITEM);
             items.AddRange(treneri.ToArray());
+            // TODO4 TODO5: Iako sam stavio PrezimeIme, prikazuje se ime pa prezime (tj. poziva se ToString())
             cmbTrener.DisplayMember = "PrezimeIme";
             cmbTrener.DataSource = items;
         }
@@ -796,7 +797,6 @@ namespace Registracija.UI
                 // Kopiraj samo ako je izabran fajl van odredisnog direktorijuma
                 if (!fileIsInDestDirectory)
                     File.Copy(ofd.FileName, newPath);
-                Gimnasticar g = entity as Gimnasticar;
                 txtFoto.Text = fileName;
             }
         }
@@ -827,7 +827,6 @@ namespace Registracija.UI
                 // Kopiraj samo ako je izabran fajl van odredisnog direktorijuma
                 if (!fileIsInDestDirectory)
                     File.Copy(ofd.FileName, newPath);
-                Gimnasticar g = entity as Gimnasticar;
                 txtIzvodMKR.Text = fileName;
             }
         }

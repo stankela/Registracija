@@ -9,6 +9,7 @@ using Registracija.Domain;
 using Registracija.Exceptions;
 using Registracija.Util;
 using Registracija.Dao;
+using System.IO;
 
 namespace Registracija.UI
 {
@@ -42,6 +43,22 @@ namespace Registracija.UI
             cmbPol.Items.AddRange(new string[] { "Muski", "Zenski" });
             cmbPol.SelectedIndex = -1;
 
+            txtDatRodj.Text = String.Empty;
+            txtJMBG.Text = String.Empty;
+            txtRegBroj.Text = String.Empty;
+
+            txtMesto.Text = String.Empty;
+            txtAdresa.Text = String.Empty;
+            txtTelefon1.Text = String.Empty;
+            txtTelefon2.Text = String.Empty;
+            txtEmail.Text = String.Empty;
+            
+            txtFoto.ReadOnly = true;
+            txtFoto.BackColor = SystemColors.Window;
+
+            txtIzvodMKR.ReadOnly = true;
+            txtIzvodMKR.BackColor = SystemColors.Window;
+            
             cmbKlub.DropDownStyle = ComboBoxStyle.DropDown;
             setKlubovi(klubovi);
             SelectedKlub = null;
@@ -88,6 +105,28 @@ namespace Registracija.UI
             else if (sudija.Pol == Pol.Zenski)
                 cmbPol.SelectedIndex = 1;
 
+            txtDatRodj.Text = String.Empty;
+            if (sudija.DatumRodjenja != null)
+                txtDatRodj.Text = sudija.DatumRodjenja.Value.ToString("d");
+
+            txtJMBG.Text = sudija.JMBG;
+
+            txtRegBroj.Text = sudija.RegistarskiBroj;
+
+            txtMesto.Text = sudija.Mesto;
+            txtAdresa.Text = sudija.Adresa;
+            txtTelefon1.Text = sudija.Telefon1;
+            txtTelefon2.Text = sudija.Telefon2;
+            txtEmail.Text = sudija.Email;
+
+            txtFoto.Text = sudija.FotoFile;
+            if (txtFoto.Text != String.Empty)
+                btnDodajFoto.Text = "Promeni";
+
+            txtIzvodMKR.Text = sudija.IzvodMKRFile;
+            if (txtIzvodMKR.Text != String.Empty)
+                btnDodajIzvodMKR.Text = "Promeni";
+
             SelectedKlub = sudija.Klub;
         }
 
@@ -107,6 +146,14 @@ namespace Registracija.UI
             {
                 notification.RegisterMessage(
                     "Pol", "Pol sudije je obavezan.");
+            }
+
+            DateTime dummyDateTime;
+            if (txtDatRodj.Text.Trim() != String.Empty
+            && !DateTime.TryParse(txtDatRodj.Text, out dummyDateTime))
+            {
+                notification.RegisterMessage(
+                    "DatumRodjenja", "Neispravan format za datum rodjenja.");
             }
 
             if (cmbKlub.Text.Trim() != String.Empty && cmbKlub.Text.Trim() != PRAZNO_ITEM && SelectedKlub == null)
@@ -136,6 +183,46 @@ namespace Registracija.UI
                     cmbKlub.Focus();
                     break;
 
+                case "DatumRodjenja":
+                    txtDatRodj.Focus();
+                    break;
+
+                case "JMBG":
+                    txtJMBG.Focus();
+                    break;
+
+                case "RegistarskiBroj":
+                    txtRegBroj.Focus();
+                    break;
+
+                case "Mesto":
+                    txtMesto.Focus();
+                    break;
+
+                case "Adresa":
+                    txtAdresa.Focus();
+                    break;
+
+                case "Telefon1":
+                    txtTelefon1.Focus();
+                    break;
+
+                case "Telefon2":
+                    txtTelefon2.Focus();
+                    break;
+
+                case "Email":
+                    txtEmail.Focus();
+                    break;
+
+                case "FotoFile":
+                    txtFoto.Focus();
+                    break;
+
+                case "IzvodMKRFile":
+                    txtIzvodMKR.Focus();
+                    break;
+
                 default:
                     throw new ArgumentException();
             }
@@ -156,6 +243,24 @@ namespace Registracija.UI
                 sudija.Pol = Pol.Muski;
             else
                 sudija.Pol = Pol.Zenski;
+
+            if (txtDatRodj.Text.Trim() == String.Empty)
+                sudija.DatumRodjenja = null;
+            else
+                sudija.DatumRodjenja = DateTime.Parse(txtDatRodj.Text);
+
+            sudija.JMBG = txtJMBG.Text.Trim();
+
+            sudija.RegistarskiBroj = txtRegBroj.Text.Trim();
+
+            sudija.Mesto = txtMesto.Text.Trim();
+            sudija.Adresa = txtAdresa.Text.Trim();
+            sudija.Telefon1 = txtTelefon1.Text.Trim();
+            sudija.Telefon2 = txtTelefon2.Text.Trim();
+            sudija.Email = txtEmail.Text.Trim();
+
+            sudija.FotoFile = txtFoto.Text.Trim();
+            sudija.IzvodMKRFile = txtIzvodMKR.Text.Trim();
 
             sudija.Klub = SelectedKlub;
         }
@@ -224,6 +329,102 @@ namespace Registracija.UI
             if (!editMode)
             {
                 txtIme.Focus();
+            }
+        }
+
+        private void btnDodajFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() != DialogResult.OK)
+                return;
+
+            string fileName = Path.GetFileName(ofd.FileName);
+            string fileDirectory = Path.GetDirectoryName(ofd.FileName);
+            string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string destDirectory = Path.Combine(appDirectory, ConfigurationParameters.FotografijeFolder);
+
+            bool fileIsInDestDirectory = fileDirectory.ToUpper() == destDirectory.ToUpper();
+            string newPath = Path.Combine(appDirectory, ConfigurationParameters.FotografijeFolder, fileName);
+
+            if (!fileIsInDestDirectory && File.Exists(newPath))
+            {
+                // Izabran je fajl van odredisnog foldera, a u odredisnom folderu vec postoji fajl sa istim imenom.
+                // Nemoj da kopiras da ne bi prebrisao stari fajl.
+                MessageDialogs.showError(String.Format("Fajl sa identicnim imenom ('{0}') vec postoji u folderu {1}.", fileName,
+                    ConfigurationParameters.FotografijeFolder), this.Text);
+            }
+            else
+            {
+                // Kopiraj samo ako je izabran fajl van odredisnog direktorijuma
+                if (!fileIsInDestDirectory)
+                    File.Copy(ofd.FileName, newPath);
+                txtFoto.Text = fileName;
+            }
+        }
+
+        private void btnPrikaziFoto_Click(object sender, EventArgs e)
+        {
+            string fileName = txtFoto.Text.Trim();
+            if (!String.IsNullOrEmpty(fileName))
+            {
+                string path = Path.Combine(ConfigurationParameters.FotografijeFolder, fileName);
+                if (!File.Exists(path))
+                {
+                    MessageDialogs.showMessage(String.Format("Fajl {0} ne postoji u folderu {1}.", Path.GetFileName(fileName),
+                        ConfigurationParameters.FotografijeFolder), this.Text);
+                }
+                else
+                {
+                    System.Diagnostics.Process.Start(path);
+                }
+            }
+        }
+
+        private void btnDodajIzvodMKR_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() != DialogResult.OK)
+                return;
+
+            string fileName = Path.GetFileName(ofd.FileName);
+            string fileDirectory = Path.GetDirectoryName(ofd.FileName);
+            string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string destDirectory = Path.Combine(appDirectory, ConfigurationParameters.IzvodiMKRFolder);
+
+            bool fileIsInDestDirectory = fileDirectory.ToUpper() == destDirectory.ToUpper();
+            string newPath = Path.Combine(appDirectory, ConfigurationParameters.IzvodiMKRFolder, fileName);
+
+            if (!fileIsInDestDirectory && File.Exists(newPath))
+            {
+                // Izabran je fajl van odredisnog foldera, a u odredisnom folderu vec postoji fajl sa istim imenom.
+                // Nemoj da kopiras da ne bi prebrisao stari fajl.
+                MessageDialogs.showError(String.Format("Fajl sa identicnim imenom ('{0}') vec postoji u folderu {1}.", fileName,
+                    ConfigurationParameters.IzvodiMKRFolder), this.Text);
+            }
+            else
+            {
+                // Kopiraj samo ako je izabran fajl van odredisnog direktorijuma
+                if (!fileIsInDestDirectory)
+                    File.Copy(ofd.FileName, newPath);
+                txtIzvodMKR.Text = fileName;
+            }
+        }
+
+        private void btnPrikaziIzvodMKR_Click(object sender, EventArgs e)
+        {
+            string fileName = txtIzvodMKR.Text.Trim();
+            if (!String.IsNullOrEmpty(fileName))
+            {
+                string path = Path.Combine(ConfigurationParameters.IzvodiMKRFolder, fileName);
+                if (!File.Exists(path))
+                {
+                    MessageDialogs.showMessage(String.Format("Fajl {0} ne postoji u folderu {1}.", Path.GetFileName(fileName),
+                        ConfigurationParameters.IzvodiMKRFolder), this.Text);
+                }
+                else
+                {
+                    System.Diagnostics.Process.Start(path);
+                }
             }
         }
     }
