@@ -12,17 +12,17 @@ using Registracija.Dao;
 
 namespace Registracija.UI
 {
-    public partial class SudijaForm : EntityDetailForm
+    public partial class TrenerForm : EntityDetailForm
     {
         private List<Klub> klubovi;
         private string oldIme;
         private string oldPrezime;
         private readonly string PRAZNO_ITEM = "<<Prazno>>";
 
-        public SudijaForm(Nullable<int> sudijaId)
+        public TrenerForm(Nullable<int> trenerId)
         {
             InitializeComponent();
-            initialize(sudijaId, true);
+            initialize(trenerId, true);
         }
 
         protected override void loadData()
@@ -33,7 +33,7 @@ namespace Registracija.UI
         protected override void initUI()
         {
             base.initUI();
-            this.Text = "Sudija";
+            this.Text = "Trener";
 
             txtIme.Text = String.Empty;
             txtPrezime.Text = String.Empty;
@@ -66,29 +66,29 @@ namespace Registracija.UI
 
         protected override DomainObject getEntityById(int id)
         {
-            return DAOFactoryFactory.DAOFactory.GetSudijaDAO().FindById(id);
+            return DAOFactoryFactory.DAOFactory.GetTrenerDAO().FindById(id);
         }
 
         protected override void saveOriginalData(DomainObject entity)
         {
-            Sudija sudija = (Sudija)entity;
-            oldIme = sudija.Ime;
-            oldPrezime = sudija.Prezime;
+            Trener trener = (Trener)entity;
+            oldIme = trener.Ime;
+            oldPrezime = trener.Prezime;
         }
 
         protected override void updateUIFromEntity(DomainObject entity)
         {
-            Sudija sudija = (Sudija)entity;
-            txtIme.Text = sudija.Ime;
-            txtPrezime.Text = sudija.Prezime;
+            Trener trener = (Trener)entity;
+            txtIme.Text = trener.Ime;
+            txtPrezime.Text = trener.Prezime;
 
             cmbPol.SelectedIndex = -1;
-            if (sudija.Pol == Pol.Muski)
+            if (trener.Pol == Pol.Muski)
                 cmbPol.SelectedIndex = 0;
-            else if (sudija.Pol == Pol.Zenski)
+            else if (trener.Pol == Pol.Zenski)
                 cmbPol.SelectedIndex = 1;
 
-            SelectedKlub = sudija.Klub;
+            SelectedKlub = trener.Klub;
         }
 
         protected override void requiredFieldsAndFormatValidation(Notification notification)
@@ -96,17 +96,17 @@ namespace Registracija.UI
             if (txtIme.Text.Trim() == String.Empty)
             {
                 notification.RegisterMessage(
-                    "Ime", "Ime sudije je obavezno.");
+                    "Ime", "Ime je obavezno.");
             }
             if (txtPrezime.Text.Trim() == String.Empty)
             {
                 notification.RegisterMessage(
-                    "Prezime", "Prezime sudije je obavezno.");
+                    "Prezime", "Prezime je obavezno.");
             }
             if (cmbPol.SelectedIndex == -1)
             {
                 notification.RegisterMessage(
-                    "Pol", "Pol sudije je obavezan.");
+                    "Pol", "Pol je obavezan.");
             }
 
             if (cmbKlub.Text.Trim() != String.Empty && cmbKlub.Text.Trim() != PRAZNO_ITEM && SelectedKlub == null)
@@ -143,58 +143,58 @@ namespace Registracija.UI
 
         protected override DomainObject createNewEntity()
         {
-            return new Sudija();
+            return new Trener();
         }
 
         protected override void updateEntityFromUI(DomainObject entity)
         {
-            Sudija sudija = (Sudija)entity;
-            sudija.Ime = txtIme.Text.Trim();
-            sudija.Prezime = txtPrezime.Text.Trim();
+            Trener trener = (Trener)entity;
+            trener.Ime = txtIme.Text.Trim();
+            trener.Prezime = txtPrezime.Text.Trim();
 
             if (cmbPol.SelectedIndex == 0)
-                sudija.Pol = Pol.Muski;
+                trener.Pol = Pol.Muski;
             else
-                sudija.Pol = Pol.Zenski;
+                trener.Pol = Pol.Zenski;
 
-            sudija.Klub = SelectedKlub;
+            trener.Klub = SelectedKlub;
         }
 
         protected override void updateEntity(DomainObject entity)
         {
-            DAOFactoryFactory.DAOFactory.GetSudijaDAO().Update((Sudija)entity);
+            DAOFactoryFactory.DAOFactory.GetTrenerDAO().Update((Trener)entity);
         }
 
         protected override void addEntity(DomainObject entity)
         {
-            DAOFactoryFactory.DAOFactory.GetSudijaDAO().Add((Sudija)entity);
+            DAOFactoryFactory.DAOFactory.GetTrenerDAO().Add((Trener)entity);
         }
 
         protected override void checkBusinessRulesOnAdd(DomainObject entity)
         {
-            Sudija sudija = (Sudija)entity;
+            Trener trener = (Trener)entity;
             Notification notification = new Notification();
 
-            if (DAOFactoryFactory.DAOFactory.GetSudijaDAO().existsSudija(sudija.Ime, sudija.Prezime))
+            if (DAOFactoryFactory.DAOFactory.GetTrenerDAO().existsTrener(trener.Ime, trener.Prezime))
             {
                 notification.RegisterMessage("Ime",
-                    "Sudija sa datim imenom i prezimenom vec postoji.");
+                    "Trener sa datim imenom i prezimenom vec postoji.");
                 throw new BusinessException(notification);
             }
         }
 
         protected override void checkBusinessRulesOnUpdate(DomainObject entity)
         {
-            Sudija sudija = (Sudija)entity;
+            Trener trener = (Trener)entity;
             Notification notification = new Notification();
 
-            bool imePrezimeChanged = (sudija.Ime.ToUpper() != oldIme.ToUpper()
-                || sudija.Prezime.ToUpper() != oldPrezime.ToUpper()) ? true : false;
+            bool imePrezimeChanged = (trener.Ime.ToUpper() != oldIme.ToUpper()
+                || trener.Prezime.ToUpper() != oldPrezime.ToUpper()) ? true : false;
             if (imePrezimeChanged
-            && DAOFactoryFactory.DAOFactory.GetSudijaDAO().existsSudija(sudija.Ime, sudija.Prezime))
+            && DAOFactoryFactory.DAOFactory.GetTrenerDAO().existsTrener(trener.Ime, trener.Prezime))
             {
                 notification.RegisterMessage("Ime",
-                    "Sudija sa datim imenom i prezimenom vec postoji.");
+                    "Trener sa datim imenom i prezimenom vec postoji.");
                 throw new BusinessException(notification);
             }
         }
@@ -219,7 +219,7 @@ namespace Registracija.UI
             }
         }
 
-        private void SudijaForm_Shown(object sender, EventArgs e)
+        private void TrenerForm_Shown(object sender, EventArgs e)
         {
             if (!editMode)
             {

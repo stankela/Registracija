@@ -53,3 +53,11 @@ create table sudije (
 	klub_id int references klubovi(klub_id)
 );
 
+create table treneri (
+	trener_id int identity(1,1) primary key,
+	ime nvarchar(32),
+	prezime nvarchar(32),
+	pol tinyint,
+	klub_id int references klubovi(klub_id)
+);
+

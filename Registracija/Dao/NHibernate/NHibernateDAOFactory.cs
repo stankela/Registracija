@@ -27,5 +27,10 @@ namespace Registracija.Dao.NHibernate
         {
             return new SudijaDAOImpl();
         }
+
+        public override TrenerDAO GetTrenerDAO()
+        {
+            return new TrenerDAOImpl();
+        }
     }
 }

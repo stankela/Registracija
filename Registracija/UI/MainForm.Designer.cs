@@ -31,9 +31,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnRegistar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnGimnasticari = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnSudije = new System.Windows.Forms.ToolStripMenuItem();
             this.mnKlubovi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnKategorijeGimnasticara = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnSudije = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnTreneri = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             // 
             this.mnRegistar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnGimnasticari,
+            this.mnTreneri,
             this.mnSudije,
             this.mnKlubovi,
             this.mnKategorijeGimnasticara});
@@ -64,6 +66,13 @@
             this.mnGimnasticari.Size = new System.Drawing.Size(198, 22);
             this.mnGimnasticari.Text = "Gimnasticari";
             this.mnGimnasticari.Click += new System.EventHandler(this.mnGimnasticari_Click);
+            // 
+            // mnSudije
+            // 
+            this.mnSudije.Name = "mnSudije";
+            this.mnSudije.Size = new System.Drawing.Size(198, 22);
+            this.mnSudije.Text = "Sudije";
+            this.mnSudije.Click += new System.EventHandler(this.mnSudije_Click);
             // 
             // mnKlubovi
             // 
@@ -79,12 +88,12 @@
             this.mnKategorijeGimnasticara.Text = "Kategorije gimnasticara";
             this.mnKategorijeGimnasticara.Click += new System.EventHandler(this.mnKategorijeGimnasticara_Click);
             // 
-            // mnSudije
+            // mnTreneri
             // 
-            this.mnSudije.Name = "mnSudije";
-            this.mnSudije.Size = new System.Drawing.Size(198, 22);
-            this.mnSudije.Text = "Sudije";
-            this.mnSudije.Click += new System.EventHandler(this.mnSudije_Click);
+            this.mnTreneri.Name = "mnTreneri";
+            this.mnTreneri.Size = new System.Drawing.Size(198, 22);
+            this.mnTreneri.Text = "Treneri";
+            this.mnTreneri.Click += new System.EventHandler(this.mnTreneri_Click);
             // 
             // MainForm
             // 
@@ -110,6 +119,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnKlubovi;
         private System.Windows.Forms.ToolStripMenuItem mnKategorijeGimnasticara;
         private System.Windows.Forms.ToolStripMenuItem mnSudije;
+        private System.Windows.Forms.ToolStripMenuItem mnTreneri;
     }
 }
 

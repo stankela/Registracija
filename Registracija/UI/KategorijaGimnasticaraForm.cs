@@ -165,5 +165,13 @@ namespace Registracija.UI
                 throw new BusinessException(notification);
             }
         }
+
+        private void KategorijaGimnasticaraForm_Shown(object sender, EventArgs e)
+        {
+            if (!editMode)
+            {
+                txtNaziv.Focus();
+            }
+        }
     }
 }

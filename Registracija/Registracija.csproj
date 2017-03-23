@@ -74,7 +74,9 @@
     <Compile Include="Dao\NHibernate\KlubDAOImpl.cs" />
     <Compile Include="Dao\NHibernate\NHibernateDAOFactory.cs" />
     <Compile Include="Dao\NHibernate\SudijaDAOImpl.cs" />
+    <Compile Include="Dao\NHibernate\TrenerDAOImpl.cs" />
     <Compile Include="Dao\SudijaDAO.cs" />
+    <Compile Include="Dao\TrenerDAO.cs" />
     <Compile Include="Data\NHibernate\NHibernateHelper.cs" />
     <Compile Include="Data\NHibernate\PersistentConfigurationBuilder.cs" />
     <Compile Include="Language.cs" />
@@ -175,6 +177,15 @@
     <Compile Include="UI\SudijeForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\TrenerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TrenerForm.Designer.cs">
+      <DependentUpon>TrenerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TreneriForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Util\ColumnAdder.cs" />
     <Compile Include="Util\Database.cs" />
     <Compile Include="Util\DatabaseUpdater.cs" />
@@ -226,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SudijaForm.resx">
       <DependentUpon>SudijaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TrenerForm.resx">
+      <DependentUpon>TrenerForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="CreateAllObjects.sqlce" />
     <None Include="Properties\Settings.settings">

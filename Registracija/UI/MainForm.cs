@@ -73,5 +73,18 @@ namespace Registracija.UI
                 MessageDialogs.showError(ex.Message, this.Text);
             }
         }
+
+        private void mnTreneri_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TreneriForm form = new TreneriForm();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageDialogs.showError(ex.Message, this.Text);
+            }
+        }
     }
 }

@@ -6,5 +6,6 @@ namespace Registracija.Dao
         public abstract KlubDAO GetKlubDAO();
         public abstract KategorijaGimnasticaraDAO GetKategorijaGimnasticaraDAO();
         public abstract SudijaDAO GetSudijaDAO();
+        public abstract TrenerDAO GetTrenerDAO();
     }
 }

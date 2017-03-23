@@ -1,6 +1,6 @@
 namespace Registracija.UI
 {
-    partial class SudijaForm
+    partial class TrenerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -123,7 +123,7 @@ namespace Registracija.UI
             this.lblKlub.TabIndex = 25;
             this.lblKlub.Text = "Klub";
             // 
-            // SudijaForm
+            // TrenerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -137,9 +137,9 @@ namespace Registracija.UI
             this.Controls.Add(this.lblPol);
             this.Controls.Add(this.txtPrezime);
             this.Controls.Add(this.lblPrezime);
-            this.Name = "SudijaForm";
-            this.Text = "SudijaForm";
-            this.Shown += new System.EventHandler(this.SudijaForm_Shown);
+            this.Name = "TrenerForm";
+            this.Text = "TrenerForm";
+            this.Shown += new System.EventHandler(this.TrenerForm_Shown);
             this.Controls.SetChildIndex(this.lblPrezime, 0);
             this.Controls.SetChildIndex(this.txtPrezime, 0);
             this.Controls.SetChildIndex(this.lblPol, 0);
