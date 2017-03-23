@@ -68,6 +68,9 @@ namespace Registracija.UI
             this.txtIzvodMKR = new System.Windows.Forms.TextBox();
             this.btnDodajIzvodMKR = new System.Windows.Forms.Button();
             this.btnPrikaziIzvodMKR = new System.Windows.Forms.Button();
+            this.lblTrener = new System.Windows.Forms.Label();
+            this.cmbTrener = new System.Windows.Forms.ComboBox();
+            this.btnAddTrener = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnOk
@@ -181,7 +184,7 @@ namespace Registracija.UI
             // lblKategorija
             // 
             this.lblKategorija.AutoSize = true;
-            this.lblKategorija.Location = new System.Drawing.Point(21, 232);
+            this.lblKategorija.Location = new System.Drawing.Point(299, 179);
             this.lblKategorija.Name = "lblKategorija";
             this.lblKategorija.Size = new System.Drawing.Size(54, 13);
             this.lblKategorija.TabIndex = 20;
@@ -190,7 +193,7 @@ namespace Registracija.UI
             // cmbKategorija
             // 
             this.cmbKategorija.FormattingEnabled = true;
-            this.cmbKategorija.Location = new System.Drawing.Point(24, 248);
+            this.cmbKategorija.Location = new System.Drawing.Point(302, 195);
             this.cmbKategorija.Name = "cmbKategorija";
             this.cmbKategorija.Size = new System.Drawing.Size(207, 21);
             this.cmbKategorija.TabIndex = 21;
@@ -225,7 +228,7 @@ namespace Registracija.UI
             // 
             // btnAddKategorija
             // 
-            this.btnAddKategorija.Location = new System.Drawing.Point(237, 247);
+            this.btnAddKategorija.Location = new System.Drawing.Point(515, 194);
             this.btnAddKategorija.Name = "btnAddKategorija";
             this.btnAddKategorija.Size = new System.Drawing.Size(25, 23);
             this.btnAddKategorija.TabIndex = 25;
@@ -417,12 +420,42 @@ namespace Registracija.UI
             this.btnPrikaziIzvodMKR.UseVisualStyleBackColor = true;
             this.btnPrikaziIzvodMKR.Click += new System.EventHandler(this.btnPrikaziIzvodMKR_Click);
             // 
+            // lblTrener
+            // 
+            this.lblTrener.AutoSize = true;
+            this.lblTrener.Location = new System.Drawing.Point(21, 231);
+            this.lblTrener.Name = "lblTrener";
+            this.lblTrener.Size = new System.Drawing.Size(38, 13);
+            this.lblTrener.TabIndex = 48;
+            this.lblTrener.Text = "Trener";
+            // 
+            // cmbTrener
+            // 
+            this.cmbTrener.FormattingEnabled = true;
+            this.cmbTrener.Location = new System.Drawing.Point(24, 247);
+            this.cmbTrener.Name = "cmbTrener";
+            this.cmbTrener.Size = new System.Drawing.Size(207, 21);
+            this.cmbTrener.TabIndex = 49;
+            // 
+            // btnAddTrener
+            // 
+            this.btnAddTrener.Location = new System.Drawing.Point(237, 247);
+            this.btnAddTrener.Name = "btnAddTrener";
+            this.btnAddTrener.Size = new System.Drawing.Size(24, 23);
+            this.btnAddTrener.TabIndex = 50;
+            this.btnAddTrener.Text = "...";
+            this.btnAddTrener.UseVisualStyleBackColor = true;
+            this.btnAddTrener.Click += new System.EventHandler(this.btnAddTrener_Click);
+            // 
             // GimnasticarForm
             // 
             this.AcceptButton = null;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 539);
+            this.Controls.Add(this.btnAddTrener);
+            this.Controls.Add(this.cmbTrener);
+            this.Controls.Add(this.lblTrener);
             this.Controls.Add(this.btnPrikaziIzvodMKR);
             this.Controls.Add(this.btnDodajIzvodMKR);
             this.Controls.Add(this.txtIzvodMKR);
@@ -508,6 +541,9 @@ namespace Registracija.UI
             this.Controls.SetChildIndex(this.txtIzvodMKR, 0);
             this.Controls.SetChildIndex(this.btnDodajIzvodMKR, 0);
             this.Controls.SetChildIndex(this.btnPrikaziIzvodMKR, 0);
+            this.Controls.SetChildIndex(this.lblTrener, 0);
+            this.Controls.SetChildIndex(this.cmbTrener, 0);
+            this.Controls.SetChildIndex(this.btnAddTrener, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,5 +591,8 @@ namespace Registracija.UI
         private System.Windows.Forms.TextBox txtIzvodMKR;
         private System.Windows.Forms.Button btnDodajIzvodMKR;
         private System.Windows.Forms.Button btnPrikaziIzvodMKR;
+        private System.Windows.Forms.Label lblTrener;
+        private System.Windows.Forms.ComboBox cmbTrener;
+        private System.Windows.Forms.Button btnAddTrener;
     }
 }

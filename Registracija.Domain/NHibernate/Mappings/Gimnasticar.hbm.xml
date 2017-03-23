@@ -32,6 +32,7 @@
     <property name="IzvodMKRFile" column="izvod_mkr_file" type="String" length="64"/>
     <many-to-one name="Kategorija" class="KategorijaGimnasticara" column="kat_id" />
     <many-to-one name="Klub" class="Klub" column="klub_id" />
+    <many-to-one name="Trener" class="Trener" column="trener_id" />
   </class>
 
 </hibernate-mapping>

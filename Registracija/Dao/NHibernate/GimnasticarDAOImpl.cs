@@ -17,6 +17,7 @@ namespace Registracija.Dao.NHibernate
                 IQuery q = Session.CreateQuery(@"from Gimnasticar g
                     left join fetch g.Kategorija
                     left join fetch g.Klub
+                    left join fetch g.Trener
                     order by g.Prezime asc, g.Ime asc");
                 return q.List<Gimnasticar>();
             }
@@ -33,6 +34,7 @@ namespace Registracija.Dao.NHibernate
                 IQuery q = Session.CreateQuery(@"from Gimnasticar g
                     left join fetch g.Kategorija
                     left join fetch g.Klub
+                    left join fetch g.Trener
                     where g.Gimnastika = :gim
                     order by g.Prezime asc, g.Ime asc");
                 q.SetByte("gim", (byte)gim);
@@ -79,6 +81,7 @@ namespace Registracija.Dao.NHibernate
                 IQuery q = Session.CreateQuery(@"from Gimnasticar g
                     left join fetch g.Kategorija
                     left join fetch g.Klub
+                    left join fetch g.Trener
                     where g.RegistarskiBroj like :regBroj");
                 q.SetString("regBroj", regBroj);
                 return q.List<Gimnasticar>();
@@ -95,7 +98,8 @@ namespace Registracija.Dao.NHibernate
         {
             string query = @"from Gimnasticar g
                     left join fetch g.Kategorija
-                    left join fetch g.Klub";
+                    left join fetch g.Klub
+                    left join fetch g.Trener";
             string WHERE = " where ";
             if (!String.IsNullOrEmpty(ime))
             {

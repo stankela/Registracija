@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Registracija.Domain
 {
-    public class Trener : DomainObject
+    public class Trener : DomainObject, IComparable<Trener>
     {
         private static readonly int IME_MAX_LENGTH = 32;
         private static readonly int PREZIME_MAX_LENGTH = 32;
@@ -46,6 +46,14 @@ namespace Registracija.Domain
         public override string ToString()
         {
             return Ime + ' ' + Prezime;
+        }
+
+        public virtual string PrezimeIme
+        {
+            get
+            {
+                return Prezime + ' ' + Ime;
+            }
         }
 
         public override void validate(Notification notification)
@@ -103,5 +111,15 @@ namespace Registracija.Domain
                 return result;
             }
         }
+
+        #region IComparable<Trener> Members
+
+        // NOTE: Potrebno sa List.Sort()
+        public virtual int CompareTo(Trener other)
+        {
+            return this.PrezimeIme.CompareTo(other.PrezimeIme);
+        }
+
+        #endregion
     }
 }

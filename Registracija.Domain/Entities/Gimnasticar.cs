@@ -73,6 +73,13 @@ namespace Registracija.Domain
             set { klub = value; }
         }
 
+        private Trener trener;
+        public virtual Trener Trener
+        {
+            get { return trener; }
+            set { trener = value; }
+        }
+
         private string registarskiBroj;
         public virtual string RegistarskiBroj
         {

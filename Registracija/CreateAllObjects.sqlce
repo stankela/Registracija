@@ -42,7 +42,8 @@ create table gimnasticari (
 	foto_file nvarchar(64),
 	izvod_mkr_file nvarchar(64),
 	kat_id int references kategorije_gimnasticara(kategorija_id),
-	klub_id int references klubovi(klub_id)
+	klub_id int references klubovi(klub_id),
+	trener_id int references treneri(trener_id)
 );
 
 create table sudije (

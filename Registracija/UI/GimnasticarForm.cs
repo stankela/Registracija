@@ -22,6 +22,7 @@ namespace Registracija.UI
     {
         private List<KategorijaGimnasticara> kategorije;
         private List<Klub> klubovi;
+        private List<Trener> treneri;
         private string oldIme;
         private string oldPrezime;
         private string oldSrednjeIme;
@@ -52,6 +53,7 @@ namespace Registracija.UI
                 kategorije = new List<KategorijaGimnasticara>();
 
             klubovi = new List<Klub>(DAOFactoryFactory.DAOFactory.GetKlubDAO().FindAll());
+            treneri = new List<Trener>(DAOFactoryFactory.DAOFactory.GetTrenerDAO().FindAll());
             gimnasticari = new List<Gimnasticar>(DAOFactoryFactory.DAOFactory.GetGimnasticarDAO().FindAll());
         }
 
@@ -99,6 +101,12 @@ namespace Registracija.UI
             SelectedKlub = null;
             cmbKlub.AutoCompleteMode = AutoCompleteMode.Suggest;
             cmbKlub.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cmbTrener.DropDownStyle = ComboBoxStyle.DropDown;
+            setTreneri(treneri);
+            SelectedTrener = null;
+            cmbTrener.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cmbTrener.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         private void setGimnastike()
@@ -156,10 +164,25 @@ namespace Registracija.UI
             cmbKlub.DataSource = items;
         }
 
+        private void setTreneri(List<Trener> treneri)
+        {
+            List<object> items = new List<object>();
+            items.Add(PRAZNO_ITEM);
+            items.AddRange(treneri.ToArray());
+            cmbTrener.DisplayMember = "PrezimeIme";
+            cmbTrener.DataSource = items;
+        }
+
         private Klub SelectedKlub
         {
             get { return cmbKlub.SelectedItem as Klub; }
             set { cmbKlub.SelectedItem = value; }
+        }
+
+        private Trener SelectedTrener
+        {
+            get { return cmbTrener.SelectedItem as Trener; }
+            set { cmbTrener.SelectedItem = value; }
         }
 
         protected override DomainObject getEntityById(int id)
@@ -218,6 +241,7 @@ namespace Registracija.UI
 
             SelectedKategorija = gimnasticar.Kategorija;
             SelectedKlub = gimnasticar.Klub;
+            SelectedTrener = gimnasticar.Trener;
         }
 
         protected override void requiredFieldsAndFormatValidation(Notification notification)
@@ -256,6 +280,12 @@ namespace Registracija.UI
             {
                 notification.RegisterMessage(
                     "Klub", "Uneli ste nepostojeci klub.");
+            }
+
+            if (cmbTrener.Text.Trim() != String.Empty && cmbTrener.Text.Trim() != PRAZNO_ITEM && SelectedTrener == null)
+            {
+                notification.RegisterMessage(
+                    "Trener", "Uneli ste nepostojeceg trenera.");
             }
 
             if (cmbKategorija.Text.Trim() != String.Empty && cmbKategorija.Text.Trim() != PRAZNO_ITEM
@@ -338,6 +368,10 @@ namespace Registracija.UI
                     cmbKlub.Focus();
                     break;
 
+                case "Trener":
+                    cmbTrener.Focus();
+                    break;
+
                 default:
                     throw new ArgumentException();
             }
@@ -387,6 +421,7 @@ namespace Registracija.UI
             gimnasticar.IzvodMKRFile = txtIzvodMKR.Text.Trim();
 
             gimnasticar.Klub = SelectedKlub;
+            gimnasticar.Trener = SelectedTrener;
             gimnasticar.Kategorija = SelectedKategorija;
         }
 
@@ -508,6 +543,26 @@ namespace Registracija.UI
             }
         }
 
+        private void btnAddTrener_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TrenerForm form = new TrenerForm(null);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    Trener t = (Trener)form.Entity;
+                    treneri.Add(t);
+                    treneri.Sort();
+                    setTreneri(treneri);
+                    SelectedTrener = t;
+                }
+            }
+            catch (InfrastructureException ex)
+            {
+                MessageDialogs.showError(ex.Message, this.Text);
+            }
+        }
+        
         private void btnAddKategorija_Click(object sender, EventArgs e)
         {
             try
