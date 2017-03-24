@@ -61,15 +61,23 @@ namespace Registracija.UI
             this.txtIzvodMKR = new System.Windows.Forms.TextBox();
             this.btnDodajIzvodMKR = new System.Windows.Forms.Button();
             this.btnPrikaziIzvodMKR = new System.Windows.Forms.Button();
+            this.lblPoslSudZvanje = new System.Windows.Forms.Label();
+            this.txtPoslSudZvanje = new System.Windows.Forms.TextBox();
+            this.lblNivoSudZvanja = new System.Windows.Forms.Label();
+            this.txtNivoSudZvanja = new System.Windows.Forms.TextBox();
+            this.lblGodPoslZvanja = new System.Windows.Forms.Label();
+            this.txtGodPoslZvanja = new System.Windows.Forms.TextBox();
+            this.lblGodPrvogZvanja = new System.Windows.Forms.Label();
+            this.txtGodPrvogZvanja = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(295, 500);
+            this.btnOk.Location = new System.Drawing.Point(597, 500);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(387, 500);
+            this.btnCancel.Location = new System.Drawing.Point(689, 500);
             // 
             // lblIme
             // 
@@ -347,11 +355,83 @@ namespace Registracija.UI
             this.btnPrikaziIzvodMKR.UseVisualStyleBackColor = true;
             this.btnPrikaziIzvodMKR.Click += new System.EventHandler(this.btnPrikaziIzvodMKR_Click);
             // 
+            // lblPoslSudZvanje
+            // 
+            this.lblPoslSudZvanje.AutoSize = true;
+            this.lblPoslSudZvanje.Location = new System.Drawing.Point(536, 26);
+            this.lblPoslSudZvanje.Name = "lblPoslSudZvanje";
+            this.lblPoslSudZvanje.Size = new System.Drawing.Size(169, 13);
+            this.lblPoslSudZvanje.TabIndex = 52;
+            this.lblPoslSudZvanje.Text = "Poslednje steceno sudijsko zvanje";
+            // 
+            // txtPoslSudZvanje
+            // 
+            this.txtPoslSudZvanje.Location = new System.Drawing.Point(539, 42);
+            this.txtPoslSudZvanje.Name = "txtPoslSudZvanje";
+            this.txtPoslSudZvanje.Size = new System.Drawing.Size(166, 20);
+            this.txtPoslSudZvanje.TabIndex = 53;
+            // 
+            // lblNivoSudZvanja
+            // 
+            this.lblNivoSudZvanja.AutoSize = true;
+            this.lblNivoSudZvanja.Location = new System.Drawing.Point(536, 80);
+            this.lblNivoSudZvanja.Name = "lblNivoSudZvanja";
+            this.lblNivoSudZvanja.Size = new System.Drawing.Size(157, 13);
+            this.lblNivoSudZvanja.TabIndex = 54;
+            this.lblNivoSudZvanja.Text = "Nivo stecenog sudijskog zvanja";
+            // 
+            // txtNivoSudZvanja
+            // 
+            this.txtNivoSudZvanja.Location = new System.Drawing.Point(539, 96);
+            this.txtNivoSudZvanja.Name = "txtNivoSudZvanja";
+            this.txtNivoSudZvanja.Size = new System.Drawing.Size(154, 20);
+            this.txtNivoSudZvanja.TabIndex = 55;
+            // 
+            // lblGodPoslZvanja
+            // 
+            this.lblGodPoslZvanja.AutoSize = true;
+            this.lblGodPoslZvanja.Location = new System.Drawing.Point(536, 133);
+            this.lblGodPoslZvanja.Name = "lblGodPoslZvanja";
+            this.lblGodPoslZvanja.Size = new System.Drawing.Size(215, 13);
+            this.lblGodPoslZvanja.TabIndex = 56;
+            this.lblGodPoslZvanja.Text = "Godina sticanja poslednjeg sudijskog zvanja";
+            // 
+            // txtGodPoslZvanja
+            // 
+            this.txtGodPoslZvanja.Location = new System.Drawing.Point(539, 149);
+            this.txtGodPoslZvanja.Name = "txtGodPoslZvanja";
+            this.txtGodPoslZvanja.Size = new System.Drawing.Size(71, 20);
+            this.txtGodPoslZvanja.TabIndex = 57;
+            // 
+            // lblGodPrvogZvanja
+            // 
+            this.lblGodPrvogZvanja.AutoSize = true;
+            this.lblGodPrvogZvanja.Location = new System.Drawing.Point(537, 183);
+            this.lblGodPrvogZvanja.Name = "lblGodPrvogZvanja";
+            this.lblGodPrvogZvanja.Size = new System.Drawing.Size(191, 13);
+            this.lblGodPrvogZvanja.TabIndex = 58;
+            this.lblGodPrvogZvanja.Text = "Godina sticanja prvog sudijskog zvanja";
+            // 
+            // txtGodPrvogZvanja
+            // 
+            this.txtGodPrvogZvanja.Location = new System.Drawing.Point(539, 199);
+            this.txtGodPrvogZvanja.Name = "txtGodPrvogZvanja";
+            this.txtGodPrvogZvanja.Size = new System.Drawing.Size(71, 20);
+            this.txtGodPrvogZvanja.TabIndex = 59;
+            // 
             // SudijaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 535);
+            this.ClientSize = new System.Drawing.Size(787, 535);
+            this.Controls.Add(this.txtGodPrvogZvanja);
+            this.Controls.Add(this.lblGodPrvogZvanja);
+            this.Controls.Add(this.txtGodPoslZvanja);
+            this.Controls.Add(this.lblGodPoslZvanja);
+            this.Controls.Add(this.txtNivoSudZvanja);
+            this.Controls.Add(this.lblNivoSudZvanja);
+            this.Controls.Add(this.txtPoslSudZvanje);
+            this.Controls.Add(this.lblPoslSudZvanje);
             this.Controls.Add(this.btnPrikaziIzvodMKR);
             this.Controls.Add(this.btnDodajIzvodMKR);
             this.Controls.Add(this.txtIzvodMKR);
@@ -423,6 +503,14 @@ namespace Registracija.UI
             this.Controls.SetChildIndex(this.txtIzvodMKR, 0);
             this.Controls.SetChildIndex(this.btnDodajIzvodMKR, 0);
             this.Controls.SetChildIndex(this.btnPrikaziIzvodMKR, 0);
+            this.Controls.SetChildIndex(this.lblPoslSudZvanje, 0);
+            this.Controls.SetChildIndex(this.txtPoslSudZvanje, 0);
+            this.Controls.SetChildIndex(this.lblNivoSudZvanja, 0);
+            this.Controls.SetChildIndex(this.txtNivoSudZvanja, 0);
+            this.Controls.SetChildIndex(this.lblGodPoslZvanja, 0);
+            this.Controls.SetChildIndex(this.txtGodPoslZvanja, 0);
+            this.Controls.SetChildIndex(this.lblGodPrvogZvanja, 0);
+            this.Controls.SetChildIndex(this.txtGodPrvogZvanja, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -463,5 +551,13 @@ namespace Registracija.UI
         private System.Windows.Forms.TextBox txtIzvodMKR;
         private System.Windows.Forms.Button btnDodajIzvodMKR;
         private System.Windows.Forms.Button btnPrikaziIzvodMKR;
+        private System.Windows.Forms.Label lblPoslSudZvanje;
+        private System.Windows.Forms.TextBox txtPoslSudZvanje;
+        private System.Windows.Forms.Label lblNivoSudZvanja;
+        private System.Windows.Forms.TextBox txtNivoSudZvanja;
+        private System.Windows.Forms.Label lblGodPoslZvanja;
+        private System.Windows.Forms.TextBox txtGodPoslZvanja;
+        private System.Windows.Forms.Label lblGodPrvogZvanja;
+        private System.Windows.Forms.TextBox txtGodPrvogZvanja;
     }
 }

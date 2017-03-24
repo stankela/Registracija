@@ -15,6 +15,8 @@ namespace Registracija.Domain
         private static readonly int TELEFON_MAX_LENGTH = 16;
         private static readonly int EMAIL_MAX_LENGTH = 64;
         private static readonly int FILE_NAME_MAX_LENGTH = 64;
+        private static readonly int POSLEDNJE_SUD_ZVANJE_MAX_LENGTH = 64;
+        private static readonly int NIVO_SUD_ZVANJA_MAX_LENGTH = 32;
 
         private string ime;
         public virtual string Ime
@@ -122,6 +124,34 @@ namespace Registracija.Domain
         public virtual bool ImaIzvodMKR
         {
             get { return !String.IsNullOrEmpty(IzvodMKRFile); }
+        }
+
+        private string poslednjeSudijskoZvanje;
+        public virtual string PoslednjeSudijskoZvanje
+        {
+            get { return poslednjeSudijskoZvanje; }
+            set { poslednjeSudijskoZvanje = value; }
+        }
+
+        private string nivoSudijskogZvanja;
+        public virtual string NivoSudijskogZvanja
+        {
+            get { return nivoSudijskogZvanja; }
+            set { nivoSudijskogZvanja = value; }
+        }
+
+        Nullable<short> godinaPoslednjegSudijskogZvanja;
+        public virtual Nullable<short> GodinaPoslednjegSudijskogZvanja
+        {
+            get { return godinaPoslednjegSudijskogZvanja; }
+            set { godinaPoslednjegSudijskogZvanja = value; }
+        }
+
+        Nullable<short> godinaPrvogSudijskogZvanja;
+        public virtual Nullable<short> GodinaPrvogSudijskogZvanja
+        {
+            get { return godinaPrvogSudijskogZvanja; }
+            set { godinaPrvogSudijskogZvanja = value; }
         }
 
         public Sudija()
@@ -245,6 +275,24 @@ namespace Registracija.Domain
                 notification.RegisterMessage(
                     "IzvodMKRFile", "Ime fajla sa izvodom iz MKR moze da sadrzi maksimalno "
                     + FILE_NAME_MAX_LENGTH + " znakova.");
+            }
+
+            // validate PoslednjeSudijskoZvanje
+            if (!string.IsNullOrEmpty(PoslednjeSudijskoZvanje)
+            && PoslednjeSudijskoZvanje.Length > POSLEDNJE_SUD_ZVANJE_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "PoslednjeSudijskoZvanje", "Poslednje steceno sudijsko zvanje moze da sadrzi maksimalno "
+                    + POSLEDNJE_SUD_ZVANJE_MAX_LENGTH + " znakova.");
+            }
+
+            // validate NivoSudijskogZvanja
+            if (!string.IsNullOrEmpty(NivoSudijskogZvanja)
+            && NivoSudijskogZvanja.Length > NIVO_SUD_ZVANJA_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "NivoSudijskogZvanja", "Nivo stecenog sudijskog zvanja moze da sadrzi maksimalno "
+                    + NIVO_SUD_ZVANJA_MAX_LENGTH + " znakova.");
             }
         }
 

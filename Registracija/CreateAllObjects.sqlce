@@ -61,6 +61,10 @@ create table sudije (
 	email nvarchar(64),
 	foto_file nvarchar(64),
 	izvod_mkr_file nvarchar(64),
+	poslednje_sud_zvanje nvarchar(64),
+	nivo_sud_zvanja nvarchar(32),
+    god_poslednjeg_zvanja smallint,
+    god_prvog_zvanja smallint,
 	klub_id int references klubovi(klub_id)
 );
 

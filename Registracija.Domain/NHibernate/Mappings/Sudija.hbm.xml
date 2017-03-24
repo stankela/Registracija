@@ -20,6 +20,10 @@
     <property name="Email" column="email" type="String" length="64"/>
     <property name="FotoFile" column="foto_file" type="String" length="64"/>
     <property name="IzvodMKRFile" column="izvod_mkr_file" type="String" length="64"/>
+    <property name="PoslednjeSudijskoZvanje" column="poslednje_sud_zvanje" />
+    <property name="NivoSudijskogZvanja" column="nivo_sud_zvanja" />
+    <property name="GodinaPoslednjegSudijskogZvanja" column="god_poslednjeg_zvanja" />
+    <property name="GodinaPrvogSudijskogZvanja" column="god_prvog_zvanja" />
     <many-to-one name="Klub" class="Klub" column="klub_id" />
   </class>
 

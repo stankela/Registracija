@@ -52,6 +52,11 @@ namespace Registracija.UI
             txtTelefon1.Text = String.Empty;
             txtTelefon2.Text = String.Empty;
             txtEmail.Text = String.Empty;
+
+            txtPoslSudZvanje.Text = String.Empty;
+            txtNivoSudZvanja.Text = String.Empty;
+            txtGodPoslZvanja.Text = String.Empty;
+            txtGodPrvogZvanja.Text = String.Empty;
             
             txtFoto.ReadOnly = true;
             txtFoto.BackColor = SystemColors.Window;
@@ -119,6 +124,15 @@ namespace Registracija.UI
             txtTelefon2.Text = sudija.Telefon2;
             txtEmail.Text = sudija.Email;
 
+            txtPoslSudZvanje.Text = sudija.PoslednjeSudijskoZvanje;
+            txtNivoSudZvanja.Text = sudija.NivoSudijskogZvanja;
+            txtGodPoslZvanja.Text = String.Empty;
+            if (sudija.GodinaPoslednjegSudijskogZvanja != null)
+                txtGodPoslZvanja.Text = sudija.GodinaPoslednjegSudijskogZvanja.ToString();
+            txtGodPrvogZvanja.Text = String.Empty;
+            if (sudija.GodinaPrvogSudijskogZvanja != null)
+                txtGodPrvogZvanja.Text = sudija.GodinaPrvogSudijskogZvanja.ToString();
+
             txtFoto.Text = sudija.FotoFile;
             if (txtFoto.Text != String.Empty)
                 btnDodajFoto.Text = "Promeni";
@@ -160,6 +174,21 @@ namespace Registracija.UI
             {
                 notification.RegisterMessage(
                     "Klub", "Uneli ste nepostojeci klub.");
+            }
+
+            short dummyShort;
+            if (txtGodPoslZvanja.Text.Trim() != String.Empty
+            && !short.TryParse(txtGodPoslZvanja.Text, out dummyShort))
+            {
+                notification.RegisterMessage(
+                    "GodinaPoslednjegSudijskogZvanja", "Neispravan format za godinu.");
+            }
+
+            if (txtGodPrvogZvanja.Text.Trim() != String.Empty
+            && !short.TryParse(txtGodPrvogZvanja.Text, out dummyShort))
+            {
+                notification.RegisterMessage(
+                    "GodinaPrvogSudijskogZvanja", "Neispravan format za godinu.");
             }
         }
 
@@ -223,6 +252,22 @@ namespace Registracija.UI
                     txtIzvodMKR.Focus();
                     break;
 
+                case "PoslednjeSudijskoZvanje":
+                    txtPoslSudZvanje.Focus();
+                    break;
+
+                case "NivoSudijskogZvanja":
+                    txtNivoSudZvanja.Focus();
+                    break;
+
+                case "GodinaPoslednjegSudijskogZvanja":
+                    txtGodPoslZvanja.Focus();
+                    break;
+
+                case "GodinaPrvogSudijskogZvanja":
+                    txtGodPrvogZvanja.Focus();
+                    break;
+
                 default:
                     throw new ArgumentException();
             }
@@ -258,6 +303,17 @@ namespace Registracija.UI
             sudija.Telefon1 = txtTelefon1.Text.Trim();
             sudija.Telefon2 = txtTelefon2.Text.Trim();
             sudija.Email = txtEmail.Text.Trim();
+
+            sudija.PoslednjeSudijskoZvanje = txtPoslSudZvanje.Text.Trim();
+            sudija.NivoSudijskogZvanja = txtNivoSudZvanja.Text.Trim();
+            if (txtGodPoslZvanja.Text.Trim() == String.Empty)
+                sudija.GodinaPoslednjegSudijskogZvanja = null;
+            else
+                sudija.GodinaPoslednjegSudijskogZvanja = short.Parse(txtGodPoslZvanja.Text);
+            if (txtGodPrvogZvanja.Text.Trim() == String.Empty)
+                sudija.GodinaPrvogSudijskogZvanja = null;
+            else
+                sudija.GodinaPrvogSudijskogZvanja = short.Parse(txtGodPrvogZvanja.Text);
 
             sudija.FotoFile = txtFoto.Text.Trim();
             sudija.IzvodMKRFile = txtIzvodMKR.Text.Trim();

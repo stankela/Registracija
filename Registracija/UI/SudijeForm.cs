@@ -69,6 +69,10 @@ namespace Registracija.UI
             AddColumn("Ime", "Ime", 100);
             AddColumn("Prezime", "Prezime", 100);
             AddColumn("Pol", "Pol", 100);
+            AddColumn("Poslednje sudijsko zvanje", "PoslednjeSudijskoZvanje", 120);
+            AddColumn("Nivo sudijskog zvanja", "NivoSudijskogZvanja", 120);
+            AddColumn("God. posl. zvanja", "GodinaPoslednjegSudijskogZvanja", 80);
+            AddColumn("God. prvog zvanja", "GodinaPrvogSudijskogZvanja", 85);
             AddColumn("Klub", "Klub", 150);
             AddColumn("Datum rodjenja", "DatumRodjenja", 100, "{0:d}");
             AddColumn("Registracioni broj", "RegistarskiBroj", 100);
