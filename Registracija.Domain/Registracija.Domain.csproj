@@ -48,6 +48,7 @@
     <Compile Include="Entities\KvalifikacioniStatus.cs" />
     <Compile Include="Entities\Opcije.cs" />
     <Compile Include="Entities\Pol.cs" />
+    <Compile Include="Entities\Sprava.cs" />
     <Compile Include="Entities\Sudija.cs" />
     <Compile Include="Entities\SudijskaUloga.cs" />
     <Compile Include="Entities\Trener.cs" />

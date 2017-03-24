@@ -68,6 +68,7 @@
     <Compile Include="Dao\GimnasticarDAO.cs" />
     <Compile Include="Dao\KategorijaGimnasticaraDAO.cs" />
     <Compile Include="Dao\KlubDAO.cs" />
+    <Compile Include="Dao\KonacanPlasmanDAO.cs" />
     <Compile Include="Dao\NHibernate\GenericNHibernateDAO.cs" />
     <Compile Include="Dao\NHibernate\GimnasticarDAOImpl.cs" />
     <Compile Include="Dao\NHibernate\KategorijaGimnasticaraDAOImpl.cs" />
@@ -131,6 +132,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\GridColumnHeaderMouseClickEventArgs.cs" />
+    <Compile Include="UI\GridColumnsInitializer.cs" />
     <Compile Include="UI\KategorijaGimnasticaraForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +150,12 @@
     </Compile>
     <Compile Include="UI\KluboviForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\KonacanPlasmanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\KonacanPlasmanForm.Designer.cs">
+      <DependentUpon>KonacanPlasmanForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\MainForm.cs">
       <SubType>Form</SubType>
@@ -225,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\KlubForm.resx">
       <DependentUpon>KlubForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\KonacanPlasmanForm.resx">
+      <DependentUpon>KonacanPlasmanForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

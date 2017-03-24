@@ -32,6 +32,7 @@ namespace Registracija.UI
         {
             this.layoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnUveziIzBiltena = new System.Windows.Forms.Button();
             this.btnNewItem = new System.Windows.Forms.Button();
             this.btnPrintPreview = new System.Windows.Forms.Button();
             this.btnEditItem = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@ namespace Registracija.UI
             this.btnPrintItem = new System.Windows.Forms.Button();
             this.btnShowHelp = new System.Windows.Forms.Button();
             this.btnDuplicate = new System.Windows.Forms.Button();
-            this.dataGridViewUserControl1 = new Registracija.UI.DataGridViewUserControl();
             this.pnlListPlaceholder = new System.Windows.Forms.Panel();
             this.pnlPager = new System.Windows.Forms.Panel();
             this.lblPageCounter = new System.Windows.Forms.Label();
@@ -52,10 +52,11 @@ namespace Registracija.UI
             this.btnShowNextPage = new System.Windows.Forms.Button();
             this.btnShowPreviousPage = new System.Windows.Forms.Button();
             this.btnShowFirstPage = new System.Windows.Forms.Button();
-            this.btnUveziIzBiltena = new System.Windows.Forms.Button();
+            this.dataGridViewUserControl1 = new Registracija.UI.DataGridViewUserControl();
             this.layoutPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.pnlListPlaceholder.SuspendLayout();
             this.pnlPager.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@ namespace Registracija.UI
             this.layoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.layoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.layoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.layoutPanel.Size = new System.Drawing.Size(539, 436);
+            this.layoutPanel.Size = new System.Drawing.Size(539, 523);
             this.layoutPanel.TabIndex = 7;
             // 
             // panel1
@@ -91,8 +92,17 @@ namespace Registracija.UI
             this.panel1.Location = new System.Drawing.Point(442, 3);
             this.panel1.Name = "panel1";
             this.layoutPanel.SetRowSpan(this.panel1, 2);
-            this.panel1.Size = new System.Drawing.Size(94, 390);
+            this.panel1.Size = new System.Drawing.Size(94, 420);
             this.panel1.TabIndex = 0;
+            // 
+            // btnUveziIzBiltena
+            // 
+            this.btnUveziIzBiltena.Location = new System.Drawing.Point(6, 364);
+            this.btnUveziIzBiltena.Name = "btnUveziIzBiltena";
+            this.btnUveziIzBiltena.Size = new System.Drawing.Size(82, 41);
+            this.btnUveziIzBiltena.TabIndex = 7;
+            this.btnUveziIzBiltena.Text = "Uvezi iz Biltena";
+            this.btnUveziIzBiltena.UseVisualStyleBackColor = true;
             // 
             // btnNewItem
             // 
@@ -107,7 +117,7 @@ namespace Registracija.UI
             // btnPrintPreview
             // 
             this.btnPrintPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrintPreview.Location = new System.Drawing.Point(6, 285);
+            this.btnPrintPreview.Location = new System.Drawing.Point(6, 236);
             this.btnPrintPreview.Name = "btnPrintPreview";
             this.btnPrintPreview.Size = new System.Drawing.Size(82, 28);
             this.btnPrintPreview.TabIndex = 6;
@@ -137,7 +147,7 @@ namespace Registracija.UI
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(6, 238);
+            this.btnClose.Location = new System.Drawing.Point(6, 281);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(82, 28);
             this.btnClose.TabIndex = 4;
@@ -171,7 +181,7 @@ namespace Registracija.UI
             this.panel2.Controls.Add(this.btnShowHelp);
             this.panel2.Controls.Add(this.btnDuplicate);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 350);
+            this.panel2.Location = new System.Drawing.Point(3, 437);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(433, 43);
             this.panel2.TabIndex = 1;
@@ -216,22 +226,13 @@ namespace Registracija.UI
             this.btnDuplicate.Text = "Duplicate";
             this.btnDuplicate.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewUserControl1
-            // 
-            this.dataGridViewUserControl1.ColumnHeaderSorting = true;
-            this.dataGridViewUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewUserControl1.Name = "dataGridViewUserControl1";
-            this.dataGridViewUserControl1.Size = new System.Drawing.Size(433, 341);
-            this.dataGridViewUserControl1.TabIndex = 0;
-            // 
             // pnlListPlaceholder
             // 
             this.pnlListPlaceholder.Controls.Add(this.dataGridViewUserControl1);
             this.pnlListPlaceholder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlListPlaceholder.Location = new System.Drawing.Point(3, 3);
             this.pnlListPlaceholder.Name = "pnlListPlaceholder";
-            this.pnlListPlaceholder.Size = new System.Drawing.Size(433, 341);
+            this.pnlListPlaceholder.Size = new System.Drawing.Size(433, 428);
             this.pnlListPlaceholder.TabIndex = 2;
             // 
             // pnlPager
@@ -243,7 +244,7 @@ namespace Registracija.UI
             this.pnlPager.Controls.Add(this.btnShowPreviousPage);
             this.pnlPager.Controls.Add(this.btnShowFirstPage);
             this.pnlPager.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPager.Location = new System.Drawing.Point(3, 399);
+            this.pnlPager.Location = new System.Drawing.Point(3, 486);
             this.pnlPager.Name = "pnlPager";
             this.pnlPager.Size = new System.Drawing.Size(533, 34);
             this.pnlPager.TabIndex = 3;
@@ -294,20 +295,21 @@ namespace Registracija.UI
             this.btnShowFirstPage.Text = "|<";
             this.btnShowFirstPage.UseVisualStyleBackColor = true;
             // 
-            // btnUveziIzBiltena
+            // dataGridViewUserControl1
             // 
-            this.btnUveziIzBiltena.Location = new System.Drawing.Point(6, 331);
-            this.btnUveziIzBiltena.Name = "btnUveziIzBiltena";
-            this.btnUveziIzBiltena.Size = new System.Drawing.Size(82, 41);
-            this.btnUveziIzBiltena.TabIndex = 7;
-            this.btnUveziIzBiltena.Text = "Uvezi iz Biltena";
-            this.btnUveziIzBiltena.UseVisualStyleBackColor = true;
+            this.dataGridViewUserControl1.ColumnHeaderSorting = true;
+            this.dataGridViewUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewUserControl1.Name = "dataGridViewUserControl1";
+            this.dataGridViewUserControl1.ShowBooleanFalse = true;
+            this.dataGridViewUserControl1.Size = new System.Drawing.Size(433, 428);
+            this.dataGridViewUserControl1.TabIndex = 0;
             // 
             // BaseEntityListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 436);
+            this.ClientSize = new System.Drawing.Size(539, 523);
             this.Controls.Add(this.layoutPanel);
             this.MinimumSize = new System.Drawing.Size(547, 405);
             this.Name = "BaseEntityListForm";
@@ -316,6 +318,7 @@ namespace Registracija.UI
             this.layoutPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.pnlListPlaceholder.ResumeLayout(false);
             this.pnlPager.ResumeLayout(false);
             this.pnlPager.PerformLayout();
             this.ResumeLayout(false);
