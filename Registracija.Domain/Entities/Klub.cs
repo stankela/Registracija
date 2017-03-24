@@ -9,10 +9,11 @@ namespace Registracija.Domain
     public class Klub : DomainObject, IComparable<Klub>
     {
         private static readonly int NAZIV_MAX_LENGTH = 128;
+        private static readonly int MESTO_MAX_LENGTH = 32;
         private static readonly int ADRESA_MAX_LENGTH = 64;
         private static readonly int TELEFON_MAX_LENGTH = 16;
-        private static readonly int MESTO_MAX_LENGTH = 32;
-    
+        private static readonly int EMAIL_MAX_LENGTH = 64;
+ 
         private string naziv;
         public virtual string Naziv
         {
@@ -48,6 +49,13 @@ namespace Registracija.Domain
             set { telefon2 = value; }
         }
 
+        private string email;
+        public virtual string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
         public Klub()
         { 
         
@@ -72,7 +80,20 @@ namespace Registracija.Domain
                     "Naziv", "Naziv kluba moze da sadrzi maksimalno "
                     + NAZIV_MAX_LENGTH + " znakova.");
             }
-          
+
+            // validate Mesto
+            if (String.IsNullOrEmpty(Mesto))
+            {
+                notification.RegisterMessage(
+                    "Mesto", "Mesto kluba je obavezno.");
+            }
+            else if (Mesto.Length > MESTO_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "Mesto", "Mesto moze da sadrzi maksimalno "
+                    + MESTO_MAX_LENGTH + " znakova.");
+            }
+
             // validate Adresa
             if (Adresa.Length > ADRESA_MAX_LENGTH)
             {
@@ -97,17 +118,13 @@ namespace Registracija.Domain
                     + TELEFON_MAX_LENGTH + " znakova.");
             }
 
-            // validate Mesto
-            if (String.IsNullOrEmpty(Mesto))
+            // validate Email
+            if (!string.IsNullOrEmpty(Email)
+            && Email.Length > EMAIL_MAX_LENGTH)
             {
                 notification.RegisterMessage(
-                    "Mesto", "Mesto kluba je obavezno.");
-            }
-            else if (Mesto.Length > MESTO_MAX_LENGTH)
-            {
-                notification.RegisterMessage(
-                    "Mesto", "Mesto moze da sadrzi maksimalno "
-                    + MESTO_MAX_LENGTH + " znakova.");
+                    "Email", "E-mail moze da sadrzi maksimalno "
+                    + EMAIL_MAX_LENGTH + " znakova.");
             }
         }
 

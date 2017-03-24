@@ -31,6 +31,7 @@ namespace Registracija.UI
             txtAdresa.Text = String.Empty;
             txtTelefon1.Text = String.Empty;
             txtTelefon2.Text = String.Empty;
+            txtEmail.Text = String.Empty;
         }
 
         protected override DomainObject getEntityById(int id)
@@ -52,6 +53,7 @@ namespace Registracija.UI
             txtAdresa.Text = klub.Adresa;
             txtTelefon1.Text = klub.Telefon1;
             txtTelefon2.Text = klub.Telefon2;
+            txtEmail.Text = klub.Email;
         }
 
         protected override void requiredFieldsAndFormatValidation(Notification notification)
@@ -77,6 +79,10 @@ namespace Registracija.UI
                     txtNaziv.Focus();
                     break;
 
+                case "Mesto":
+                    txtMesto.Focus();
+                    break;
+
                 case "Adresa":
                     txtAdresa.Focus();
                     break;
@@ -89,8 +95,8 @@ namespace Registracija.UI
                     txtTelefon2.Focus();
                     break;
 
-                case "Mesto":
-                    txtMesto.Focus();
+                case "Email":
+                    txtEmail.Focus();
                     break;
 
                 default:
@@ -111,6 +117,7 @@ namespace Registracija.UI
             klub.Adresa = txtAdresa.Text.Trim();
             klub.Telefon1 = txtTelefon1.Text.Trim();
             klub.Telefon2 = txtTelefon2.Text.Trim();
+            klub.Email = txtEmail.Text.Trim();
         }
 
         protected override void updateEntity(DomainObject entity)

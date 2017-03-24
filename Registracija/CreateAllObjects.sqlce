@@ -10,7 +10,8 @@ create table klubovi (
 	mesto nvarchar(32),
 	adresa nvarchar(64),
 	telefon1 nvarchar(16),
-	telefon2 nvarchar(16)
+	telefon2 nvarchar(16),
+	email nvarchar(64)
 );
 
 create table kategorije_gimnasticara (

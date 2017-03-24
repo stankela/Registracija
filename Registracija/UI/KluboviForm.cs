@@ -67,6 +67,7 @@ namespace Registracija.UI
             AddColumn("Adresa", "Adresa", 200);
             AddColumn("Telefon 1", "Telefon1", 100);
             AddColumn("Telefon 2", "Telefon2", 100);
+            AddColumn("E-mail", "Email", 100);
         }
 
         protected override EntityDetailForm createEntityDetailForm(Nullable<int> entityId)
