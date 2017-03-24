@@ -222,6 +222,7 @@ namespace Registracija.UI
             this.btnAddKlub.Name = "btnAddKlub";
             this.btnAddKlub.Size = new System.Drawing.Size(24, 23);
             this.btnAddKlub.TabIndex = 24;
+            this.btnAddKlub.TabStop = false;
             this.btnAddKlub.Text = "...";
             this.btnAddKlub.UseVisualStyleBackColor = true;
             this.btnAddKlub.Click += new System.EventHandler(this.btnAddKlub_Click);
@@ -232,6 +233,7 @@ namespace Registracija.UI
             this.btnAddKategorija.Name = "btnAddKategorija";
             this.btnAddKategorija.Size = new System.Drawing.Size(25, 23);
             this.btnAddKategorija.TabIndex = 25;
+            this.btnAddKategorija.TabStop = false;
             this.btnAddKategorija.Text = "...";
             this.btnAddKategorija.UseVisualStyleBackColor = true;
             this.btnAddKategorija.Click += new System.EventHandler(this.btnAddKategorija_Click);
@@ -250,7 +252,8 @@ namespace Registracija.UI
             this.txtSrednjeIme.Location = new System.Drawing.Point(144, 37);
             this.txtSrednjeIme.Name = "txtSrednjeIme";
             this.txtSrednjeIme.Size = new System.Drawing.Size(59, 20);
-            this.txtSrednjeIme.TabIndex = 27;
+            this.txtSrednjeIme.TabIndex = 4;
+            this.txtSrednjeIme.TabStop = false;
             // 
             // lblJMBG
             // 
@@ -266,7 +269,7 @@ namespace Registracija.UI
             this.txtJMBG.Location = new System.Drawing.Point(178, 85);
             this.txtJMBG.Name = "txtJMBG";
             this.txtJMBG.Size = new System.Drawing.Size(133, 20);
-            this.txtJMBG.TabIndex = 29;
+            this.txtJMBG.TabIndex = 10;
             // 
             // lblMesto
             // 
@@ -435,7 +438,7 @@ namespace Registracija.UI
             this.cmbTrener.Location = new System.Drawing.Point(24, 247);
             this.cmbTrener.Name = "cmbTrener";
             this.cmbTrener.Size = new System.Drawing.Size(207, 21);
-            this.cmbTrener.TabIndex = 49;
+            this.cmbTrener.TabIndex = 23;
             // 
             // btnAddTrener
             // 
@@ -443,6 +446,7 @@ namespace Registracija.UI
             this.btnAddTrener.Name = "btnAddTrener";
             this.btnAddTrener.Size = new System.Drawing.Size(24, 23);
             this.btnAddTrener.TabIndex = 50;
+            this.btnAddTrener.TabStop = false;
             this.btnAddTrener.Text = "...";
             this.btnAddTrener.UseVisualStyleBackColor = true;
             this.btnAddTrener.Click += new System.EventHandler(this.btnAddTrener_Click);

@@ -20,6 +20,28 @@ create table kategorije_gimnasticara (
 	gimnastika tinyint
 );
 
+create table treneri (
+	trener_id int identity(1,1) primary key,
+	ime nvarchar(32),
+	prezime nvarchar(32),
+	pol tinyint,
+    datum_rodj datetime,
+	jmbg nvarchar(13),
+	reg_broj nvarchar(16),
+	adresa nvarchar(64),
+	mesto nvarchar(32),
+	telefon1 nvarchar(16),
+	telefon2 nvarchar(16),
+	email nvarchar(64),
+	foto_file nvarchar(64),
+	izvod_mkr_file nvarchar(64),
+	vrsta_trenerskog_angazmana nvarchar(32),
+	naziv_fakulteta nvarchar(64),
+	redovno_zanimanje nvarchar(64),
+	godina_pocetka_trenerskog_rada smallint,
+	klub_id int references klubovi(klub_id)
+);
+
 create table gimnasticari (
 	gimnasticar_id int identity(1,1) primary key,
 	ime nvarchar(32),
@@ -65,28 +87,6 @@ create table sudije (
 	nivo_sud_zvanja nvarchar(32),
     god_poslednjeg_zvanja smallint,
     god_prvog_zvanja smallint,
-	klub_id int references klubovi(klub_id)
-);
-
-create table treneri (
-	trener_id int identity(1,1) primary key,
-	ime nvarchar(32),
-	prezime nvarchar(32),
-	pol tinyint,
-    datum_rodj datetime,
-	jmbg nvarchar(13),
-	reg_broj nvarchar(16),
-	adresa nvarchar(64),
-	mesto nvarchar(32),
-	telefon1 nvarchar(16),
-	telefon2 nvarchar(16),
-	email nvarchar(64),
-	foto_file nvarchar(64),
-	izvod_mkr_file nvarchar(64),
-	vrsta_trenerskog_angazmana nvarchar(32),
-	fakultet nvarchar(64),
-	redovno_zanimanje nvarchar(64),
-	godina_pocetka_trenerskog_rada smallint,
 	klub_id int references klubovi(klub_id)
 );
 

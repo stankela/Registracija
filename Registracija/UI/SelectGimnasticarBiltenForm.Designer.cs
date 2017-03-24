@@ -44,9 +44,8 @@
             // 
             // btnOK
             // 
-            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(680, 492);
+            this.btnOK.Location = new System.Drawing.Point(848, 27);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 1;
@@ -56,9 +55,8 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(773, 492);
+            this.btnCancel.Location = new System.Drawing.Point(942, 27);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -133,7 +131,7 @@
             this.dataGridViewUserControl1.Location = new System.Drawing.Point(12, 66);
             this.dataGridViewUserControl1.Name = "dataGridViewUserControl1";
             this.dataGridViewUserControl1.ShowBooleanFalse = true;
-            this.dataGridViewUserControl1.Size = new System.Drawing.Size(836, 408);
+            this.dataGridViewUserControl1.Size = new System.Drawing.Size(1016, 449);
             this.dataGridViewUserControl1.TabIndex = 0;
             // 
             // lblGimnastika
@@ -157,7 +155,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 527);
+            this.ClientSize = new System.Drawing.Size(1040, 527);
             this.Controls.Add(this.cmbGimnastika);
             this.Controls.Add(this.lblGimnastika);
             this.Controls.Add(this.btnFiltriraj);
