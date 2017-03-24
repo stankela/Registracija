@@ -55,20 +55,6 @@ namespace Registracija.Dao.NHibernate
             }
         }
 
-        public bool existsKlubKod(string kod)
-        {
-            try
-            {
-                IQuery q = Session.CreateQuery(@"select count(*) from Klub k where k.Kod like :kod");
-                q.SetString("kod", kod);
-                return (long)q.UniqueResult() > 0;
-            }
-            catch (HibernateException ex)
-            {
-                throw new InfrastructureException(Strings.getFullDatabaseAccessExceptionMessage(ex), ex);
-            }
-        }
-
         #endregion
     }
 }

@@ -7,7 +7,6 @@ insert into verzija_baze (verzija_id, broj_verzije) values (1, 1);
 create table klubovi (
 	klub_id int identity(1,1) primary key,
 	naziv nvarchar(128),
-	kod nvarchar(7),
 	mesto nvarchar(32),
 	adresa nvarchar(64),
 	telefon1 nvarchar(16),

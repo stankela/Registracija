@@ -9,7 +9,6 @@ namespace Registracija.Domain
     public class Klub : DomainObject, IComparable<Klub>
     {
         private static readonly int NAZIV_MAX_LENGTH = 128;
-        private static readonly int KOD_MAX_LENGTH = 7;
         private static readonly int ADRESA_MAX_LENGTH = 64;
         private static readonly int TELEFON_MAX_LENGTH = 16;
         private static readonly int MESTO_MAX_LENGTH = 32;
@@ -19,13 +18,6 @@ namespace Registracija.Domain
         {
             get { return naziv; }
             set { naziv = value; }
-        }
-
-        private string kod;
-        public virtual string Kod
-        {
-            get { return kod; }
-            set { kod = value; }
         }
 
         private string mesto;
@@ -81,19 +73,6 @@ namespace Registracija.Domain
                     + NAZIV_MAX_LENGTH + " znakova.");
             }
           
-            // validate Kod
-            if (string.IsNullOrEmpty(Kod))
-            {
-                notification.RegisterMessage(
-                    "Kod", "Kod kluba je obavezan.");
-            }
-            else if (Kod.Length > KOD_MAX_LENGTH)
-            {
-                notification.RegisterMessage(
-                    "Kod", "Kod kluba moze da sadrzi maksimalno "
-                    + KOD_MAX_LENGTH + " znakova.");
-            }
-
             // validate Adresa
             if (Adresa.Length > ADRESA_MAX_LENGTH)
             {

@@ -98,8 +98,8 @@ namespace Registracija.UI
             AddColumn("Prezime", "Prezime", 100);
             AddColumn("Datum rodjenja", "DatumRodjenja", 100, "{0:d}");
             AddColumn("Gimnastika", "Gimnastika", 70);
-            AddColumn("Klub", "Klub", 150);
-            AddColumn("Kategorija", "Kategorija", 100);
+            AddColumn("Klub", "Klub", 200);
+            AddColumn("Kategorija", "Kategorija", 150);
             AddColumn("Trener", "Trener", 150);
             AddColumn("Registracioni broj", "RegistarskiBroj", 100);
             AddColumn("Poslednja registr.", "DatumPoslednjeRegistracije", 100, "{0:d}");
@@ -446,7 +446,6 @@ namespace Registracija.UI
             {
                 Klub klub = new Klub();
                 klub.Naziv = g.NazivKluba;
-                klub.Kod = g.KodKluba;
                 klub.Mesto = g.MestoKluba;
                 if (!klubovi.ContainsKey(klub))
                 {

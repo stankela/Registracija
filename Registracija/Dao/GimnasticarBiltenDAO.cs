@@ -17,7 +17,6 @@ namespace Registracija.Dao
         public Nullable<short> GodRodj { get; set; }
         public Gimnastika Gimnastika { get; set; }
         public string NazivKluba { get; set; }
-        public string KodKluba { get; set; }
         public string MestoKluba { get; set; }
         public string NazivKategorije { get; set; }
 
@@ -42,7 +41,7 @@ namespace Registracija.Dao
 
         private string findGimnasticariBiltenSQL = @"
             select g.ime, g.prezime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, g.gimnastika,
-            k.naziv naziv_kluba, k.kod kod_kluba, m.naziv mesto_kluba, kat.naziv naziv_kategorije
+            k.naziv naziv_kluba, m.naziv mesto_kluba, kat.naziv naziv_kategorije
             from gimnasticari g
             left join klubovi k
                 on g.klub_id = k.klub_id
@@ -103,7 +102,6 @@ namespace Registracija.Dao
                 g.Gimnastika = (Gimnastika)(byte)rdr["gimnastika"];
 
                 g.NazivKluba = Convert.IsDBNull(rdr["naziv_kluba"]) ? null : (string)rdr["naziv_kluba"];
-                g.KodKluba = Convert.IsDBNull(rdr["kod_kluba"]) ? null : (string)rdr["kod_kluba"];
                 g.MestoKluba = Convert.IsDBNull(rdr["mesto_kluba"]) ? null : (string)rdr["mesto_kluba"];
 
                 g.NazivKategorije = Convert.IsDBNull(rdr["naziv_kategorije"]) ? null : (string)rdr["naziv_kategorije"];

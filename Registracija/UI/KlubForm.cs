@@ -15,7 +15,6 @@ namespace Registracija.UI
     public partial class KlubForm : EntityDetailForm
     {
         private string oldNaziv;
-        private string oldKod;
         
         public KlubForm(Nullable<int> klubId)
         {
@@ -28,7 +27,6 @@ namespace Registracija.UI
             base.initUI();
             this.Text = "Klub";
             txtNaziv.Text = String.Empty;
-            txtKod.Text = String.Empty;
             txtMesto.Text = String.Empty;
             txtAdresa.Text = String.Empty;
             txtTelefon1.Text = String.Empty;
@@ -44,14 +42,12 @@ namespace Registracija.UI
         {
             Klub klub = (Klub)entity;
             oldNaziv = klub.Naziv;
-            oldKod = klub.Kod;
         }
 
         protected override void updateUIFromEntity(DomainObject entity)
         {
             Klub klub = (Klub)entity;
             txtNaziv.Text = klub.Naziv;
-            txtKod.Text = klub.Kod;
             txtMesto.Text = klub.Mesto;
             txtAdresa.Text = klub.Adresa;
             txtTelefon1.Text = klub.Telefon1;
@@ -64,12 +60,6 @@ namespace Registracija.UI
             {
                 notification.RegisterMessage(
                     "Naziv", "Naziv kluba je obavezan.");
-            }
-
-            if (txtKod.Text.Trim() == String.Empty)
-            {
-                notification.RegisterMessage(
-                    "Kod", "Kod kluba je obavezan.");
             }
 
             if (txtMesto.Text.Trim() == String.Empty)
@@ -85,10 +75,6 @@ namespace Registracija.UI
             {
                 case "Naziv":
                     txtNaziv.Focus();
-                    break;
-
-                case "Kod":
-                    txtKod.Focus();
                     break;
 
                 case "Adresa":
@@ -121,7 +107,6 @@ namespace Registracija.UI
         {
             Klub klub = (Klub)entity;
             klub.Naziv = txtNaziv.Text.Trim();
-            klub.Kod = txtKod.Text.Trim().ToUpper();
             klub.Mesto = txtMesto.Text.Trim();
             klub.Adresa = txtAdresa.Text.Trim();
             klub.Telefon1 = txtTelefon1.Text.Trim();
@@ -149,12 +134,6 @@ namespace Registracija.UI
                 notification.RegisterMessage("Naziv", "Klub sa datim nazivom vec postoji.");
                 throw new BusinessException(notification);
             }
-
-            if (klubDAO.existsKlubKod(klub.Kod))
-            {
-                notification.RegisterMessage("Kod", "Klub sa datim kodom vec postoji.");
-                throw new BusinessException(notification);
-            }
         }
 
         protected override void checkBusinessRulesOnUpdate(DomainObject entity)
@@ -167,13 +146,6 @@ namespace Registracija.UI
             if (nazivChanged && klubDAO.existsKlubNaziv(klub.Naziv))
             {
                 notification.RegisterMessage("Naziv", "Klub sa datim nazivom vec postoji.");
-                throw new BusinessException(notification);
-            }
-
-            bool kodChanged = (klub.Kod.ToUpper() != oldKod.ToUpper()) ? true : false;
-            if (kodChanged && klubDAO.existsKlubKod(klub.Kod))
-            {
-                notification.RegisterMessage("Kod", "Klub sa datim kodom vec postoji.");
                 throw new BusinessException(notification);
             }
         }

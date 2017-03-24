@@ -63,7 +63,6 @@ namespace Registracija.UI
         private void InitializeGridColumns()
         {
             AddColumn("Naziv kluba", "Naziv", 200);
-            AddColumn("Skraceni kod", "Kod", 100);
             AddColumn("Mesto", "Mesto", 100);
             AddColumn("Adresa", "Adresa", 200);
             AddColumn("Telefon 1", "Telefon1", 100);

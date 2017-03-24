@@ -125,7 +125,7 @@ namespace Registracija.UI
             this.btnAddKlub.Location = new System.Drawing.Point(225, 191);
             this.btnAddKlub.Name = "btnAddKlub";
             this.btnAddKlub.Size = new System.Drawing.Size(24, 23);
-            this.btnAddKlub.TabIndex = 27;
+            this.btnAddKlub.TabIndex = 34;
             this.btnAddKlub.Text = "...";
             this.btnAddKlub.UseVisualStyleBackColor = true;
             this.btnAddKlub.Click += new System.EventHandler(this.btnAddKlub_Click);
@@ -136,7 +136,7 @@ namespace Registracija.UI
             this.cmbKlub.Location = new System.Drawing.Point(12, 192);
             this.cmbKlub.Name = "cmbKlub";
             this.cmbKlub.Size = new System.Drawing.Size(207, 21);
-            this.cmbKlub.TabIndex = 26;
+            this.cmbKlub.TabIndex = 33;
             // 
             // lblKlub
             // 
@@ -193,7 +193,7 @@ namespace Registracija.UI
             this.txtRegBroj.Location = new System.Drawing.Point(15, 142);
             this.txtRegBroj.Name = "txtRegBroj";
             this.txtRegBroj.Size = new System.Drawing.Size(100, 20);
-            this.txtRegBroj.TabIndex = 33;
+            this.txtRegBroj.TabIndex = 32;
             // 
             // lblMesto
             // 

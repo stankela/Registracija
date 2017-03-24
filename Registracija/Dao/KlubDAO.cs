@@ -10,6 +10,5 @@ namespace Registracija.Dao
         IList<Klub> FindAll();
         Klub FindByNaziv(string naziv);
         bool existsKlubNaziv(string naziv);
-        bool existsKlubKod(string kod);
     }
 }
