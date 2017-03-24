@@ -77,6 +77,10 @@ namespace Registracija.UI
             AddColumn("E-mail", "Email", 100);
             AddColumn("Foto", "ImaFoto", 40);
             AddColumn("Izvod iz MKR", "ImaIzvodMKR", 47);
+            AddColumn("Vrsta trenerskog angazmana", "VrstaTrenerskogAngazmana", 110);
+            AddColumn("Naziv fakulteta", "NazivFakulteta", 150);
+            AddColumn("Redovno zanimanje", "RedovnoZanimanje", 150);
+            AddColumn("God. pocetka trenerskog rada", "GodinaPocetkaTrenerskogRada", 110);
         }
 
         protected override EntityDetailForm createEntityDetailForm(Nullable<int> entityId)

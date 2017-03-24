@@ -83,6 +83,10 @@ create table treneri (
 	email nvarchar(64),
 	foto_file nvarchar(64),
 	izvod_mkr_file nvarchar(64),
+	vrsta_trenerskog_angazmana nvarchar(32),
+	fakultet nvarchar(64),
+	redovno_zanimanje nvarchar(64),
+	godina_pocetka_trenerskog_rada smallint,
 	klub_id int references klubovi(klub_id)
 );
 

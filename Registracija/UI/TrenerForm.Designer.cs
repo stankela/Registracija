@@ -61,15 +61,23 @@ namespace Registracija.UI
             this.txtIzvodMKR = new System.Windows.Forms.TextBox();
             this.btnDodajIzvodMKR = new System.Windows.Forms.Button();
             this.btnPrikaziIzvodMKR = new System.Windows.Forms.Button();
+            this.lblVrstaTrenerskogAngazmana = new System.Windows.Forms.Label();
+            this.cmbVrstaTrenerskogAngazmana = new System.Windows.Forms.ComboBox();
+            this.lblNazivFakulteta = new System.Windows.Forms.Label();
+            this.txtNazivFakulteta = new System.Windows.Forms.TextBox();
+            this.lblRedovnoZanimanje = new System.Windows.Forms.Label();
+            this.txtRedovnoZanimanje = new System.Windows.Forms.TextBox();
+            this.lblGodinaPocetkaTrenerskogRada = new System.Windows.Forms.Label();
+            this.txtGodinaPocetkaTrenerskogRada = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(399, 500);
+            this.btnOk.Location = new System.Drawing.Point(722, 500);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(491, 500);
+            this.btnCancel.Location = new System.Drawing.Point(814, 500);
             // 
             // lblIme
             // 
@@ -347,11 +355,84 @@ namespace Registracija.UI
             this.btnPrikaziIzvodMKR.UseVisualStyleBackColor = true;
             this.btnPrikaziIzvodMKR.Click += new System.EventHandler(this.btnPrikaziIzvodMKR_Click);
             // 
+            // lblVrstaTrenerskogAngazmana
+            // 
+            this.lblVrstaTrenerskogAngazmana.AutoSize = true;
+            this.lblVrstaTrenerskogAngazmana.Location = new System.Drawing.Point(583, 39);
+            this.lblVrstaTrenerskogAngazmana.Name = "lblVrstaTrenerskogAngazmana";
+            this.lblVrstaTrenerskogAngazmana.Size = new System.Drawing.Size(142, 13);
+            this.lblVrstaTrenerskogAngazmana.TabIndex = 52;
+            this.lblVrstaTrenerskogAngazmana.Text = "Vrsta trenerskog angazmana";
+            // 
+            // cmbVrstaTrenerskogAngazmana
+            // 
+            this.cmbVrstaTrenerskogAngazmana.FormattingEnabled = true;
+            this.cmbVrstaTrenerskogAngazmana.Location = new System.Drawing.Point(586, 55);
+            this.cmbVrstaTrenerskogAngazmana.Name = "cmbVrstaTrenerskogAngazmana";
+            this.cmbVrstaTrenerskogAngazmana.Size = new System.Drawing.Size(139, 21);
+            this.cmbVrstaTrenerskogAngazmana.TabIndex = 53;
+            // 
+            // lblNazivFakulteta
+            // 
+            this.lblNazivFakulteta.AutoSize = true;
+            this.lblNazivFakulteta.Location = new System.Drawing.Point(583, 94);
+            this.lblNazivFakulteta.Name = "lblNazivFakulteta";
+            this.lblNazivFakulteta.Size = new System.Drawing.Size(205, 13);
+            this.lblNazivFakulteta.TabIndex = 54;
+            this.lblNazivFakulteta.Text = "Nacin sticanja trenerskog zvanja - fakultet";
+            // 
+            // txtNazivFakulteta
+            // 
+            this.txtNazivFakulteta.Location = new System.Drawing.Point(586, 110);
+            this.txtNazivFakulteta.Name = "txtNazivFakulteta";
+            this.txtNazivFakulteta.Size = new System.Drawing.Size(278, 20);
+            this.txtNazivFakulteta.TabIndex = 55;
+            // 
+            // lblRedovnoZanimanje
+            // 
+            this.lblRedovnoZanimanje.AutoSize = true;
+            this.lblRedovnoZanimanje.Location = new System.Drawing.Point(583, 149);
+            this.lblRedovnoZanimanje.Name = "lblRedovnoZanimanje";
+            this.lblRedovnoZanimanje.Size = new System.Drawing.Size(261, 13);
+            this.lblRedovnoZanimanje.TabIndex = 56;
+            this.lblRedovnoZanimanje.Text = "Redovno zanimanje (za neprofesionalno angazovane)";
+            // 
+            // txtRedovnoZanimanje
+            // 
+            this.txtRedovnoZanimanje.Location = new System.Drawing.Point(584, 165);
+            this.txtRedovnoZanimanje.Name = "txtRedovnoZanimanje";
+            this.txtRedovnoZanimanje.Size = new System.Drawing.Size(280, 20);
+            this.txtRedovnoZanimanje.TabIndex = 57;
+            // 
+            // lblGodinaPocetkaTrenerskogRada
+            // 
+            this.lblGodinaPocetkaTrenerskogRada.AutoSize = true;
+            this.lblGodinaPocetkaTrenerskogRada.Location = new System.Drawing.Point(583, 209);
+            this.lblGodinaPocetkaTrenerskogRada.Name = "lblGodinaPocetkaTrenerskogRada";
+            this.lblGodinaPocetkaTrenerskogRada.Size = new System.Drawing.Size(160, 13);
+            this.lblGodinaPocetkaTrenerskogRada.TabIndex = 58;
+            this.lblGodinaPocetkaTrenerskogRada.Text = "Godina pocetka trenerskog rada";
+            // 
+            // txtGodinaPocetkaTrenerskogRada
+            // 
+            this.txtGodinaPocetkaTrenerskogRada.Location = new System.Drawing.Point(584, 225);
+            this.txtGodinaPocetkaTrenerskogRada.Name = "txtGodinaPocetkaTrenerskogRada";
+            this.txtGodinaPocetkaTrenerskogRada.Size = new System.Drawing.Size(70, 20);
+            this.txtGodinaPocetkaTrenerskogRada.TabIndex = 59;
+            // 
             // TrenerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 535);
+            this.ClientSize = new System.Drawing.Size(903, 535);
+            this.Controls.Add(this.txtGodinaPocetkaTrenerskogRada);
+            this.Controls.Add(this.lblGodinaPocetkaTrenerskogRada);
+            this.Controls.Add(this.txtRedovnoZanimanje);
+            this.Controls.Add(this.lblRedovnoZanimanje);
+            this.Controls.Add(this.txtNazivFakulteta);
+            this.Controls.Add(this.lblNazivFakulteta);
+            this.Controls.Add(this.cmbVrstaTrenerskogAngazmana);
+            this.Controls.Add(this.lblVrstaTrenerskogAngazmana);
             this.Controls.Add(this.btnPrikaziIzvodMKR);
             this.Controls.Add(this.btnDodajIzvodMKR);
             this.Controls.Add(this.txtIzvodMKR);
@@ -423,6 +504,14 @@ namespace Registracija.UI
             this.Controls.SetChildIndex(this.txtIzvodMKR, 0);
             this.Controls.SetChildIndex(this.btnDodajIzvodMKR, 0);
             this.Controls.SetChildIndex(this.btnPrikaziIzvodMKR, 0);
+            this.Controls.SetChildIndex(this.lblVrstaTrenerskogAngazmana, 0);
+            this.Controls.SetChildIndex(this.cmbVrstaTrenerskogAngazmana, 0);
+            this.Controls.SetChildIndex(this.lblNazivFakulteta, 0);
+            this.Controls.SetChildIndex(this.txtNazivFakulteta, 0);
+            this.Controls.SetChildIndex(this.lblRedovnoZanimanje, 0);
+            this.Controls.SetChildIndex(this.txtRedovnoZanimanje, 0);
+            this.Controls.SetChildIndex(this.lblGodinaPocetkaTrenerskogRada, 0);
+            this.Controls.SetChildIndex(this.txtGodinaPocetkaTrenerskogRada, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -463,5 +552,13 @@ namespace Registracija.UI
         private System.Windows.Forms.TextBox txtIzvodMKR;
         private System.Windows.Forms.Button btnDodajIzvodMKR;
         private System.Windows.Forms.Button btnPrikaziIzvodMKR;
+        private System.Windows.Forms.Label lblVrstaTrenerskogAngazmana;
+        private System.Windows.Forms.ComboBox cmbVrstaTrenerskogAngazmana;
+        private System.Windows.Forms.Label lblNazivFakulteta;
+        private System.Windows.Forms.TextBox txtNazivFakulteta;
+        private System.Windows.Forms.Label lblRedovnoZanimanje;
+        private System.Windows.Forms.TextBox txtRedovnoZanimanje;
+        private System.Windows.Forms.Label lblGodinaPocetkaTrenerskogRada;
+        private System.Windows.Forms.TextBox txtGodinaPocetkaTrenerskogRada;
     }
 }

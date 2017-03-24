@@ -19,6 +19,8 @@ namespace Registracija.UI
         private string oldIme;
         private string oldPrezime;
         private readonly string PRAZNO_ITEM = "<<Prazno>>";
+        private readonly string PROFESIONALAN = "Profesionalan";
+        private readonly string NEPROFESIONALAN = "Neprofesionalan";
 
         public TrenerForm(Nullable<int> trenerId)
         {
@@ -64,6 +66,14 @@ namespace Registracija.UI
             SelectedKlub = null;
             cmbKlub.AutoCompleteMode = AutoCompleteMode.Suggest;
             cmbKlub.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cmbVrstaTrenerskogAngazmana.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbVrstaTrenerskogAngazmana.Items.AddRange(new string[] { PROFESIONALAN, NEPROFESIONALAN });
+            cmbVrstaTrenerskogAngazmana.SelectedIndex = -1;
+
+            txtNazivFakulteta.Text = String.Empty;
+            txtRedovnoZanimanje.Text = String.Empty;
+            txtGodinaPocetkaTrenerskogRada.Text = String.Empty;
         }
 
         private void setKlubovi(List<Klub> klubovi)
@@ -128,6 +138,17 @@ namespace Registracija.UI
                 btnDodajIzvodMKR.Text = "Promeni";
 
             SelectedKlub = trener.Klub;
+
+            if (!String.IsNullOrEmpty(trener.VrstaTrenerskogAngazmana))
+                cmbVrstaTrenerskogAngazmana.SelectedItem = trener.VrstaTrenerskogAngazmana;
+            else
+                cmbVrstaTrenerskogAngazmana.SelectedIndex = -1;
+
+            txtNazivFakulteta.Text = trener.NazivFakulteta;
+            txtRedovnoZanimanje.Text = trener.RedovnoZanimanje;
+            txtGodinaPocetkaTrenerskogRada.Text = String.Empty;
+            if (trener.GodinaPocetkaTrenerskogRada != null)
+                txtGodinaPocetkaTrenerskogRada.Text = trener.GodinaPocetkaTrenerskogRada.ToString();
         }
 
         protected override void requiredFieldsAndFormatValidation(Notification notification)
@@ -160,6 +181,14 @@ namespace Registracija.UI
             {
                 notification.RegisterMessage(
                     "Klub", "Uneli ste nepostojeci klub.");
+            }
+
+            short dummyShort;
+            if (txtGodinaPocetkaTrenerskogRada.Text.Trim() != String.Empty
+            && !short.TryParse(txtGodinaPocetkaTrenerskogRada.Text, out dummyShort))
+            {
+                notification.RegisterMessage(
+                    "GodinaPocetkaTrenerskogRada", "Neispravan format za godinu.");
             }
         }
 
@@ -223,6 +252,22 @@ namespace Registracija.UI
                     txtIzvodMKR.Focus();
                     break;
 
+                case "VrstaTrenerskogAngazmana":
+                    cmbVrstaTrenerskogAngazmana.Focus();
+                    break;
+
+                case "GodinaPocetkaTrenerskogRada":
+                    txtGodinaPocetkaTrenerskogRada.Focus();
+                    break;
+
+                case "NazivFakulteta":
+                    txtNazivFakulteta.Focus();
+                    break;
+
+                case "RedovnoZanimanje":
+                    txtRedovnoZanimanje.Focus();
+                    break;
+
                 default:
                     throw new ArgumentException();
             }
@@ -265,6 +310,20 @@ namespace Registracija.UI
             trener.IzvodMKRFile = txtIzvodMKR.Text.Trim();
 
             trener.Klub = SelectedKlub;
+
+            if (cmbVrstaTrenerskogAngazmana.SelectedItem == null)
+                trener.VrstaTrenerskogAngazmana = String.Empty;
+            else if (cmbVrstaTrenerskogAngazmana.SelectedItem.ToString() == PROFESIONALAN)
+                trener.VrstaTrenerskogAngazmana = PROFESIONALAN;
+            else if (cmbVrstaTrenerskogAngazmana.SelectedItem.ToString() == NEPROFESIONALAN)
+                trener.VrstaTrenerskogAngazmana = NEPROFESIONALAN;
+
+            trener.NazivFakulteta = txtNazivFakulteta.Text.Trim();
+            trener.RedovnoZanimanje = txtRedovnoZanimanje.Text.Trim();
+            if (txtGodinaPocetkaTrenerskogRada.Text.Trim() == String.Empty)
+                trener.GodinaPocetkaTrenerskogRada = null;
+            else
+                trener.GodinaPocetkaTrenerskogRada = short.Parse(txtGodinaPocetkaTrenerskogRada.Text);
         }
 
         protected override void updateEntity(DomainObject entity)

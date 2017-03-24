@@ -20,6 +20,10 @@
     <property name="Email" column="email" type="String" length="64"/>
     <property name="FotoFile" column="foto_file" type="String" length="64"/>
     <property name="IzvodMKRFile" column="izvod_mkr_file" type="String" length="64"/>
+    <property name="VrstaTrenerskogAngazmana" column="vrsta_trenerskog_angazmana" />
+    <property name="NazivFakulteta" column="naziv_fakulteta" />
+    <property name="RedovnoZanimanje" column="redovno_zanimanje" />
+    <property name="GodinaPocetkaTrenerskogRada" column="godina_pocetka_trenerskog_rada" />
     <many-to-one name="Klub" class="Klub" column="klub_id" />
   </class>
 

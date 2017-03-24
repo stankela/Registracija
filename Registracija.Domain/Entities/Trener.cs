@@ -15,6 +15,9 @@ namespace Registracija.Domain
         private static readonly int TELEFON_MAX_LENGTH = 16;
         private static readonly int EMAIL_MAX_LENGTH = 64;
         private static readonly int FILE_NAME_MAX_LENGTH = 64;
+        private static readonly int VRSTA_TRENERSKOG_ANGAZMANA_MAX_LENGTH = 32;
+        private static readonly int FAKULTET_MAX_LENGTH = 64;
+        private static readonly int REDOVNO_ZANIMANJE_MAX_LENGTH = 64;
 
         private string ime;
         public virtual string Ime
@@ -124,6 +127,34 @@ namespace Registracija.Domain
             get { return !String.IsNullOrEmpty(IzvodMKRFile); }
         }
 
+        private string vrstaTrenerskogAngazmana;
+        public virtual string VrstaTrenerskogAngazmana
+        {
+            get { return vrstaTrenerskogAngazmana; }
+            set { vrstaTrenerskogAngazmana = value; }
+        }
+
+        private string nazivFakulteta;
+        public virtual string NazivFakulteta
+        {
+            get { return nazivFakulteta; }
+            set { nazivFakulteta = value; }
+        }
+
+        private string redovnoZanimanje;
+        public virtual string RedovnoZanimanje
+        {
+            get { return redovnoZanimanje; }
+            set { redovnoZanimanje = value; }
+        }
+
+        private Nullable<short> godinaPocetkaTrenerskogRada;
+        public virtual Nullable<short> GodinaPocetkaTrenerskogRada
+        {
+            get { return godinaPocetkaTrenerskogRada; }
+            set { godinaPocetkaTrenerskogRada = value; }
+        }
+        
         public Trener()
         { 
         
@@ -253,6 +284,33 @@ namespace Registracija.Domain
                 notification.RegisterMessage(
                     "IzvodMKRFile", "Ime fajla sa izvodom iz MKR moze da sadrzi maksimalno "
                     + FILE_NAME_MAX_LENGTH + " znakova.");
+            }
+
+            // validate VrstaTrenerskogAngazmana
+            if (!string.IsNullOrEmpty(VrstaTrenerskogAngazmana)
+            && VrstaTrenerskogAngazmana.Length > VRSTA_TRENERSKOG_ANGAZMANA_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                   "VrstaTrenerskogAngazmana", "Vrsta trenerskog angazmana moze da sadrzi maksimalno "
+                   + VRSTA_TRENERSKOG_ANGAZMANA_MAX_LENGTH + " znakova.");
+            }
+
+            // validate NazivFakulteta
+            if (!string.IsNullOrEmpty(NazivFakulteta)
+            && NazivFakulteta.Length > FAKULTET_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "NazivFakulteta", "Fakultet moze da sadrzi maksimalno "
+                    + FAKULTET_MAX_LENGTH + " znakova.");
+            }
+
+            // validate RedovnoZanimanje
+            if (!string.IsNullOrEmpty(RedovnoZanimanje)
+            && RedovnoZanimanje.Length > REDOVNO_ZANIMANJE_MAX_LENGTH)
+            {
+                notification.RegisterMessage(
+                    "RedovnoZanimanje", "Redovno zanimanje moze da sadrzi maksimalno "
+                    + REDOVNO_ZANIMANJE_MAX_LENGTH + " znakova.");
             }
         }
 
