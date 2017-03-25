@@ -388,9 +388,9 @@ namespace Registracija.UI
         private void TrenerForm_Shown(object sender, EventArgs e)
         {
             if (!editMode)
-            {
                 txtIme.Focus();
-            }
+            else
+                btnCancel.Focus();
         }
 
         // TODO4 TODO5: Handleri za Foto i IzvodMKR (Dodaj i Prikazi) su skoro identicni, osim foldera i text boxa. Probaj

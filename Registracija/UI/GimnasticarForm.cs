@@ -40,6 +40,15 @@ namespace Registracija.UI
         public GimnasticarForm(Nullable<int> gimnasticarId)
         {
             InitializeComponent();
+
+            // NOTE: Ponistavam AcceptButton (koji je u EntityDetailForm postavljen na btnOk), zato sto se pojavljuju
+            // problemi kada npr. dodajem novog gimnasticara, pa onda u dijalogu izaberem postojeceg gimnasticara iz baze.
+            // Tada, umesto da otvori dijalog sa podacima za novog gimnasticara, program se ponasa kao da je kliknuto
+            // na OK, i izvrsava validaciju za podatke iz dijaloga i npr. posto gimnastika jos nije unesena (zato sto
+            // unosimo novog gimnasticara), prikazuje prozor "Gimnastika je obavezna". Da bi se ovo izbeglo, simuliram
+            // AcceptButton overrajdovanjem metoda ProcessCmdKey (vidi dole).
+            this.AcceptButton = null;
+
             initialize(gimnasticarId, true);
         }
 
@@ -655,9 +664,9 @@ namespace Registracija.UI
         private void GimnasticarForm_Shown(object sender, EventArgs e)
         {
             if (!editMode)
-            {
                 txtIme.Focus();
-            }
+            else
+                btnCancel.Focus();
         }
 
         private void txtPrezime_Enter(object sender, EventArgs e)
@@ -684,6 +693,21 @@ namespace Registracija.UI
             }
 
             txtPrezime.AutoCompleteCustomSource = col;
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // NOTE: Vidi komentar u konstruktoru zasto je potreban ovaj metod.
+            if (keyData == Keys.Enter && !txtPrezime.Focused && !btnCancel.Focused)
+            {
+                // Simuliraj klik na OK.
+                btnOk.PerformClick();
+                return true;
+            }
+
+            // Inace, odradi standardnu obradu za pritisak tastera. Ako je pritisnut Enter u txtPrezime, pozvace se
+            // txtPrezime_KeyDown.
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void txtPrezime_KeyDown(object sender, KeyEventArgs e)

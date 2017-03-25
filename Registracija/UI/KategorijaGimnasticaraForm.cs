@@ -169,9 +169,9 @@ namespace Registracija.UI
         private void KategorijaGimnasticaraForm_Shown(object sender, EventArgs e)
         {
             if (!editMode)
-            {
                 txtNaziv.Focus();
-            }
+            else
+                btnCancel.Focus();
         }
     }
 }

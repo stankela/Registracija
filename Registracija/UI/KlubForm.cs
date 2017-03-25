@@ -161,6 +161,8 @@ namespace Registracija.UI
         {
             if (!editMode)
                 txtNaziv.Focus();
+            else
+                btnCancel.Focus();
         }
     }
 }
