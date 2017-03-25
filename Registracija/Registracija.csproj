@@ -194,8 +194,6 @@
     <Compile Include="UI\TreneriForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Util\ColumnAdder.cs" />
-    <Compile Include="Util\DatabaseUpdater.cs" />
     <Compile Include="Util\SqlCeUtilities.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
