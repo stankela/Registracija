@@ -23,7 +23,7 @@ namespace Registracija
         {
             try
             {
-                int verzijaBaze = DatabaseUpdater.getDatabaseVersionNumber();
+                int verzijaBaze = SqlCeUtilities.getDatabaseVersionNumber();
                 if (verzijaBaze != VERZIJA_PROGRAMA)
                 {
                     if (verzijaBaze == 0)
