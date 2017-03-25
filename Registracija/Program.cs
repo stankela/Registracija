@@ -7,6 +7,7 @@ using Registracija.UI;
 using System.IO;
 using System.Threading;
 using System.Globalization;
+using Registracija.Dao;
 
 namespace Registracija
 {

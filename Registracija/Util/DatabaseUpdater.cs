@@ -29,7 +29,7 @@ namespace Registracija
             cmd.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = tableName;
 
             string errMsg = "Greska prilikom citanja podataka iz baze.";
-            SqlCeDataReader rdr = Database.executeReader(cmd, errMsg);
+            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, errMsg);
             bool result = false;
             if (rdr.Read())
                 result = true;
@@ -50,7 +50,7 @@ namespace Registracija
             SqlCeCommand cmd = new SqlCeCommand(sql);
 
             string errMsg = "Greska prilikom citanja podataka iz baze.";
-            SqlCeDataReader rdr = Database.executeReader(cmd, errMsg);
+            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, errMsg);
             int result = 0;
             if (rdr.Read())
                 result = rdr.GetInt32(0);

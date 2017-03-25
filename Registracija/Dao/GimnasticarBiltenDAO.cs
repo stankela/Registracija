@@ -87,7 +87,7 @@ namespace Registracija.Dao
             if (!String.IsNullOrEmpty(nazivKluba))
                 cmd.Parameters.Add("@klub", SqlDbType.NVarChar).Value = nazivKluba.ToLower() + '%';
 
-            SqlCeDataReader rdr = Database.executeReader(cmd, Strings.DatabaseAccessExceptionMessage, ConnectionString);
+            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DatabaseAccessExceptionMessage, ConnectionString);
 
             List<GimnasticarBilten> result = new List<GimnasticarBilten>();
             while (rdr.Read())
