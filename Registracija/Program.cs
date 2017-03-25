@@ -41,18 +41,21 @@ namespace Registracija
                     bool converted = false;
                     if (verzijaBaze == 1 && VERZIJA_PROGRAMA > 1)
                     {
-                        string databaseFile = "RegistracijaPodaci.sdf";
-                        SqlCeUtilities.ExecuteScript(databaseFile, "", Path.GetFullPath(@"DatabaseUpdate_version2.sql"));
-
-                        verzijaBaze = DatabaseUpdater.getDatabaseVersionNumber();
-                        string msg = String.Format("Baza podataka je konvertovana u verziju {0}.", verzijaBaze);
-                        MessageBox.Show(msg, "Registracija");
+                        SqlCeUtilities.ExecuteScript(ConfigurationParameters.DatabaseFile, "",
+                            "Registracija.Update.DatabaseUpdate_version2.sql", true);
+                        verzijaBaze = 2;
                         converted = true;
                     }
 
-                    if (converted && File.Exists("NHibernateConfig"))
+                    if (converted)
                     {
-                        File.Delete("NHibernateConfig");
+                        string msg = String.Format("Baza podataka je konvertovana u verziju {0}.", verzijaBaze);
+                        MessageBox.Show(msg, "Bilten");
+
+                        if (File.Exists("NHibernateConfig"))
+                        {
+                            File.Delete("NHibernateConfig");
+                        }
                     }
                 }
             }

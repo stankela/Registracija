@@ -22,11 +22,16 @@ namespace Registracija
             }
         }
 
-        public static string ConnectionString
+        public static string DatabaseFile
         {
-            get { return @"Data Source=RegistracijaPodaci.sdf"; }
+            get { return "RegistracijaPodaci.sdf"; }
         }
 
+        public static string ConnectionString
+        {
+            get { return String.Format("Data Source={0}", DatabaseFile); }
+        }
+        
         public static string FotografijeFolder
         {
             get { return @"Dokumenti\Fotografije"; }
