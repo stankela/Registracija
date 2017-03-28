@@ -60,7 +60,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationParameters.cs" />
     <Compile Include="Dao\DAOFactory.cs" />
     <Compile Include="Dao\DAOFactoryFactory.cs" />
     <Compile Include="Dao\GenericDAO.cs" />
@@ -80,11 +79,12 @@
     <Compile Include="Dao\TrenerDAO.cs" />
     <Compile Include="Data\NHibernate\NHibernateHelper.cs" />
     <Compile Include="Data\NHibernate\PersistentConfigurationBuilder.cs" />
-    <Compile Include="Language.cs" />
+    <Compile Include="Misc\ConfigurationParameters.cs" />
+    <Compile Include="Misc\Language.cs" />
+    <Compile Include="Misc\SingleInstanceApplication.cs" />
+    <Compile Include="Misc\Strings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SingleInstanceApplication.cs" />
-    <Compile Include="Strings.cs" />
     <Compile Include="UI\BaseEntityListForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -31,7 +31,7 @@ namespace Registracija
         {
             get { return String.Format("Data Source={0}", DatabaseFile); }
         }
-        
+
         public static string FotografijeFolder
         {
             get { return @"Dokumenti\Fotografije"; }
