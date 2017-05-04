@@ -9,10 +9,12 @@ namespace Registracija.Dao
 {
     public class KonacanPlasman
     {
+        public int TakmicenjeId { get; set; }
         public int RezultatskoTakmicenjeId { get; set; }
         public string NazivTakmicenja { get; set; }
         public string MestoTakmicenja { get; set; }
         public DateTime DatumTakmicenja { get; set; }
+        public TipTakmicenja TipTakmicenja { get; set; }
         public string NazivKategorije { get; set; }
 
         public string Ime { get; set; }
@@ -47,14 +49,14 @@ namespace Registracija.Dao
             }
         }
     }
-    
+
     public class KonacanPlasmanDAO
     {
         public string ConnectionString;
-        
+
         private string findVisebojTak1SQL = @"
-            select rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
-            g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, r.rank
+            select t.takmicenje_id, rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
+            t.tip_takmicenja, g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, r.rank
             from gimnasticari_ucesnici g
             join rezultati_ukupno r
                 on r.gimnasticar_id = g.gimnasticar_id
@@ -64,8 +66,6 @@ namespace Registracija.Dao
                 on t1.poredak_ukupno_id = p.poredak_id
             join rezultatsko_takmicenje rt
                 on rt.takmicenje1_id = t1.takmicenje1_id
-            join propozicije pr
-                on rt.propozicije_id = pr.propozicije_id
             join takmicarske_kategorije tk
                 on rt.kategorija_id = tk.kategorija_id
             join rezultatsko_takmicenje_description d
@@ -74,12 +74,10 @@ namespace Registracija.Dao
                 on t.takmicenje_id = rt.takmicenje_id
             where g.prezime like @prezime
             and g.ime like @ime
-            and pr.postoji_tak2 = 1
-            and pr.odvojeno_tak2 = 0
             order by t.datum asc";
 
         private string findVisebojTak2SQL = @"
-            select rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
+            select t.takmicenje_id, rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
             g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, r.rank
             from gimnasticari_ucesnici g
             join rezultati_ukupno r
@@ -100,9 +98,53 @@ namespace Registracija.Dao
             and g.ime like @ime
             order by t.datum asc";
 
+        private string findVisebojFinaleKupaSQL = @"
+            select t.takmicenje_id, rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
+            g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, r.rank
+            from gimnasticari_ucesnici g
+            join rezultati_ukupno_finale_kupa r
+                on r.gimnasticar_id = g.gimnasticar_id
+            join poredak_ukupno_finale_kupa p
+                on p.poredak_id = r.poredak_id
+            join takmicenje1 t1
+                on t1.poredak_ukupno_finale_kupa_id = p.poredak_id
+            join rezultatsko_takmicenje rt
+                on rt.takmicenje1_id = t1.takmicenje1_id
+            join takmicarske_kategorije tk
+                on rt.kategorija_id = tk.kategorija_id
+            join rezultatsko_takmicenje_description d
+                on rt.description_id = d.description_id
+            join takmicenja t
+                on t.takmicenje_id = rt.takmicenje_id
+            where g.prezime like @prezime
+            and g.ime like @ime
+            order by t.datum asc";
+
+        private string findVisebojZbirViseKolaSQL = @"
+            select t.takmicenje_id, rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
+            g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, r.rank
+            from gimnasticari_ucesnici g
+            join rezultati_ukupno_zbir_vise_kola r
+                on r.gimnasticar_id = g.gimnasticar_id
+            join poredak_ukupno_zbir_vise_kola p
+                on p.poredak_id = r.poredak_id
+            join takmicenje1 t1
+                on t1.poredak_ukupno_zbir_vise_kola_id = p.poredak_id
+            join rezultatsko_takmicenje rt
+                on rt.takmicenje1_id = t1.takmicenje1_id
+            join takmicarske_kategorije tk
+                on rt.kategorija_id = tk.kategorija_id
+            join rezultatsko_takmicenje_description d
+                on rt.description_id = d.description_id
+            join takmicenja t
+                on t.takmicenje_id = rt.takmicenje_id
+            where g.prezime like @prezime
+            and g.ime like @ime
+            order by t.datum asc";
+
         private string findSpraveTak1SQL = @"
-            select rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
-            g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, p.sprava, r.rank
+            select t.takmicenje_id, rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
+            t.tip_takmicenja, g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, p.sprava, r.rank
             from gimnasticari_ucesnici g
             join rezultati_sprava r
                 on r.gimnasticar_id = g.gimnasticar_id
@@ -112,8 +154,6 @@ namespace Registracija.Dao
                 on t1.takmicenje1_id = p.takmicenje1_id
             join rezultatsko_takmicenje rt
                 on rt.takmicenje1_id = t1.takmicenje1_id
-            join propozicije pr
-                on rt.propozicije_id = pr.propozicije_id
             join takmicarske_kategorije tk
                 on rt.kategorija_id = tk.kategorija_id
             join rezultatsko_takmicenje_description d            
@@ -122,13 +162,11 @@ namespace Registracija.Dao
                 on t.takmicenje_id = rt.takmicenje_id
             where g.prezime like @prezime
             and g.ime like @ime
-            and pr.postoji_tak3 = 1
-            and pr.odvojeno_tak3 = 0
             order by t.datum asc";
 
         private string findPreskokTak1SQL = @"
-            select rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
-            g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, r.rank, r.rank2
+            select t.takmicenje_id, rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
+            t.tip_takmicenja, g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, r.rank
             from gimnasticari_ucesnici g
             join rezultati_preskok r
                 on r.gimnasticar_id = g.gimnasticar_id
@@ -138,8 +176,6 @@ namespace Registracija.Dao
                 on t1.poredak_preskok_id = p.poredak_id
             join rezultatsko_takmicenje rt
                 on rt.takmicenje1_id = t1.takmicenje1_id
-            join propozicije pr
-                on rt.propozicije_id = pr.propozicije_id
             join takmicarske_kategorije tk
                 on rt.kategorija_id = tk.kategorija_id
             join rezultatsko_takmicenje_description d
@@ -148,12 +184,10 @@ namespace Registracija.Dao
                 on t.takmicenje_id = rt.takmicenje_id
             where g.prezime like @prezime
             and g.ime like @ime
-            and pr.postoji_tak3 = 1
-            and pr.odvojeno_tak3 = 0
             order by t.datum asc";
 
         private string findSpraveTak3SQL = @"
-            select rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
+            select t.takmicenje_id, rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
             g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, p.sprava, r.rank
             from gimnasticari_ucesnici g
             join rezultati_sprava r
@@ -175,8 +209,8 @@ namespace Registracija.Dao
             order by t.datum asc";
 
         private string findPreskokTak3SQL = @"
-            select rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
-            g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, r.rank, r.rank2
+            select t.takmicenje_id, rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
+            g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, r.rank
             from gimnasticari_ucesnici g
             join rezultati_preskok r
                 on r.gimnasticar_id = g.gimnasticar_id
@@ -196,10 +230,33 @@ namespace Registracija.Dao
             and g.ime like @ime
             order by t.datum asc";
 
+        private string findSpraveFinaleKupaSQL = @"
+            select t.takmicenje_id, rt.rez_takmicenje_id, d.naziv as naziv_tak, t.datum, t.mesto, tk.naziv as naziv_kat,
+            g.prezime, g.ime, g.srednje_ime, g.dan_rodj, g.mesec_rodj, g.god_rodj, p.sprava, r.rank
+            from gimnasticari_ucesnici g
+            join rezultati_sprava_finale_kupa r
+                on r.gimnasticar_id = g.gimnasticar_id
+            join poredak_sprava_finale_kupa p
+                on p.poredak_id = r.poredak_id
+            join takmicenje1 t1
+                on t1.takmicenje1_id = p.takmicenje1_id
+            join rezultatsko_takmicenje rt
+                on rt.takmicenje1_id = t1.takmicenje1_id
+            join takmicarske_kategorije tk
+                on rt.kategorija_id = tk.kategorija_id
+            join rezultatsko_takmicenje_description d            
+                on rt.description_id = d.description_id
+            join takmicenja t        
+                on t.takmicenje_id = rt.takmicenje_id
+            where g.prezime like @prezime
+            and g.ime like @ime
+            order by t.datum asc";
+
         // TODO4: Uradi i ekipni plasman.
 
         private void loadCommonData(KonacanPlasman kp, SqlCeDataReader rdr)
         {
+            kp.TakmicenjeId = (int)rdr["takmicenje_id"];
             kp.RezultatskoTakmicenjeId = (int)rdr["rez_takmicenje_id"];
             kp.NazivTakmicenja = (string)rdr["naziv_tak"];
             kp.MestoTakmicenja = (string)rdr["mesto"];
@@ -230,7 +287,8 @@ namespace Registracija.Dao
                     kp.Karike = rank;
                     break;
                 case Sprava.Preskok:
-                    throw new Exception("Greska u programu.");
+                    kp.Preskok = rank;
+                    break;
                 case Sprava.Razboj:
                     kp.Razboj = rank;
                     break;
@@ -246,22 +304,13 @@ namespace Registracija.Dao
             }
         }
 
-        private void loadPreskok(KonacanPlasman kp, SqlCeDataReader rdr)
-        {
-            Nullable<short> rank2 = Convert.IsDBNull(rdr["rank2"]) ? null : (Nullable<short>)rdr["rank2"];
-            if (rank2 != null)
-                kp.Preskok = rank2;
-            else
-                kp.Preskok = Convert.IsDBNull(rdr["rank"]) ? null : (Nullable<short>)rdr["rank"];
-        }
-
         // can throw InfrastructureException
         public List<KonacanPlasman> findVisebojTak1(string ime, string prezime)
         {
             SqlCeCommand cmd = new SqlCeCommand(findVisebojTak1SQL);
             cmd.Parameters.Add("@ime", SqlDbType.NVarChar).Value = ime;
             cmd.Parameters.Add("@prezime", SqlDbType.NVarChar).Value = prezime;
-            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DatabaseAccessExceptionMessage, ConnectionString);
+            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DATABASE_ACCESS_ERROR_MSG, ConnectionString);
 
             List<KonacanPlasman> result = new List<KonacanPlasman>();
             while (rdr.Read())
@@ -269,6 +318,7 @@ namespace Registracija.Dao
                 KonacanPlasman kp = new KonacanPlasman();
                 loadCommonData(kp, rdr);
                 kp.Viseboj = Convert.IsDBNull(rdr["rank"]) ? null : (Nullable<short>)rdr["rank"];
+                kp.TipTakmicenja = (TipTakmicenja)rdr["tip_takmicenja"];
                 result.Add(kp);
             }
 
@@ -281,7 +331,7 @@ namespace Registracija.Dao
             SqlCeCommand cmd = new SqlCeCommand(findVisebojTak2SQL);
             cmd.Parameters.Add("@ime", SqlDbType.NVarChar).Value = ime;
             cmd.Parameters.Add("@prezime", SqlDbType.NVarChar).Value = prezime;
-            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DatabaseAccessExceptionMessage, ConnectionString);
+            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DATABASE_ACCESS_ERROR_MSG, ConnectionString);
 
             List<KonacanPlasman> result = new List<KonacanPlasman>();
             while (rdr.Read())
@@ -289,10 +339,53 @@ namespace Registracija.Dao
                 KonacanPlasman kp = new KonacanPlasman();
                 loadCommonData(kp, rdr);
                 kp.Viseboj = Convert.IsDBNull(rdr["rank"]) ? null : (Nullable<short>)rdr["rank"];
+                kp.TipTakmicenja = TipTakmicenja.StandardnoTakmicenje;
                 result.Add(kp);
             }
 
             rdr.Close();
+            return result;
+        }
+
+        public List<KonacanPlasman> findVisebojFinaleKupa(string ime, string prezime)
+        {
+            SqlCeCommand cmd = new SqlCeCommand(findVisebojFinaleKupaSQL);
+            cmd.Parameters.Add("@ime", SqlDbType.NVarChar).Value = ime;
+            cmd.Parameters.Add("@prezime", SqlDbType.NVarChar).Value = prezime;
+            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DATABASE_ACCESS_ERROR_MSG, ConnectionString);
+
+            List<KonacanPlasman> result = new List<KonacanPlasman>();
+            while (rdr.Read())
+            {
+                KonacanPlasman kp = new KonacanPlasman();
+                loadCommonData(kp, rdr);
+                kp.Viseboj = Convert.IsDBNull(rdr["rank"]) ? null : (Nullable<short>)rdr["rank"];
+                kp.TipTakmicenja = TipTakmicenja.FinaleKupa;
+                result.Add(kp);
+            }
+
+            rdr.Close(); // obavezno, da bi se zatvorila konekcija otvorena u executeReader
+            return result;
+        }
+
+        public List<KonacanPlasman> findVisebojZbirViseKola(string ime, string prezime)
+        {
+            SqlCeCommand cmd = new SqlCeCommand(findVisebojZbirViseKolaSQL);
+            cmd.Parameters.Add("@ime", SqlDbType.NVarChar).Value = ime;
+            cmd.Parameters.Add("@prezime", SqlDbType.NVarChar).Value = prezime;
+            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DATABASE_ACCESS_ERROR_MSG, ConnectionString);
+
+            List<KonacanPlasman> result = new List<KonacanPlasman>();
+            while (rdr.Read())
+            {
+                KonacanPlasman kp = new KonacanPlasman();
+                loadCommonData(kp, rdr);
+                kp.Viseboj = Convert.IsDBNull(rdr["rank"]) ? null : (Nullable<short>)rdr["rank"];
+                kp.TipTakmicenja = TipTakmicenja.ZbirViseKola;
+                result.Add(kp);
+            }
+
+            rdr.Close(); // obavezno, da bi se zatvorila konekcija otvorena u executeReader
             return result;
         }
 
@@ -301,14 +394,16 @@ namespace Registracija.Dao
             SqlCeCommand cmd = new SqlCeCommand(findSpraveTak1SQL);
             cmd.Parameters.Add("@ime", SqlDbType.NVarChar).Value = ime;
             cmd.Parameters.Add("@prezime", SqlDbType.NVarChar).Value = prezime;
-            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DatabaseAccessExceptionMessage, ConnectionString);
+            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DATABASE_ACCESS_ERROR_MSG, ConnectionString);
 
             List<KonacanPlasman> result = new List<KonacanPlasman>();
             while (rdr.Read())
             {
+                // NOTE: Vracam sve rezultate koji postoje (ne proveravam postojiTak3 i odvojenoTak3).
                 KonacanPlasman kp = new KonacanPlasman();
                 loadCommonData(kp, rdr);
                 loadSprava(kp, rdr);
+                kp.TipTakmicenja = (TipTakmicenja)rdr["tip_takmicenja"];
                 result.Add(kp);
             }
 
@@ -321,14 +416,15 @@ namespace Registracija.Dao
             SqlCeCommand cmd = new SqlCeCommand(findPreskokTak1SQL);
             cmd.Parameters.Add("@ime", SqlDbType.NVarChar).Value = ime;
             cmd.Parameters.Add("@prezime", SqlDbType.NVarChar).Value = prezime;
-            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DatabaseAccessExceptionMessage, ConnectionString);
+            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DATABASE_ACCESS_ERROR_MSG, ConnectionString);
 
             List<KonacanPlasman> result = new List<KonacanPlasman>();
             while (rdr.Read())
             {
                 KonacanPlasman kp = new KonacanPlasman();
                 loadCommonData(kp, rdr);
-                loadPreskok(kp, rdr);
+                kp.Preskok = Convert.IsDBNull(rdr["rank"]) ? null : (Nullable<short>)rdr["rank"];
+                kp.TipTakmicenja = (TipTakmicenja)rdr["tip_takmicenja"];
                 result.Add(kp);
             }
 
@@ -341,7 +437,7 @@ namespace Registracija.Dao
             SqlCeCommand cmd = new SqlCeCommand(findSpraveTak3SQL);
             cmd.Parameters.Add("@ime", SqlDbType.NVarChar).Value = ime;
             cmd.Parameters.Add("@prezime", SqlDbType.NVarChar).Value = prezime;
-            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DatabaseAccessExceptionMessage, ConnectionString);
+            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DATABASE_ACCESS_ERROR_MSG, ConnectionString);
 
             List<KonacanPlasman> result = new List<KonacanPlasman>();
             while (rdr.Read())
@@ -349,6 +445,7 @@ namespace Registracija.Dao
                 KonacanPlasman kp = new KonacanPlasman();
                 loadCommonData(kp, rdr);
                 loadSprava(kp, rdr);
+                kp.TipTakmicenja = TipTakmicenja.StandardnoTakmicenje;
                 result.Add(kp);
             }
 
@@ -361,14 +458,36 @@ namespace Registracija.Dao
             SqlCeCommand cmd = new SqlCeCommand(findPreskokTak3SQL);
             cmd.Parameters.Add("@ime", SqlDbType.NVarChar).Value = ime;
             cmd.Parameters.Add("@prezime", SqlDbType.NVarChar).Value = prezime;
-            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DatabaseAccessExceptionMessage, ConnectionString);
+            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DATABASE_ACCESS_ERROR_MSG, ConnectionString);
 
             List<KonacanPlasman> result = new List<KonacanPlasman>();
             while (rdr.Read())
             {
                 KonacanPlasman kp = new KonacanPlasman();
                 loadCommonData(kp, rdr);
-                loadPreskok(kp, rdr);
+                kp.Preskok = Convert.IsDBNull(rdr["rank"]) ? null : (Nullable<short>)rdr["rank"];
+                kp.TipTakmicenja = TipTakmicenja.StandardnoTakmicenje;
+                result.Add(kp);
+            }
+
+            rdr.Close();
+            return result;
+        }
+
+        public List<KonacanPlasman> findSpraveFinaleKupa(string ime, string prezime)
+        {
+            SqlCeCommand cmd = new SqlCeCommand(findSpraveFinaleKupaSQL);
+            cmd.Parameters.Add("@ime", SqlDbType.NVarChar).Value = ime;
+            cmd.Parameters.Add("@prezime", SqlDbType.NVarChar).Value = prezime;
+            SqlCeDataReader rdr = SqlCeUtilities.executeReader(cmd, Strings.DATABASE_ACCESS_ERROR_MSG, ConnectionString);
+
+            List<KonacanPlasman> result = new List<KonacanPlasman>();
+            while (rdr.Read())
+            {
+                KonacanPlasman kp = new KonacanPlasman();
+                loadCommonData(kp, rdr);
+                loadSprava(kp, rdr);
+                kp.TipTakmicenja = TipTakmicenja.FinaleKupa;
                 result.Add(kp);
             }
 
